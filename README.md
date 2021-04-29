@@ -1,2 +1,2 @@
-# It's Bananas (PLACEHOLDER)
+# Covid Data
 An agile development project for BCIT.
