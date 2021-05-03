@@ -4,7 +4,7 @@ const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const Discord = require("discord.js");
-const axios = require("axios")
+const cmd = require("./commands")
 require("dotenv").config()
 const client = new Discord.Client();
 const PORT = process.env.PORT || 5050
@@ -29,6 +29,7 @@ app.use(session(
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
 
+let prefix = '!'
 //Routes can go here
 
 
@@ -37,6 +38,14 @@ client.on("ready", () => {
   console.log("Bot is ready and logged in!")
 })
 
+client.on("message", msg => {
+  if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+  const args = msg.content.slice(prefix.length).trim().split(/ +/);
+  const command = args.shift().toLowerCase();
+  if (command === "stat"){
+    cmd.statAll(msg)
+  }
+})
 
 
 app.listen(PORT, function () {
