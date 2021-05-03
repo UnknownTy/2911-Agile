@@ -42,8 +42,13 @@ client.on("message", msg => {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
+  console.log(args)
   if (command === "stat"){
-    cmd.statAll(msg)
+    if (args.length == 0){
+      cmd.statAll(msg)
+    } else {
+      cmd.statCountry(msg, args[0].toLowerCase())
+    }
   }
 })
 
