@@ -75,5 +75,8 @@ module.exports = {
             statInfo.setThumbnail(res.data.countryInfo.flag)
             ctx.channel.send(embed=statInfo)
         })
+        .catch(err => {
+            ctx.channel.send("Country not found or doesn't have any cases")
+        })
     }
 }
