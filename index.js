@@ -40,9 +40,13 @@ client.on("ready", () => {
 })
 
 client.on("message", msg => {
+  //Check if the message starts with the prefix, or is sent by the bot
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+  //Remove all excess spaces and splice out the args
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
+  //Grab the command out of the list of arguments
   const command = args.shift().toLowerCase();
+  msg.channel.send("DEV BRANCH -- REMOVE THIS BEFORE MAIN")
   if (command === "stat"){
     if (args.length == 0){
       cmd.statAll(msg)
