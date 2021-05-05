@@ -10,6 +10,7 @@ const client = new Discord.Client();
 const PORT = process.env.PORT || 5050
 const botToken = process.env.botToken
 
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(ejsLayouts);
@@ -49,6 +50,18 @@ client.on("message", msg => {
       cmd.statCountry(msg, args[0].toLowerCase())
     }
   }
+  else if (command === "when") {
+    if (args.length === 0 || args.length > 1) {
+      cmd.argsUsage(msg, "when")  
+    }
+    else if (args[0] === "exception") {
+      cmd.vaccineException(msg)
+    }
+    else {
+      cmd.vaccineWhen(msg, args[0])
+    }
+  }
+  
 })
 
 
