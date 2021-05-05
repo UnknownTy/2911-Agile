@@ -6,21 +6,28 @@ const axios = require("axios")
 //A dictionary used to convert API data names to properly formatted names
 const properNames = {
     "updated": "Time last updated",
+
     "cases": "Total Cases",
     "todayCases": "Today's Cases",
+    "casesPerOneMillion": "Cases per Million",
+    
     "deaths": "Total Deaths",
     "todayDeaths": "Today's Deaths",
+    "deathsPerOneMillion": "Deaths per Million",
+
     "recovered" : "Total Recovered",
     "todayRecovered": "Today's Recovered",
     "recoveredPerOneMillion": "Recovered per Million",
+
     "active": "Active Cases",
     "activePerOneMillion": "Active Cases per Million",
+
     "critical": "Critical Condition",
     "criticalPerOneMillion": "Critical Cases per Million",
-    "casesPerOneMillion": "Cases per Million",
-    "deathsPerOneMillion": "Deaths per Million",
+
     "tests": "Total Tests",
     "testsPerOneMillion": "Tests per Million",
+
     "population": "Total Population",
     "affectedCountries": "Affected Countries",
 }
