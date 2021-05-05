@@ -44,19 +44,26 @@ client.on("message", msg => {
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
   switch(true){
-    case (command === "stat"):
-      if (args.length == 0){
-        cmd.statAll(msg)
+    case (command === "prefix"):
+      if(args[0].length > 1){
+        msg.channel.send(`Invalid new prefix ${args[0]}, cannot be longer than one character`)
       } else {
-        cmd.statCountry(msg, args[0].toLowerCase())
+        prefix = args[0]
+        msg.channel.send(`Prefix updated to ${prefix}`)
       }
-      break;
-    
     case (command === "help"):
       if (args.length === 0){
         cmd.help(msg, prefix)
       } else {
         cmd.help(msg, prefix, args)
+      }
+      break;
+    
+    case (command === "stat"):
+      if (args.length == 0){
+        cmd.statAll(msg)
+      } else {
+        cmd.statCountry(msg, args[0].toLowerCase())
       }
       break;
     
