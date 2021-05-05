@@ -43,27 +43,36 @@ client.on("message", msg => {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
-  if (command === "stat"){
-    if (args.length == 0){
-      cmd.statAll(msg)
-    } else {
-      cmd.statCountry(msg, args[0].toLowerCase())
+  switch(true){
+    case (command === "stat"):
+      if (args.length == 0){
+        cmd.statAll(msg)
+      } else {
+        cmd.statCountry(msg, args[0].toLowerCase())
+      }
+      break;
+    
+    case (command === "help"):
+      if (args.length === 0){
+        cmd.help(msg, prefix)
+      } else {
+        cmd.help(msg, prefix, args)
+      }
+      break;
+    
+    case (command === "when"):
+      if (args.length === 0 || args.length > 1) {
+        cmd.argsUsage(msg, "when", prefix)  
+      }
+      else if (args[0] === "exception") {
+        cmd.vaccineException(msg)
+      }
+      else {
+        cmd.vaccineWhen(msg, args[0])
+      }
+      break;
     }
-  }
-  else if (command === "when") {
-    if (args.length === 0 || args.length > 1) {
-      cmd.argsUsage(msg, "when")  
-    }
-    else if (args[0] === "exception") {
-      cmd.vaccineException(msg)
-    }
-    else {
-      cmd.vaccineWhen(msg, args[0])
-    }
-  }
-  
 })
-
 
 app.listen(PORT, function () {
     console.log(

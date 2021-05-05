@@ -10,7 +10,7 @@ const properNames = {
     "cases": "Total Cases",
     "todayCases": "Today's Cases",
     "casesPerOneMillion": "Cases per Million",
-    
+
     "deaths": "Total Deaths",
     "todayDeaths": "Today's Deaths",
     "deathsPerOneMillion": "Deaths per Million",
@@ -64,7 +64,19 @@ const loadResponse = ((data, ctx) => {
     return embed
 })
 
+const helpCommands = {
+    "stat": "stat [Country]",
+    "when": "when {Your age OR Exception}",
+    "help": "help [Command]",
+    "prefix": "prefix {New Prefix}"
+}
+
 module.exports = {
+    help: (ctx, prefix) => {
+        if (arguments.length > 2){
+            
+        }
+    },
     statAll: ctx => {
         //Gets data from public covid API
         axios.get(`https://corona.lmao.ninja/v2/all`)
@@ -75,6 +87,7 @@ module.exports = {
             ctx.channel.send(embed=statInfo)
     })
     },
+
     statCountry: (ctx, country) => {
         axios.get(`https://corona.lmao.ninja/v2/countries/${country}`)
         .then(res => {
@@ -86,11 +99,11 @@ module.exports = {
         .catch(err => {
             ctx.channel.send("Country not found or doesn't have any cases")
         })},
-    argsUsage: (msg, argtype) => {
-        if (argtype === "when"){
-            msg.channel.send("Usage: !when {your_age OR exception}")
-        }
+    argsUsage: (msg, argType, prefix) => {
+        let res = `\`Usage: ${prefix}${helpCommands[argType]}\``
+        msg.channel.send(res)
     },
+
     vaccineWhen: (msg, age) => {
         message = "If you are healthy and not part of an exception group, you may get your 1st dose "
         switch(true) {
@@ -118,6 +131,7 @@ module.exports = {
                 break;
         }
     },
+
     vaccineException: (msg) => {
         const exceptionEmbed = new Discord.MessageEmbed()
             .setTitle("Vaccine Exceptions")
