@@ -6,6 +6,7 @@ const {properNames, helpCommands, helpDescription} = require("./constants")
 
 
 const defaultEmbed = (ctx)=> {
+    //Creates an easy embed that I can grab later for covid data
     embed = new Discord.MessageEmbed()
         .setAuthor(ctx.author.username)
         .setTitle("Covid data")
@@ -40,15 +41,26 @@ const loadResponse = ((data, ctx) => {
 module.exports = {
     help: (ctx, prefix, args) => {
         //If there are no arguments
+        var res = new Discord.MessageEmbed
+        res.setTitle("Help")
+        .setFooter(`For more information, use ${prefix}help [command] 
+        \n{} = Required [] = Optional`)
+        .setColor(0x800080) //Purple
+
         if (!args.length){
-            var res = new Discord.MessageEmbed
-            res.setTitle("Help")
-            .setDescription("All available commands")
+            res.setDescription("All available commands.")
             for(let command of Object.entries(helpCommands)){
                 //Because Node doesn't have an easier option :L
+                //This sets the first letter to be capitalized
                 let cmdCapitalized = `${command[0][0].toUpperCase()}${command[0].slice(1)}`
                 res.addField(cmdCapitalized, `\`${prefix}${command[1]}\``, true)
             }
+        } else {
+            //Gets helpful information on the given command.
+            let command = args[0]
+            res.setTitle(`Help ${command}`)
+            .addField("Usage", `\`${prefix}${helpCommands[command]}\``)
+            .addField("Description", helpDescription[command])
         }
         ctx.channel.send(res)
     },
