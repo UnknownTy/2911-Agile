@@ -9,10 +9,13 @@
   },
   "name": "2911-agile",
   "description": "An agile development project for BCIT.",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/UnknownTy/2911-Agile/issues"
   },
-  "homepage": "https://github.com/UnknownTy/2911-Agile#readme"
+  "homepage": "https://github.com/UnknownTy/2911-Agile#readme",
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
+  }
 }

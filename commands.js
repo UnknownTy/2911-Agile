@@ -1,31 +1,12 @@
 const Discord = require("discord.js");
 const axios = require("axios")
+const {properNames, helpCommands, helpDescription} = require("./constants")
 
 //This file stores all of the bot's commands.
 
-//A dictionary used to convert API data names to properly formatted names
-const properNames = {
-    "updated": "Time last updated",
-    "cases": "Total Cases",
-    "todayCases": "Today's Cases",
-    "deaths": "Total Deaths",
-    "todayDeaths": "Today's Deaths",
-    "recovered" : "Total Recovered",
-    "todayRecovered": "Today's Recovered",
-    "recoveredPerOneMillion": "Recovered per Million",
-    "active": "Active Cases",
-    "activePerOneMillion": "Active Cases per Million",
-    "critical": "Critical Condition",
-    "criticalPerOneMillion": "Critical Cases per Million",
-    "casesPerOneMillion": "Cases per Million",
-    "deathsPerOneMillion": "Deaths per Million",
-    "tests": "Total Tests",
-    "testsPerOneMillion": "Tests per Million",
-    "population": "Total Population",
-    "affectedCountries": "Affected Countries",
-}
 
 const defaultEmbed = (ctx)=> {
+    //Creates an easy embed that I can grab later for covid data
     embed = new Discord.MessageEmbed()
         .setAuthor(ctx.author.username)
         .setTitle("Covid data")
@@ -58,6 +39,38 @@ const loadResponse = ((data, ctx) => {
 })
 
 module.exports = {
+    help: (ctx, prefix, args) => {
+        //If there are no arguments
+        var res = new Discord.MessageEmbed
+        res.setTitle("Help")
+        .setFooter(`For more information, use ${prefix}help [command] 
+        \n{} = Required [] = Optional`)
+        .setColor(0x800080) //Purple
+
+        if (!args.length){
+            res.setDescription("All available commands.")
+            for(let command of Object.entries(helpCommands)){
+                //Because Node doesn't have an easier option :L
+                //This sets the first letter to be capitalized
+                let cmdCapitalized = `${command[0][0].toUpperCase()}${command[0].slice(1)}`
+                res.addField(cmdCapitalized, `\`${prefix}${command[1]}\``, true)
+            }
+        } else {
+            //Gets helpful information on the given command.
+            let command = args[0]
+            res.setTitle(`Help ${command}`)
+            .addField("Usage", `\`${prefix}${helpCommands[command]}\``)
+            .addField("Description", helpDescription[command])
+        }
+        ctx.channel.send(res)
+    },
+
+    argsUsage: (msg, argType, prefix) => {
+        //Sends back the proper usage of a command
+        let res = `\`Usage: ${prefix}${helpCommands[argType]}\``
+        msg.channel.send(res)
+    },
+
     statAll: ctx => {
         //Gets data from public covid API
         axios.get(`https://corona.lmao.ninja/v2/all`)
@@ -68,6 +81,7 @@ module.exports = {
             ctx.channel.send(embed=statInfo)
     })
     },
+
     statCountry: (ctx, country) => {
         axios.get(`https://corona.lmao.ninja/v2/countries/${country}`)
         .then(res => {
@@ -79,11 +93,7 @@ module.exports = {
         .catch(err => {
             ctx.channel.send("Country not found or doesn't have any cases")
         })},
-    argsUsage: (msg, argtype) => {
-        if (argtype === "when"){
-            msg.channel.send("Usage: !when {your_age OR exception}")
-        }
-    },
+
     vaccineWhen: (msg, age) => {
         message = "If you are healthy and not part of an exception group, you may get your 1st dose "
         switch(true) {
@@ -111,6 +121,7 @@ module.exports = {
                 break;
         }
     },
+
     vaccineException: (msg) => {
         const exceptionEmbed = new Discord.MessageEmbed()
             .setTitle("Vaccine Exceptions")
