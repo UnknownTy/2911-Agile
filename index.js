@@ -84,6 +84,16 @@ client.on("message", msg => {
         cmd.vaccineWhen(msg, args[0])
       }
       break;
+    case (command === "restriction"):
+      if (args.length > 1) {
+        cmd.argsUsage(msg, "restriction", prefix)  
+      }
+      else if (args[0] === "region"){
+        cmd.regionalRestriction(msg)
+      }
+      else {
+        cmd.restrictionEmbed(msg)
+      }
     }
 })
 
