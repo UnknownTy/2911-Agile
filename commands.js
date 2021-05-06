@@ -1,36 +1,9 @@
 const Discord = require("discord.js");
 const axios = require("axios")
+const {properNames, helpCommands, helpDescription} = require("./constants")
 
 //This file stores all of the bot's commands.
 
-//A dictionary used to convert API data names to properly formatted names
-const properNames = {
-    "updated": "Time last updated",
-
-    "cases": "Total Cases",
-    "todayCases": "Today's Cases",
-    "casesPerOneMillion": "Cases per Million",
-
-    "deaths": "Total Deaths",
-    "todayDeaths": "Today's Deaths",
-    "deathsPerOneMillion": "Deaths per Million",
-
-    "recovered" : "Total Recovered",
-    "todayRecovered": "Today's Recovered",
-    "recoveredPerOneMillion": "Recovered per Million",
-
-    "active": "Active Cases",
-    "activePerOneMillion": "Active Cases per Million",
-
-    "critical": "Critical Condition",
-    "criticalPerOneMillion": "Critical Cases per Million",
-
-    "tests": "Total Tests",
-    "testsPerOneMillion": "Tests per Million",
-
-    "population": "Total Population",
-    "affectedCountries": "Affected Countries",
-}
 
 const defaultEmbed = (ctx)=> {
     embed = new Discord.MessageEmbed()
@@ -64,19 +37,28 @@ const loadResponse = ((data, ctx) => {
     return embed
 })
 
-const helpCommands = {
-    "stat": "stat [Country]",
-    "when": "when {Your age OR Exception}",
-    "help": "help [Command]",
-    "prefix": "prefix {New Prefix}"
-}
-
 module.exports = {
-    help: (ctx, prefix) => {
-        if (arguments.length > 2){
-            
+    help: (ctx, prefix, args) => {
+        //If there are no arguments
+        if (!args.length){
+            var res = new Discord.MessageEmbed
+            res.setTitle("Help")
+            .setDescription("All available commands")
+            for(let command of Object.entries(helpCommands)){
+                //Because Node doesn't have an easier option :L
+                let cmdCapitalized = `${command[0][0].toUpperCase()}${command[0].slice(1)}`
+                res.addField(cmdCapitalized, `\`${prefix}${command[1]}\``, true)
+            }
         }
+        ctx.channel.send(res)
     },
+
+    argsUsage: (msg, argType, prefix) => {
+        //Sends back the proper usage of a command
+        let res = `\`Usage: ${prefix}${helpCommands[argType]}\``
+        msg.channel.send(res)
+    },
+
     statAll: ctx => {
         //Gets data from public covid API
         axios.get(`https://corona.lmao.ninja/v2/all`)
@@ -99,10 +81,6 @@ module.exports = {
         .catch(err => {
             ctx.channel.send("Country not found or doesn't have any cases")
         })},
-    argsUsage: (msg, argType, prefix) => {
-        let res = `\`Usage: ${prefix}${helpCommands[argType]}\``
-        msg.channel.send(res)
-    },
 
     vaccineWhen: (msg, age) => {
         message = "If you are healthy and not part of an exception group, you may get your 1st dose "
