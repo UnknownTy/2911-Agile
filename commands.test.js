@@ -19,12 +19,12 @@ beforeEach(() => {
 afterAll(() => {})
 
 // Test for the "When Can I get a vaccine"
-describe("!when command", () => {
+describe("!when command & Message Handling", () => {
     it("test age 6", () => {
             message.content = "!when 6"
             messageHandler(message)
             expect(message.channel.send)
-                .lastCalledWith("There is currently no approved vaccine for minors.")
+                .lastCalledWith("There is currently no approved vaccine for children under 12. Please wait for government updates on authorized vaccines for minors.")
         })
         // Test for when I can get a vaccine for 88 years
     it("test age 88", () => {
@@ -48,6 +48,6 @@ it("Making sure argsUsage works", () => {
     message.content = "when"
     commands.argsUsage(message, "when")
     expect(message.channel.send)
-        .lastCalledWith("Usage: !when {your_age OR exception}")
+        .lastCalledWith("`Usage: undefinedwhen {Your age OR exception}`")
 
 })

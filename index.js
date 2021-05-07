@@ -35,7 +35,6 @@ const messageHandler = msg => {
     const args = msg.content.slice(prefix.length).trim().split(/ +/);
     //Grab the command out of the list of arguments
     const command = args.shift().toLowerCase();
-    msg.channel.send("DEV BRANCH -- REMOVE THIS BEFORE MAIN")
     switch(true){
       //Used to change the prefix
       case (command === "prefix"):
