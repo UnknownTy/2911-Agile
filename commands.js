@@ -97,8 +97,14 @@ module.exports = {
     vaccineWhen: (msg, age) => {
         message = "If you are healthy and not part of an exception group, you may get your 1st dose "
         switch(true) {
+            case (age < 0):
+                msg.channel.send(`Are you sure you're ${age} years-old?`)
+                break;
+            case (age < 12):
+                msg.channel.send("There is currently no approved vaccine for children under 12. Please wait for government updates on authorized vaccines for minors.")
+                break;
             case (age < 18):
-                msg.channel.send("There is currently no approved vaccine for minors.")
+                msg.channel.send(message + "between June and July.")
                 break;
             case (age < 35): 
                 msg.channel.send(message + "in June.");
@@ -115,9 +121,12 @@ module.exports = {
             case (age < 80):
                 msg.channel.send(message + "in April")
                 break;
-            case (age >= 80):
+            case (age <= 150):
                 msg.channel.send("If you are 80 and over and living or assessed for living in long-term care facilities or assisted living, " +
                 "you may get your 1st dose between December 2020 to February 2021. Otherwise, you may get your first dose between February to April.")
+                break;
+            case (age > 150):
+                msg.channel.send(`Are you sure you're ${age} years-old?`)
                 break;
         }
     },
