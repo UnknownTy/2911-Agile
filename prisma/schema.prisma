@@ -1,0 +1,40 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Stats {
+    id        Int     @id @default(autoincrement())
+    updated   String
+    cases     Int
+    todayCases    Int
+    deaths    Int
+    todayDeaths   Int
+    recoverd  Int
+    todayRecovered Int
+    recoveredPerOneMillion    Float
+    active    Int
+    activePerOneMillion Float
+    critical  Int
+    criticalPerOneMillion Float
+    casesPerOneMillion Float
+    deathsPerOneMillion Float
+    tests Int
+    testsPerOneMillion Float
+    population Int
+    updatedAt DateTime
+    createdAt DateTime
+
+
+}
+
+model Country {
+    id    Int     @id @default(autoincrement())
+    name  String
+    updatedAt DateTime
+    createdAt DateTime
+}
