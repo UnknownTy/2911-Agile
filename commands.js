@@ -95,7 +95,7 @@ module.exports = {
         })},
 
     vaccineWhen: (msg, age) => {
-        message = "If you are healthy and not part of an exception group, you may get your 1st dose "
+        message = "If you are healthy and not part of an exception group, you may get your 1st dose " //default message prefix for when command
         switch(true) {
             case (age < 0):
                 msg.channel.send(`Are you sure you're ${age} years-old?`)
@@ -126,7 +126,8 @@ module.exports = {
                 "you may get your 1st dose between December 2020 to February 2021. Otherwise, you may get your first dose between February to April.")
                 break;
             case (age > 150):
-                msg.channel.send(`Are you sure you're ${age} years-old?`)
+                msg.channel.send(`Are you sure you're ${age} years-old?`) 
+
                 break;
         }
     },
@@ -136,10 +137,43 @@ module.exports = {
             .setTitle("Vaccine Exceptions")
             .setURL("https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases")
             .setImage(url="https://www2.gov.bc.ca/assets/gov/covid-19/immunization/immunization-plan-phase-3.png")
+            .setColor(0xa7ff78) 
             .setTimestamp()
             .setDescription("You may be eligible to get your vaccine sooner, regardless of age, if you are part of an exception or priority group. Some examples include those who are clinically vulnerable,"+ 
             "those who work in volunerable settings, and those who are indigenous. Please check the following link to determine whether you are part of an exception group.")
             .addField("Link to BC's Immunization Plan and Exceptions:", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases");
+        msg.channel.send(exceptionEmbed);
+    },
+
+    regionalRestriction: (msg) => {
+        const exceptionEmbed = new Discord.MessageEmbed()
+        .setTitle("Regional Restrictions")
+            .setURL("https://www2.gov.bc.ca/gov/content/covid-19/travel/current")
+            .setImage(url="https://www2.gov.bc.ca/assets/gov/covid-19/core-info/covid-health-region-bubbles-website.png")
+            .setColor(0xfa6e6e) 
+            .setTimestamp()
+            .setDescription("Non-essential travel restrictions are in-place until May 25th to reduce the spread of COVID-19. " + 
+            "You may be stopped for a travel road check and fined if you are found to be traveling for non-essential reasons between the regions below.")
+            .addFields({ name: "Travel Regions",
+                value: "1.  !reLower Mainland and Fraser Valley\n2. Northern/Interior\n3. Vancouver Island"})
+            .addField("Link to BC's Travel and Regional Restrictions:", "https://www2.gov.bc.ca/gov/content/covid-19/travel/current");
+        msg.channel.send(exceptionEmbed);
+    },
+
+    restrictionEmbed: (msg) => {
+        const exceptionEmbed = new Discord.MessageEmbed()
+        .setTitle("BC Province-Wide Restrictions")
+            .setURL("https://www2.gov.bc.ca/gov/content/covid-19/info/restrictions")
+            .setImage(url="https://www2.gov.bc.ca/assets/gov/covid-19/core-info/covid-health-region-bubbles-website.png")
+            .setColor(0xfa6e6e) 
+            .setTimestamp()
+            .addFields({ name: "Stronger Province-Wide Restrictions",
+                value: "Extra restrictions are currently in effect in order to reduce the spread of COVID-19. Notably, indoor dining and indoor religious gatherings are currently not permitted."},
+                { name: "Restaurant Dining", value: "Outdoor/Patio only"} ,
+                { name: "Indoor gatherings", value: "Core bubble or household only"},
+                { name: "Outdoor Gatherings", value: "Up to 10 people"},
+                { name: "Masks", value: "Mandatory in indoor settings"})
+            .addField("Link for additional information on province-wide restrictions", "https://www2.gov.bc.ca/gov/content/covid-19/info/restrictions");
         msg.channel.send(exceptionEmbed);
     }
 }
