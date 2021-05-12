@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const commands = require("./commands.js")
 const request = require("supertest")
 const { messageHandler } = require("./index.js")
+const constants = require("./constants")
 
 let message = ({
     channel: {
@@ -42,6 +43,40 @@ describe("!when command & Message Handling", () => {
     })
 })
 
+describe("Individual Commands", () => {
+    describe("!Help command", () =>{
+        let prefix = '!'
+        message.content = "!help"
+        it("No arguments", () => {
+            commands.help(message, prefix, [])
+            let expectedEmbed = message.channel.send.mock.calls[0][0]
+            expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+
+            expect(expectedEmbed.fields).toEqual(
+                expect.arrayContaining([{ name: 'Stat', value: `\`!${constants.helpCommands.stat}\``, inline: true }])
+            )
+        })
+
+        it("With `help` as argument", () =>{
+            commands.help(message, prefix, ['help'])
+            let expectedEmbed = message.channel.send.mock.calls[0][0]
+            expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+
+            expect(expectedEmbed.fields).toEqual(
+                expect.arrayContaining([
+                    {name: "Usage", value: "`!help [Command]`", inline: false},
+                    {name: "Description", value: "Provides the user useful information (Like this!) on what commands do. \nCan be given a command name to find more information (Like you just did!)", inline: false}
+                ])
+            )
+        })
+
+    })
+
+    describe("!Stat command", () =>{
+        it("No arguments (All stats)")
+    })
+    
+})
 
 
 it("Making sure argsUsage works", () => {
