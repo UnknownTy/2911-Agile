@@ -61,7 +61,10 @@ const messageHandler = msg => {
           cmd.astra(msg)
         }break;
       case (command == "register"):
-        if (args[0] == "bc"){
+        if (args.length == 0){
+          cmd.argsUsage(msg, "register", prefix)
+        }
+        else if (args[0] == "bc"){
           cmd.registerbc(msg)
         }break;
       //Used to get help on the commands

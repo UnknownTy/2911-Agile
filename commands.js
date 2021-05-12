@@ -152,7 +152,7 @@ module.exports = {
             .setImage(url="https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fpfizer_416x416.jpg")
             .setColor(0xa7ff78) 
             .setTimestamp()
-            .setDescription("Information on the Vaccine pfizer")
+            .setDescription(" The Pfizer-BioNTech vaccine was 95% effective at preventing laboratory-confirmed COVID-19 illness in people without evidence of previous infection.")
             .addField("Link to know more information on pfizer", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.html");
         msg.channel.send(exceptionEmbed);
     },
@@ -165,7 +165,7 @@ module.exports = {
             .setImage(url="https://mms.businesswire.com/media/20201223005397/en/848810/23/KO_LOGO.jpg")
             .setColor(0xa7ff78) 
             .setTimestamp()
-            .setDescription("Information on the Vaccine Moderna")
+            .setDescription("The Moderna COVID-19 vaccine (mRNA-1273) is used to prevent COVID-19. This disease is caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).")
             .addField("Link to know more information on moderna", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/moderna.html");
         msg.channel.send(exceptionEmbed);
     },
@@ -177,7 +177,7 @@ module.exports = {
             .setImage(url="https://zerocancer.org/wp-content/uploads/2020/04/AstraZeneca-Logo.png")
             .setColor(0xa7ff78) 
             .setTimestamp()
-            .setDescription("Information on the Vaccine AstraZeneca")
+            .setDescription("AstraZeneca COVID‐19 Vaccine (manufactured by AstraZeneca) and COVISHIELD (manufactured by Serum Institute of India) are ChAdOx1-S recombinant vaccines developed by AstraZeneca and Oxford University. Health Canada has reviewed the manufacturing information for these vaccines and found them to be comparable.")
             .addField("Link to know more information on AstraZeneca", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html");
         msg.channel.send(exceptionEmbed);
     },
