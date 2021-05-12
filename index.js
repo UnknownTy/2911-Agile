@@ -48,6 +48,22 @@ const messageHandler = msg => {
           msg.channel.send(`Prefix updated to \`${prefix}\``)
         }
         break;
+      // Shows info for vaccine
+      case (command == "info"):
+        if (args.length == 0){
+          cmd.argsUsage(msg, "info", prefix)
+        }
+        else if(args[0] == "pfizer"){
+          cmd.pfizer(msg)}
+        else if (args[0] == "moderna"){
+          cmd.moderna(msg)}
+        else if(args[0] == "astrazeneca"){
+          cmd.astra(msg)
+        }break;
+      case (command == "register"):
+        if (args[0] == "bc"){
+          cmd.registerbc(msg)
+        }break;
       //Used to get help on the commands
       case (command === "help"):
           cmd.help(msg, prefix, args)

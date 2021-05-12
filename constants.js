@@ -34,7 +34,9 @@ helpCommands: {
     "when": "when {Your age OR exception}",
     "help": "help [Command]",
     "prefix": "prefix {New Prefix}",
-    "restriction": "restriction ['region']"
+    "restriction": "restriction ['region']",
+    "info" : "info ['vaccine']",
+    "register" : "register ['province abbreviation']"
 },
 
 //A description of all commands
@@ -43,6 +45,8 @@ helpDescription: {
     "when": "Gives information on when a user can expect to receive their covid vaccination. \nUser may provide their age, or alternatively use 'exception' as an argument to see information on vaccination exeptions.",
     "help": "Provides the user useful information (Like this!) on what commands do. \nCan be given a command name to find more information (Like you just did!)",
     "prefix": "Updates the prefix the bot uses to respond to commands. \nThe prefix must be a single character long.",
-    "restriction": "Gives information on current COVID-19 restrictions in British Columbia. Add additional argument 'region' to learn about regional travel restrictions."
+    "restriction": "Gives information on current COVID-19 restrictions in British Columbia. Add additional argument 'region' to learn about regional travel restrictions.",
+    "info": "gives information on the covid vaccine",
+    "register" : "gives link to let you sign up for a vaccine"
 },
 }

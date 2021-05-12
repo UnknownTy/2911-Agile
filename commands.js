@@ -144,7 +144,54 @@ module.exports = {
             .addField("Link to BC's Immunization Plan and Exceptions:", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases");
         msg.channel.send(exceptionEmbed);
     },
+    // Sends information of pfizer
+    pfizer: (msg) => {
+        const exceptionEmbed = new Discord.MessageEmbed()
+            .setTitle("Vaccine: pfizer")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.htmlss")
+            .setImage(url="https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fpfizer_416x416.jpg")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("Information on the Vaccine pfizer")
+            .addField("Link to know more information on pfizer", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.html");
+        msg.channel.send(exceptionEmbed);
+    },
 
+    //send information on moderna
+    moderna: (msg) => {
+        const exceptionEmbed = new Discord.MessageEmbed()
+            .setTitle("Vaccine: Moderna")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/moderna.html")
+            .setImage(url="https://mms.businesswire.com/media/20201223005397/en/848810/23/KO_LOGO.jpg")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("Information on the Vaccine Moderna")
+            .addField("Link to know more information on moderna", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/moderna.html");
+        msg.channel.send(exceptionEmbed);
+    },
+    // send information on AstraZeneca 
+    astra: (msg) => {
+        const exceptionEmbed = new Discord.MessageEmbed()
+            .setTitle("Vaccine: ")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html")
+            .setImage(url="https://zerocancer.org/wp-content/uploads/2020/04/AstraZeneca-Logo.png")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("Information on the Vaccine AstraZeneca")
+            .addField("Link to know more information on AstraZeneca", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html");
+        msg.channel.send(exceptionEmbed);
+    },
+    registerbc: (msg) => {
+        const exceptionEmbed = new Discord.MessageEmbed()
+            .setTitle("Vaccine: ")
+            .setURL("https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register")
+            .setImage(url="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/052015/bcid_v_cmyk_pos.png?itok=6JGopq54")
+            .setColor(0xa4ff78) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine Shot, if you are above 18 you could be able to have a shot if you are in a community that is considered a hotspot")
+            .addField("Link to know more on registering for your vaccine", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register");
+        msg.channel.send(exceptionEmbed);
+    },
     regionalRestriction: (msg) => {
         const exceptionEmbed = new Discord.MessageEmbed()
         .setTitle("Regional Restrictions")
