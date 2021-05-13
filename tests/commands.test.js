@@ -1,8 +1,13 @@
 const Discord = require("discord.js");
-const commands = require("./commands.js")
+const commands = require("../commands.js")
 const request = require("supertest")
-const { messageHandler } = require("./index.js")
-const constants = require("./constants")
+const { messageHandler } = require("../index.js")
+const constants = require("../constants")
+//Mock API get request
+const mockData = require("./mockAPIData")
+const axios = require("axios")
+jest.mock('axios')
+axios.get.mockResolvedValue(mockData)
 
 let message = ({
     channel: {
@@ -72,8 +77,24 @@ describe("Individual Commands", () => {
 
     })
 
+
+    
     describe("!Stat command", () =>{
-        it("No arguments (All stats)")
+        message.content = "!stat"
+        it("No arguments (All stats)", async () => {
+            await commands.statAll(message)
+            let expectedEmbed = message.channel.send.mock.calls[0][0]
+            expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+
+            expect(expectedEmbed.fields).toEqual(
+                //Check to see the embed contains the two following values
+                //These are the first and last values to ensure that all values are accounted for.
+                expect.arrayContaining([
+                    {"inline": true, "name": "Time last updated", "value": "2021-05-12 20:41:35"},
+                    {"inline": true, "name": "Deaths per Million", "value": "428.5"},
+                    {"inline": true, "name": "Affected Countries", "value": "222"}])
+            )
+        })
     })
     
 })
