@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const commands = require("../commands.js")
 const { messageHandler } = require("../index.js")
 
+//This file is JUST to test how we handle messages, not the backend or the responses.
+//Set all commands to be mocks.
 for (cmd in commands){
     commands[cmd] = jest.fn()
 }
@@ -24,6 +26,7 @@ afterAll(() => {})
 
 describe("Message Handling", () => {
     describe("Check commands are called", () =>{
+        //!When
         describe("When handling", () =>{
             it("One argument (Age 88)", () => {
                 message.content = "!when 88"
@@ -45,6 +48,7 @@ describe("Message Handling", () => {
             })
 
         })
+        //!Prefix
         describe("Prefix Handling", () => {
             it("Check for prefix update", () => {
                 message.content = "!prefix +"
@@ -68,6 +72,7 @@ describe("Message Handling", () => {
                 expect(commands.argsUsage).lastCalledWith(message, "prefix", prefix)
             })
         })
+        //!Help
         describe("Help Handling", () => {
             it("No Arguments", () =>{
                 message.content = "!help"
@@ -81,6 +86,7 @@ describe("Message Handling", () => {
                 expect(commands.help).lastCalledWith(message, prefix, ['TEST'])
             })
         })
+        //!Stat
         describe("Stat Handling", () => {
             it("Population stats", () => {
                 message.content = "!stat"
@@ -95,6 +101,7 @@ describe("Message Handling", () => {
         })
     })
 
+    //Initial tests to see if bot should even respond
     it("Ignore bot messages", () =>{
         message.author.bot = true
         let check = messageHandler(message)
