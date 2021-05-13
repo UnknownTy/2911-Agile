@@ -20,7 +20,7 @@ model Stats {
 model Country {
   id        Int      @id @default(autoincrement())
   name      String
-  updatedAt DateTime
+  updatedAt DateTime?
   createdAt DateTime
   Stats     Stats[]
 }
