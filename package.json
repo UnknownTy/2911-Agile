@@ -10,12 +10,16 @@
   "name": "2911-agile",
   "description": "An agile development project for BCIT.",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": ["prisma/", "views/"],
+    "collectCoverageFrom": ["index.js", "commands.js"]
   },
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --forceExit --detectOpenHandles"
+    "test": "jest --forceExit --detectOpenHandles",
+    "start": "node index.js",
+    "coverage": "jest --forceExit --detectOpenHandles --collectCoverage"
   },
   "repository": {
     "type": "git",
