@@ -80,6 +80,15 @@ module.exports = {
                     //Return the data to the discord channel that requested it
                 ctx.channel.send(embed = statInfo)
             })
+        .catch(err => {
+            console.log(err)
+            if (err.response){
+                ctx.channel.send(`${err.response.status}: Error Occured`)
+            } else {
+                ctx.channel.send("Backend error occured, check console for information.")
+                console.log(err)
+            }
+        })
     },
 
     statCountry: (ctx, country) => {

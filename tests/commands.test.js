@@ -7,7 +7,6 @@ const constants = require("../constants")
 const mockData = require("./mockAPIData")
 const axios = require("axios")
 jest.mock('axios')
-axios.get.mockResolvedValue(mockData)
 
 let message = ({
     channel: {
@@ -82,6 +81,7 @@ describe("Individual Commands", () => {
     describe("!Stat command", () =>{
         message.content = "!stat"
         it("No arguments (All stats)", async () => {
+            axios.get.mockResolvedValue(mockData.all)
             await commands.statAll(message)
             let expectedEmbed = message.channel.send.mock.calls[0][0]
             expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
@@ -93,6 +93,24 @@ describe("Individual Commands", () => {
                     {"inline": true, "name": "Time last updated", "value": "2021-05-12 20:41:35"},
                     {"inline": true, "name": "Deaths per Million", "value": "428.5"},
                     {"inline": true, "name": "Affected Countries", "value": "222"}])
+            )
+        })
+
+        it("Country Argument", async () => {
+            await axios.get.mockResolvedValue(mockData.canada)
+            await commands.statCountry(message, 'canada')
+
+            let expectedEmbed = message.channel.send.mock.calls[0][0]
+            expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+
+            expect(expectedEmbed.thumbnail.url).toBe("https://disease.sh/assets/img/flags/ca.png")
+            expect(expectedEmbed.fields).toEqual(
+                //Check to see the embed contains the two following values
+                //These are the first and last values to ensure that all values are accounted for.
+                expect.arrayContaining([
+                    {"inline": true, "name": "Time last updated", "value": "2021-05-13 21:11:51"},
+                    {"inline": true, "name": "Deaths per Million", "value": "651"},
+                    {"inline": true, "name": "Critical Cases per Million", "value": "34.9"}])
             )
         })
     })
