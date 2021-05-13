@@ -1,11 +1,9 @@
 const Discord = require("discord.js");
 const commands = require("../commands.js")
-const request = require("supertest")
-const { messageHandler } = require("../index.js")
 const constants = require("../constants")
 //Mock API get request
 const mockData = require("./mockAPIData")
-const axios = require("axios")
+const axios = require("axios");
 jest.mock('axios')
 
 let message = ({
@@ -18,34 +16,11 @@ let message = ({
         username: "TEST"
     }
 })
+let prefix = '!'
 beforeEach(() => {
     jest.clearAllMocks();
 })
 afterAll(() => {})
-
-// Test for the "When Can I get a vaccine"
-describe("!when command & Message Handling", () => {
-    it("test age 6", () => {
-            message.content = "!when 6"
-            messageHandler(message)
-            expect(message.channel.send)
-                .lastCalledWith("There is currently no approved vaccine for children under 12. Please wait for government updates on authorized vaccines for minors.")
-        })
-        // Test for when I can get a vaccine for 88 years
-    it("test age 88", () => {
-        message.content = "!when 88"
-        messageHandler(message)
-        expect(message.channel.send)
-            .lastCalledWith("If you are 80 and over and living or assessed for living in long-term care facilities or assisted living, " +
-                "you may get your 1st dose between December 2020 to February 2021. Otherwise, you may get your first dose between February to April.")
-    })
-    it("test exception", () => {
-        message.content = "!when exception"
-        messageHandler(message)
-        let mockCall = message.channel.send.mock.calls
-        expect(mockCall[0][0]).toBeInstanceOf(Discord.MessageEmbed)
-    })
-})
 
 describe("Individual Commands", () => {
     describe("!Help command", () =>{
@@ -75,8 +50,6 @@ describe("Individual Commands", () => {
         })
 
     })
-
-
     
     describe("!Stat command", () =>{
         message.content = "!stat"
@@ -96,7 +69,7 @@ describe("Individual Commands", () => {
             )
         })
 
-        it("Country Argument", async () => {
+        it("Country Argument (Canada)", async () => {
             await axios.get.mockResolvedValue(mockData.canada)
             await commands.statCountry(message, 'canada')
 
@@ -114,14 +87,12 @@ describe("Individual Commands", () => {
             )
         })
     })
-    
+    it("ArgsUsage backend", () => {
+        message.content = "!when"
+        commands.argsUsage(message, "when", prefix)
+        expect(message.channel.send)
+            .lastCalledWith("`Usage: !when {Your age OR exception}`")
+    })
 })
 
 
-it("Making sure argsUsage works", () => {
-    message.content = "when"
-    commands.argsUsage(message, "when")
-    expect(message.channel.send)
-        .lastCalledWith("`Usage: undefinedwhen {Your age OR exception}`")
-
-})
