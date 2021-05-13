@@ -59,14 +59,20 @@ const messageHandler = msg => {
           cmd.moderna(msg)}
         else if(args[0] == "astrazeneca"){
           cmd.astra(msg)
-        }break;
+        }
+        break;
+      //Command to obtain information on how to register for vaccines
       case (command == "register"):
-        if (args.length == 0){
+        if (args.length > 1){
           cmd.argsUsage(msg, "register", prefix)
         }
         else if (args[0] == "bc"){
           cmd.registerbc(msg)
-        }break;
+        }
+        else {
+          cmd.register(msg)
+        }
+        break;
       //Used to get help on the commands
       case (command === "help"):
           cmd.help(msg, prefix, args)
@@ -91,6 +97,7 @@ const messageHandler = msg => {
           cmd.vaccineWhen(msg, args[0])
         }
         break;
+      // Commands to show general and region-wide restrictions in BC
       case (command === "restriction"):
         if (args.length > 1) {
           cmd.argsUsage(msg, "restriction", prefix)  

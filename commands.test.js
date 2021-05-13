@@ -51,3 +51,17 @@ it("Making sure argsUsage works", () => {
         .lastCalledWith("`Usage: undefinedwhen {Your age OR exception}`")
 
 })
+
+it("With `register` as argument", () => {
+    commands.register(message)
+    let expectedEmbed = message.channel.send.mock.calls[0][0]
+    expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+
+    let provinceArray = ["Alberta", "British Columbia", "Manitoba", "New Brunswick", 
+    "Newfoundland & Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", 
+    "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon"]
+    
+    for (i = 0; i < expectedEmbed.fields.length; i++) {
+        expect(expectedEmbed.fields[i]['name']).toEqual(provinceArray[i])
+    }
+})

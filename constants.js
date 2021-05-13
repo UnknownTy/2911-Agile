@@ -28,15 +28,15 @@ properNames: {
     "affectedCountries": "Affected Countries",
 },
 
-//Proper usage of all commands
+//Proper usage of all commands. {} indicates optional parameters (i.e. the command may be used without additional arguments)
 helpCommands: {
     "stat": "stat [Country]",
     "when": "when {Your age OR exception}",
     "help": "help [Command]",
     "prefix": "prefix {New Prefix}",
     "restriction": "restriction ['region']",
-    "info" : "info ['vaccine']",
-    "register" : "register ['province abbreviation']"
+    "info" : "info ['pfizer' OR 'moderna' OR 'astrazeneca']",
+    "register" : "register {'bc'}"
 },
 
 //A description of all commands
@@ -47,6 +47,6 @@ helpDescription: {
     "prefix": "Updates the prefix the bot uses to respond to commands. \nThe prefix must be a single character long.",
     "restriction": "Gives information on current COVID-19 restrictions in British Columbia. Add additional argument 'region' to learn about regional travel restrictions.",
     "info": "gives information on the covid vaccine",
-    "register" : "gives link to let you sign up for a vaccine"
+    "register" : "Provides province-wide links to sign up for vaccines."
 },
 }
