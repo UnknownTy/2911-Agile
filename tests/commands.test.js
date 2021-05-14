@@ -137,6 +137,17 @@ describe("Individual Commands", () => {
         expect(message.channel.send).lastCalledWith("Are you sure you're 160 years-old?")
     })
 
+    it("When Exception", () => {
+        commands.vaccineException(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{"inline": false, "name": "Link to BC's Immunization Plan and Exceptions:", 
+            "value": "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases"}])))
+    })
+
+
     it("ArgsUsage backend", () => {
         message.content = "!when"
         commands.argsUsage(message, "when", prefix)
