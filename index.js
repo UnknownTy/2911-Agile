@@ -118,7 +118,7 @@ const messageHandler = msg => {
         }
         break;
       case (command === "faq"):
-        if (args.length > 1) {
+        if (args.length >= 1) {
           cmd.argsUsage(msg, "faq", prefix)
         }
         else {
