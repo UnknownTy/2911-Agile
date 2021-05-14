@@ -147,7 +147,6 @@ describe("Individual Commands", () => {
             "value": "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases"}])))
     })
 
-
     it("ArgsUsage backend", () => {
         message.content = "!when"
         commands.argsUsage(message, "when", prefix)
