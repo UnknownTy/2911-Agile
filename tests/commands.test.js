@@ -97,7 +97,7 @@ describe("Individual Commands", () => {
 
             expect(expectedEmbed.fields).toEqual(
                 expect.arrayContaining([
-                    {"inline": true, "name": "Time last updated", "value": "2021-05-14 02:11:55"},
+                    {"inline": true, "name": "Time last updated", "value": "2021-05-14 02:11:54"},
                     {"inline": true, "name": "Deaths per Million", "value": "430.9"},
                     {"inline": true, "name": "Critical Cases per Million", "value": "13.32"}
                 ]))
@@ -108,7 +108,7 @@ describe("Individual Commands", () => {
 
             let expectedEmbed = message.channel.send.mock.calls[0][0]
             expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
-            expect(expectedEmbed).toBe("Yesterday's Canada Statistics")
+            expect(expectedEmbed.title).toBe("Yesterday's Canada Statistics")
             expect(expectedEmbed.thumbnail.url).toBe("https://disease.sh/assets/img/flags/ca.png")
 
             expect(expectedEmbed.fields).toEqual(
