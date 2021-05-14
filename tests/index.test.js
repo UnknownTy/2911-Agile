@@ -105,11 +105,12 @@ describe("Message Handling", () => {
     it("Ignore bot messages", () =>{
         message.author.bot = true
         let check = messageHandler(message)
-        expect(check).toBe(undefined)
+        expect(check).toBe(false)
+        message.author.bot = false
     })
     it("Ignore non-prefix messages", () => {
-        message.content = "NO PREFIX"
+        message.content = "TEST"
         let check = messageHandler(message)
-        expect(check).toBe(undefined)
+        expect(check).toBe(false)
     })
 })
