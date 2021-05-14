@@ -138,6 +138,30 @@ describe("Message Handling", () => {
                     .lastCalledWith(message, "usa", yesterday=true)
             })
         })
+        //!Register handling
+        describe("Register Handling", () => {
+            it("With no arguments", () => {
+                message.content = "!register"
+                messageHandler(message)
+                expect(commands.register)
+                    .lastCalledWith(message)
+            })
+            it("With BC as argument", () => {
+                message.content = "!register bc"
+                messageHandler(message)
+                expect(commands.registerbc)
+                    .lastCalledWith(message)
+            })
+        })
+        //!faq handling
+        describe("FAQ Handling", () => {
+            it("With no arguments", () => {
+                message.content = "!faq"
+                messageHandler(message)
+                expect(commands.faq)
+                    .lastCalledWith(message)
+            })
+        })
     })
 
     //Initial tests to see if bot should even respond
