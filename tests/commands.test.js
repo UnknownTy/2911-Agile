@@ -112,7 +112,30 @@ describe("Individual Commands", () => {
             "value": "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register"}])))
     })
 
-
+    it("When command", () => {
+        msg = "If you are healthy and not part of an exception group, you may get your 1st dose "
+        commands.vaccineWhen(message, -5)
+        expect(message.channel.send).lastCalledWith(`Are you sure you're -5 years-old?`)
+        commands.vaccineWhen(message, 5)
+        expect(message.channel.send).lastCalledWith(`There is currently no approved vaccine for children under 12. Please wait for government updates on authorized vaccines for minors.`)
+        commands.vaccineWhen(message, 13)
+        expect(message.channel.send).lastCalledWith(msg + "between June and July.")
+        commands.vaccineWhen(message, 25)
+        expect(message.channel.send).lastCalledWith(msg + "in June.")
+        commands.vaccineWhen(message, 37)
+        expect(message.channel.send).lastCalledWith(msg + "between May and June.")
+        commands.vaccineWhen(message, 55)
+        expect(message.channel.send).lastCalledWith(msg + "in May.")
+        commands.vaccineWhen(message, 62)
+        expect(message.channel.send).lastCalledWith(msg + "between April and May")
+        commands.vaccineWhen(message, 75)
+        expect(message.channel.send).lastCalledWith(msg + "in April")
+        commands.vaccineWhen(message, 90)
+        expect(message.channel.send).lastCalledWith("If you are 80 and over and living or assessed for living in long-term care facilities or assisted living, " +
+        "you may get your 1st dose between December 2020 to February 2021. Otherwise, you may get your first dose between February to April.")
+        commands.vaccineWhen(message, 160)
+        expect(message.channel.send).lastCalledWith("Are you sure you're 160 years-old?")
+    })
 
     it("ArgsUsage backend", () => {
         message.content = "!when"
