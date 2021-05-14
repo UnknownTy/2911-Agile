@@ -145,6 +145,80 @@ module.exports = {
         msg.channel.send(exceptionEmbed);
     },
 
+    // Sends information of pfizer
+    pfizer: (msg) => {
+        const pfizerEmbed = new Discord.MessageEmbed()
+            .setTitle("Information on Pfizer Vaccine")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.htmlss")
+            .setImage(url="https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fpfizer_416x416.jpg")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("The Pfizer vaccine is currently approved for those 12 and older in Canada. The Pfizer-BioNTech vaccine was 95% effective at preventing laboratory-confirmed COVID-19 illness in people without evidence of previous infection.")
+            .addField("Link to more information on the Pfizer vaccine", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.html");
+        msg.channel.send(pfizerEmbed);
+    },
+
+    //send information on moderna
+    moderna: (msg) => {
+        const modernaEmbed = new Discord.MessageEmbed()
+            .setTitle("Information on the Moderna vaccine")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/moderna.html")
+            .setImage(url="https://mms.businesswire.com/media/20201223005397/en/848810/23/KO_LOGO.jpg")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("The Moderna COVID-19 vaccine is currently approved for usage in adults 18 and over in Canada.")
+            .addField("Link to know more information on moderna", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/moderna.html");
+        msg.channel.send(modernaEmbed);
+    },
+
+    // send information on AstraZeneca 
+    astra: (msg) => {
+        const astraZEmbed = new Discord.MessageEmbed()
+            .setTitle("Information on the AstraZeneca vaccine")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html")
+            .setImage(url="https://zerocancer.org/wp-content/uploads/2020/04/AstraZeneca-Logo.png")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("The AstraZeneca COVID-19 vaccine is currently only approved for usage in certain provinces.")
+            .addField("Link to more information on the AstraZeneca vaccine", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html");
+        msg.channel.send(astraZEmbed);
+    },
+
+    register: msg => {
+        const registerEmbed = new Discord.MessageEmbed()
+            .setTitle("Province-Specific COVID Vaccine Registration and Booking Sites")
+            .setImage(url="https://i.pinimg.com/originals/df/83/70/df8370f1292163c519d35ad66746eefa.png")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("For information on COVID-19 vaccine eligibility and booking services, please check the site associated with your province below:")
+            .addField("Alberta", "https://www.alberta.ca/covid19-vaccine.aspx")
+            .addField("British Columbia", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register")
+            .addField("Manitoba", "https://protectmb.ca/making-your-appointment-is-easy/")
+            .addField("New Brunswick", "https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/nb-vaccine/Get-Vaccinated/vaccine-pharmacy.html")
+            .addField("Newfoundland & Labrador", "https://www.gov.nl.ca/covid-19/vaccine/gettheshot/")
+            .addField("Northwest Territories", "https://www.nthssa.ca/en/services/coronavirus-disease-covid-19-updates/covid-vaccine")
+            .addField("Nova Scotia", "https://novascotia.ca/coronavirus/book-your-vaccination-appointment/")
+            .addField("Nunavut", "https://www.gov.nu.ca/health/information/covid-19-vaccination")
+            .addField("Ontario", "https://covid19.ontariohealth.ca/")
+            .addField("Prince Edward Island", "https://www.princeedwardisland.ca/en/information/health-and-wellness/getting-covid-19-vaccine")
+            .addField("Quebec", "https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/progress-of-the-covid-19-vaccination")
+            .addField("Saskatchewan", "https://www.saskatchewan.ca/covid19-vaccine-booking.")
+            .addField("Yukon", "https://yukon.ca/en/appointments")
+        msg.channel.send(registerEmbed);
+    },
+
+    registerbc: (msg) => {
+        const registerBCEmbed = new Discord.MessageEmbed()
+            .setTitle("Vaccine: ")
+            .setURL("https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register")
+            .setImage(url="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/052015/bcid_v_cmyk_pos.png?itok=6JGopq54")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in BC. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register");
+        msg.channel.send(registerBCEmbed);
+    },
+
     regionalRestriction: (msg) => {
         const exceptionEmbed = new Discord.MessageEmbed()
         .setTitle("Regional Restrictions")

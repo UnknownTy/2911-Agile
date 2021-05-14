@@ -48,6 +48,31 @@ const messageHandler = msg => {
           msg.channel.send(`Prefix updated to \`${prefix}\``)
         }
         break;
+      // Shows info for vaccine
+      case (command == "info"):
+        if (args.length == 0){
+          cmd.argsUsage(msg, "info", prefix)
+        }
+        else if(args[0] == "pfizer"){
+          cmd.pfizer(msg)}
+        else if (args[0] == "moderna"){
+          cmd.moderna(msg)}
+        else if(args[0] == "astrazeneca"){
+          cmd.astra(msg)
+        }
+        break;
+      //Command to obtain information on how to register for vaccines
+      case (command == "register"):
+        if (args.length > 1){
+          cmd.argsUsage(msg, "register", prefix)
+        }
+        else if (args[0] == "bc"){
+          cmd.registerbc(msg)
+        }
+        else {
+          cmd.register(msg)
+        }
+        break;
       //Used to get help on the commands
       case (command === "help"):
           cmd.help(msg, prefix, args)
@@ -72,6 +97,7 @@ const messageHandler = msg => {
           cmd.vaccineWhen(msg, args[0])
         }
         break;
+      // Commands to show general and region-wide restrictions in BC
       case (command === "restriction"):
         if (args.length > 1) {
           cmd.argsUsage(msg, "restriction", prefix)  
