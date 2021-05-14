@@ -77,11 +77,12 @@ module.exports = {
                 statInfo.setThumbnail(res.data.countryInfo.flag)
                 ctx.channel.send(embed = statInfo)
 
-                storage.store(statInfo, country)
+                storage.store(res.data)
                     ///line above is to test
             })
             .catch(err => {
                 ctx.channel.send("Country not found or doesn't have any cases")
+                console.log(err)
             })
     },
     argsUsage: (msg, argtype) => {
