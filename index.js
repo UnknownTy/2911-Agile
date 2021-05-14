@@ -111,7 +111,7 @@ const messageHandler = msg => {
         break;
       case (command === "faq"):
         if (args.length > 1) {
-          chmodSync.argsUsage(msg, "faq", prefix)
+          cmd.argsUsage(msg, "faq", prefix)
         }
         else {
         cmd.faq(msg)
