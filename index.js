@@ -85,6 +85,14 @@ const messageHandler = msg => {
           cmd.statCountry(msg, args[0].toLowerCase())
         }
         break;
+      //Used to show yesterday's statistics
+      case (command == "staty"):
+        if (args.length == 0){
+          cmd.statAll(msg, yesterday=true)
+        } else {
+          cmd.statCountry(msg, args[0].toLowerCase(), yesterday=true)
+        }
+        break;
       //Used to show when a user can get vaccinated
       case (command === "when"):
         if (args.length === 0 || args.length > 1) {

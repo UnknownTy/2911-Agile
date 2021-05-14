@@ -71,12 +71,14 @@ module.exports = {
         msg.channel.send(res)
     },
 
-    statAll: ctx => {
+    statAll: (ctx, yesterday=false) => {
         //Gets data from public covid API
-        axios.get(`https://corona.lmao.ninja/v2/all`)
+        axios.get(`https://corona.lmao.ninja/v2/all?yesterday=${yesterday}`)
             .then(response => {
                 let statInfo = loadResponse(response.data, ctx)
                     .setThumbnail("https://eoimages.gsfc.nasa.gov/images/imagerecords/8000/8108/ipcc_bluemarble_west_front.jpg")
+                //Update the title if displaying previous day's stats
+                if(yesterday){statInfo.setTitle("Yesterday's Global Statistics")}
                     //Return the data to the discord channel that requested it
                 ctx.channel.send(embed = statInfo)
             })
@@ -91,12 +93,13 @@ module.exports = {
         })
     },
 
-    statCountry: (ctx, country) => {
-        axios.get(`https://corona.lmao.ninja/v2/countries/${country}`)
+    statCountry: (ctx, country, yesterday=false) => {
+        axios.get(`https://corona.lmao.ninja/v2/countries/${country}?yesterday=${yesterday}`)
         .then(res => {
             let statInfo = loadResponse(res.data, ctx)
             //Set the thumbnail to be the country's flag
             statInfo.setThumbnail(res.data.countryInfo.flag)
+            if(yesterday){statInfo.setTitle(`Yesterday's ${res.data.country} Statistics`)}
             ctx.channel.send(embed=statInfo)
         })
         .catch(err => {
