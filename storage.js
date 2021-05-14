@@ -4,17 +4,17 @@ const axios = require("axios")
 const prisma = new PrismaClient()
 
 
-async function store(countryName = "World", JSONdata) {
+async function store(country = "world", stats) {
 
     const post = await prisma.post.create({
 
         data: {
-            statsJSON: JSONdata,
+            statsJSON: stats,
             updatedAt: Date.now(),
             Country: {
-                name: countryName,
+                name: country,
                 updatedAt: Date.now(),
-                createdAt: Date.now()
+                createdAt: Date.now(),
             },
         },
 
@@ -23,7 +23,7 @@ async function store(countryName = "World", JSONdata) {
     console.log(post)
 
 
-    const allUsers = await prisma.user.findMany({
+    const allUsers = await prisma.post.findMany({
 
         include: { posts: true },
 
@@ -33,7 +33,7 @@ async function store(countryName = "World", JSONdata) {
 
 }
 
-// main()
+// store()
 //     .catch(e => {
 //         throw e
 //     })

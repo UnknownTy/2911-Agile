@@ -76,6 +76,7 @@ module.exports = {
                     //Set the thumbnail to be the country's flag
                 statInfo.setThumbnail(res.data.countryInfo.flag)
                 ctx.channel.send(embed = statInfo)
+
                 storage.store(statInfo, country)
                     ///line above is to test
             })
