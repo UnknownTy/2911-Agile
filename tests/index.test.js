@@ -69,6 +69,29 @@ describe("Message Handling", () => {
                     .lastCalledWith(message, "restriction", prefix)
             })
         })
+
+        //!info
+        describe("Info Handling", () => {
+            it("Pfizer", () => {
+                message.content = "!info pfizer"
+                messageHandler(message)
+                expect(commands.pfizer)
+                    .lastCalledWith(message)
+            })
+            it("Moderna", () => {
+                message.content = "!info moderna"
+                messageHandler(message)
+                expect(commands.moderna)
+                    .lastCalledWith(message)
+            })
+            it("Astrazeneca", () => {
+                message.content = "!info astrazeneca"
+                messageHandler(message)
+                expect(commands.astra)
+                    .lastCalledWith(message)
+            })
+        })
+
         //!Prefix
         describe("Prefix Handling", () => {
             it("Check for prefix update", () => {
