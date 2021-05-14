@@ -71,23 +71,35 @@ module.exports = {
         msg.channel.send(res)
     },
 
-    statAll: ctx => {
+    statAll: (ctx, yesterday=false) => {
         //Gets data from public covid API
-        axios.get(`https://corona.lmao.ninja/v2/all`)
+        axios.get(`https://corona.lmao.ninja/v2/all?yesterday=${yesterday}`)
             .then(response => {
                 let statInfo = loadResponse(response.data, ctx)
                     .setThumbnail("https://eoimages.gsfc.nasa.gov/images/imagerecords/8000/8108/ipcc_bluemarble_west_front.jpg")
+                //Update the title if displaying previous day's stats
+                if(yesterday){statInfo.setTitle("Yesterday's Global Statistics")}
                     //Return the data to the discord channel that requested it
                 ctx.channel.send(embed = statInfo)
             })
+        .catch(err => {
+            console.log(err)
+            if (err.response){
+                ctx.channel.send(`${err.response.status}: Error Occured`)
+            } else {
+                ctx.channel.send("Backend error occured, check console for information.")
+                console.log(err)
+            }
+        })
     },
 
-    statCountry: (ctx, country) => {
-        axios.get(`https://corona.lmao.ninja/v2/countries/${country}`)
+    statCountry: (ctx, country, yesterday=false) => {
+        axios.get(`https://corona.lmao.ninja/v2/countries/${country}?yesterday=${yesterday}`)
         .then(res => {
             let statInfo = loadResponse(res.data, ctx)
             //Set the thumbnail to be the country's flag
             statInfo.setThumbnail(res.data.countryInfo.flag)
+            if(yesterday){statInfo.setTitle(`Yesterday's ${res.data.country} Statistics`)}
             ctx.channel.send(embed=statInfo)
         })
         .catch(err => {
@@ -144,6 +156,79 @@ module.exports = {
             .addField("Link to BC's Immunization Plan and Exceptions:", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases");
         msg.channel.send(exceptionEmbed);
     },
+    //Sends information of pfizer
+    pfizer: (msg) => {
+        const pfizerEmbed = new Discord.MessageEmbed()
+            .setTitle("Information on Pfizer Vaccine")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.htmlss")
+            .setImage(url="https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fpfizer_416x416.jpg")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("The Pfizer vaccine is currently approved for those 12 and older in Canada. The Pfizer-BioNTech vaccine was 95% effective at preventing laboratory-confirmed COVID-19 illness in people without evidence of previous infection.")
+            .addField("Link to more information on the Pfizer vaccine", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.html");
+        msg.channel.send(pfizerEmbed);
+    },
+
+    //send information on moderna
+    moderna: (msg) => {
+        const modernaEmbed = new Discord.MessageEmbed()
+            .setTitle("Information on the Moderna vaccine")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/moderna.html")
+            .setImage(url="https://mms.businesswire.com/media/20201223005397/en/848810/23/KO_LOGO.jpg")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("The Moderna COVID-19 vaccine is currently approved for usage in adults 18 and over in Canada.")
+            .addField("Link to know more information on moderna", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/moderna.html");
+        msg.channel.send(modernaEmbed);
+    },
+
+    // send information on AstraZeneca 
+    astra: (msg) => {
+        const astraZEmbed = new Discord.MessageEmbed()
+            .setTitle("Information on the AstraZeneca vaccine")
+            .setURL("https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html")
+            .setImage(url="https://zerocancer.org/wp-content/uploads/2020/04/AstraZeneca-Logo.png")
+            .setColor(0xa7ff78) 
+            .setTimestamp()
+            .setDescription("The AstraZeneca COVID-19 vaccine is currently only approved for usage in certain provinces.")
+            .addField("Link to more information on the AstraZeneca vaccine", "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html");
+        msg.channel.send(astraZEmbed);
+    },
+
+    register: msg => {
+        const registerEmbed = new Discord.MessageEmbed()
+            .setTitle("Province-Specific COVID Vaccine Registration and Booking Sites")
+            .setThumbnail(url="https://i.pinimg.com/originals/df/83/70/df8370f1292163c519d35ad66746eefa.png")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("For information on COVID-19 vaccine eligibility and booking services, please check the site associated with your province below:")
+            .addFields({name: "Alberta", value: "https://www.alberta.ca/covid19-vaccine.aspx"}, 
+                        {name: "British Columbia", value: "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register"}, 
+                        {name: "Manitoba", value: "https://protectmb.ca/making-your-appointment-is-easy/"}, 
+                        {name: "New Brunswick", value: "https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/nb-vaccine/Get-Vaccinated/vaccine-pharmacy.html"}, 
+                        {name: "Newfoundland & Labrador", value: "https://www.gov.nl.ca/covid-19/vaccine/gettheshot/"}, 
+                        {name: "Northwest Territories", value: "https://www.nthssa.ca/en/services/coronavirus-disease-covid-19-updates/covid-vaccine"},
+                        {name: "Nova Scotia", value: "https://novascotia.ca/coronavirus/book-your-vaccination-appointment/"}, 
+                        {name: "Nunavut", value: "https://www.gov.nu.ca/health/information/covid-19-vaccination"}, 
+                        {name: "Ontario", value: "https://covid19.ontariohealth.ca/"}, 
+                        {name: "Prince Edward Island", value: "https://www.princeedwardisland.ca/en/information/health-and-wellness/getting-covid-19-vaccine"}, 
+                        {name: "Quebec", value: "https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/progress-of-the-covid-19-vaccination"}, 
+                        {name: "Saskatchewan", value: "https://www.saskatchewan.ca/covid19-vaccine-booking."}, 
+                        {name: "Yukon", value: "https://yukon.ca/en/appointments"})
+        msg.channel.send(registerEmbed);
+    },
+
+    registerbc: (msg) => {
+        const registerBCEmbed = new Discord.MessageEmbed()
+            .setTitle("British Columbia Vaccine Registration")
+            .setURL("https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register")
+            .setImage(url="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/052015/bcid_v_cmyk_pos.png?itok=6JGopq54")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in BC. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register");
+        msg.channel.send(registerBCEmbed);
+    },
 
     regionalRestriction: (msg) => {
         const exceptionEmbed = new Discord.MessageEmbed()
@@ -174,6 +259,24 @@ module.exports = {
                 { name: "Outdoor Gatherings", value: "Up to 10 people"},
                 { name: "Masks", value: "Mandatory in indoor settings"})
             .addField("Link for additional information on province-wide restrictions", "https://www2.gov.bc.ca/gov/content/covid-19/info/restrictions");
+        msg.channel.send(exceptionEmbed);
+    },
+
+    faq: msg => {
+        const exceptionEmbed = new Discord.MessageEmbed()
+        .setTitle("Frequently Asked Questions")
+        .setColor(0xffd400) 
+        .setTimestamp()
+        .setThumbnail("https://img.icons8.com/bubbles/2x/question-mark.png")
+        .addFields({name:"When will I get my vaccine?", value: "Please use the !when {age} command to find out when you can get your vaccine"},
+        {name:"What are the key symptoms of COVID-19?", value:"Fever or chills, cough, loss of sense of smell or taste, and difficulty breathing"},
+        {name:"What should I do if I think I have COVID-19?", value:"Please go to your province's testing page to find out how to get tested for free, and take a COVID-19 self-assessment tool."},
+        {name:"When should I get tested for COVID-19?", value:"Please get tested if you develop COVID-19-like symptoms (listed above) or if someone close to you has tested positive for COVID-19."},
+        {name:"How is COVID-19 treated?", value:"There is no specific treatment besides common home treatments for the cold and flu. Hospitalization may be required if symptoms are more severe."},
+        {name:"Where can I find information on COVID-19 restrictions?", value:"Please use the !restriction command or check your local province's restrictions page for the latest information."},
+        {name:"Do I have to wear a mask?", value:"Masks are currently required in all indoor public spaces, in stores, and on public transportation."},
+        {name:"When would I have to quarantine?", value:"If you have travelled outside of Canada and are returning, or if you have been in close contact with someone who has tested positive for COVID-14, you must self-isolate for 14 days even if you do not have symptoms."
+        })
         msg.channel.send(exceptionEmbed);
     }
 }
