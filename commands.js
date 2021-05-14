@@ -200,25 +200,25 @@ module.exports = {
             .setColor(0xa1fff9) 
             .setTimestamp()
             .setDescription("For information on COVID-19 vaccine eligibility and booking services, please check the site associated with your province below:")
-            .addField("Alberta", "https://www.alberta.ca/covid19-vaccine.aspx")
-            .addField("British Columbia", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register")
-            .addField("Manitoba", "https://protectmb.ca/making-your-appointment-is-easy/")
-            .addField("New Brunswick", "https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/nb-vaccine/Get-Vaccinated/vaccine-pharmacy.html")
-            .addField("Newfoundland & Labrador", "https://www.gov.nl.ca/covid-19/vaccine/gettheshot/")
-            .addField("Northwest Territories", "https://www.nthssa.ca/en/services/coronavirus-disease-covid-19-updates/covid-vaccine")
-            .addField("Nova Scotia", "https://novascotia.ca/coronavirus/book-your-vaccination-appointment/")
-            .addField("Nunavut", "https://www.gov.nu.ca/health/information/covid-19-vaccination")
-            .addField("Ontario", "https://covid19.ontariohealth.ca/")
-            .addField("Prince Edward Island", "https://www.princeedwardisland.ca/en/information/health-and-wellness/getting-covid-19-vaccine")
-            .addField("Quebec", "https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/progress-of-the-covid-19-vaccination")
-            .addField("Saskatchewan", "https://www.saskatchewan.ca/covid19-vaccine-booking.")
-            .addField("Yukon", "https://yukon.ca/en/appointments")
+            .addFields({name: "Alberta", value: "https://www.alberta.ca/covid19-vaccine.aspx"}, 
+                        {name: "British Columbia", value: "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register"}, 
+                        {name: "Manitoba", value: "https://protectmb.ca/making-your-appointment-is-easy/"}, 
+                        {name: "New Brunswick", value: "https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/nb-vaccine/Get-Vaccinated/vaccine-pharmacy.html"}, 
+                        {name: "Newfoundland & Labrador", value: "https://www.gov.nl.ca/covid-19/vaccine/gettheshot/"}, 
+                        {name: "Northwest Territories", value: "https://www.nthssa.ca/en/services/coronavirus-disease-covid-19-updates/covid-vaccine"},
+                        {name: "Nova Scotia", value: "https://novascotia.ca/coronavirus/book-your-vaccination-appointment/"}, 
+                        {name: "Nunavut", value: "https://www.gov.nu.ca/health/information/covid-19-vaccination"}, 
+                        {name: "Ontario", value: "https://covid19.ontariohealth.ca/"}, 
+                        {name: "Prince Edward Island", value: "https://www.princeedwardisland.ca/en/information/health-and-wellness/getting-covid-19-vaccine"}, 
+                        {name: "Quebec", value: "https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/progress-of-the-covid-19-vaccination"}, 
+                        {name: "Saskatchewan", value: "https://www.saskatchewan.ca/covid19-vaccine-booking."}, 
+                        {name: "Yukon", value: "https://yukon.ca/en/appointments"})
         msg.channel.send(registerEmbed);
     },
 
     registerbc: (msg) => {
         const registerBCEmbed = new Discord.MessageEmbed()
-            .setTitle("Vaccine: ")
+            .setTitle("British Columbia Vaccine Registration")
             .setURL("https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register")
             .setImage(url="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/052015/bcid_v_cmyk_pos.png?itok=6JGopq54")
             .setColor(0xa1fff9) 

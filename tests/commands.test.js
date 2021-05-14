@@ -87,19 +87,33 @@ describe("Individual Commands", () => {
             )
         })
     })
-    it("Register with Argument", () => {
+    it("Register without Argument", () => {
         commands.register(message)
         let expectedEmbed = message.channel.send.mock.calls[0][0]
         expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
-    
+        expect(expectedEmbed.fields.length).toEqual(13);
+
         let provinceArray = ["Alberta", "British Columbia", "Manitoba", "New Brunswick", 
         "Newfoundland & Labrador", "Northwest Territories", "Nova Scotia", "Nunavut", 
         "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon"]
-        
+
         for (i = 0; i < expectedEmbed.fields.length; i++) {
             expect(expectedEmbed.fields[i]['name']).toEqual(provinceArray[i])
         }
     })
+
+    it("Register with BC Argument", () => {
+        commands.registerbc(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{"inline": false, "name": "Link to know more on registering for your vaccine", 
+            "value": "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register"}])))
+    })
+
+
+
     it("ArgsUsage backend", () => {
         message.content = "!when"
         commands.argsUsage(message, "when", prefix)
