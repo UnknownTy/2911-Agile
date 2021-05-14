@@ -48,7 +48,7 @@ const messageHandler = msg => {
           msg.channel.send(`Prefix updated to \`${prefix}\``)
         }
         break;
-      // Shows info for vaccine
+      //Shows info for vaccine
       case (command == "info"):
         if (args.length == 0){
           cmd.argsUsage(msg, "info", prefix)
@@ -83,6 +83,14 @@ const messageHandler = msg => {
           cmd.statAll(msg)
         } else {
           cmd.statCountry(msg, args[0].toLowerCase())
+        }
+        break;
+      //Used to show yesterday's statistics
+      case (command == "staty"):
+        if (args.length == 0){
+          cmd.statAll(msg, yesterday=true)
+        } else {
+          cmd.statCountry(msg, args[0].toLowerCase(), yesterday=true)
         }
         break;
       //Used to show when a user can get vaccinated

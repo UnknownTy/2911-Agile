@@ -125,6 +125,18 @@ describe("Message Handling", () => {
                 expect(commands.statCountry)
                     .lastCalledWith(message, "canada")
             })
+            it("Yesterday Population stats", () => {
+                message.content = "!staty"
+                messageHandler(message)
+                expect(commands.statAll)
+                    .lastCalledWith(message, yesterday=true)
+            })
+            it("Yesterday Country stats", () =>{
+                message.content = "!staty USA NOT_CALLED"
+                messageHandler(message)
+                expect(commands.statCountry)
+                    .lastCalledWith(message, "usa", yesterday=true)
+            })
         })
         //!Register handling
         describe("Register Handling", () => {

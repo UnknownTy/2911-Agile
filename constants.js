@@ -31,6 +31,7 @@ properNames: {
 //Proper usage of all commands. {} indicates optional parameters (i.e. the command may be used without additional arguments)
 helpCommands: {
     "stat": "stat [Country]",
+    "staty": "staty [Country]",
     "when": "when {Your age OR exception}",
     "help": "help [Command]",
     "prefix": "prefix {New Prefix}",
@@ -43,6 +44,7 @@ helpCommands: {
 //A description of all commands
 helpDescription: {
     "stat": "Gives today's covid statistics. \nStatistics can be narrowed down to a country by giving the country's name or ID.",
+    "staty": "Gives yesterday's covid statistics. \nStatistics can be narrowed down to a country by giving the country's name or ID.",
     "when": "Gives information on when a user can expect to receive their covid vaccination. \nUser may provide their age, or alternatively use 'exception' as an argument to see information on vaccination exeptions.",
     "help": "Provides the user useful information (Like this!) on what commands do. \nCan be given a command name to find more information (Like you just did!)",
     "prefix": "Updates the prefix the bot uses to respond to commands. \nThe prefix must be a single character long.",

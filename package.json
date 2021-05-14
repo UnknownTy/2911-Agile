@@ -11,8 +11,14 @@
   "description": "An agile development project for BCIT.",
   "jest": {
     "testEnvironment": "node",
-    "testPathIgnorePatterns": ["prisma/", "views/"],
-    "collectCoverageFrom": ["index.js", "commands.js"]
+    "testPathIgnorePatterns": [
+      "prisma/",
+      "views/"
+    ],
+    "collectCoverageFrom": [
+      "index.js",
+      "commands.js"
+    ]
   },
   "version": "1.0.0",
   "main": "index.js",
