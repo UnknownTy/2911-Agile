@@ -86,6 +86,39 @@ describe("Individual Commands", () => {
                     {"inline": true, "name": "Critical Cases per Million", "value": "34.9"}])
             )
         })
+        it("Yesterday All Stats", async () =>{
+            axios.get.mockResolvedValue(mockData.yesterdayAll)
+            await commands.statAll(message, yesterday=true)
+
+            let expectedEmbed = message.channel.send.mock.calls[0][0]
+            expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+            expect(expectedEmbed.title).toBe("Yesterday's Global Statistics")
+            expect(expectedEmbed.thumbnail.url).toBe("https://eoimages.gsfc.nasa.gov/images/imagerecords/8000/8108/ipcc_bluemarble_west_front.jpg")
+
+            expect(expectedEmbed.fields).toEqual(
+                expect.arrayContaining([
+                    {"inline": true, "name": "Time last updated", "value": "2021-05-14 02:11:55"},
+                    {"inline": true, "name": "Deaths per Million", "value": "430.9"},
+                    {"inline": true, "name": "Critical Cases per Million", "value": "13.32"}
+                ]))
+        })
+        it("Yesterday Country Stats (CAD)", async () => {
+            axios.get.mockResolvedValue(mockData.yesterdayCanada)
+            await commands.statCountry(message, 'canada', yesterday=true)
+
+            let expectedEmbed = message.channel.send.mock.calls[0][0]
+            expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+            expect(expectedEmbed).toBe("Yesterday's Canada Statistics")
+            expect(expectedEmbed.thumbnail.url).toBe("https://disease.sh/assets/img/flags/ca.png")
+
+            expect(expectedEmbed.fields).toEqual(
+                expect.arrayContaining([
+                    {"inline": true, "name": "Time last updated", "value": "2021-05-14 02:11:55"},
+                    {"inline": true, "name": "Deaths per Million", "value": "653"},
+                    {"inline": true, "name": "Critical Cases per Million", "value": "34.9"}
+                ])
+            )
+        })
     })
     it("Register with Argument", () => {
         commands.register(message)

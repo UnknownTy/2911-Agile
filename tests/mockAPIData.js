@@ -25,6 +25,30 @@ module.exports = {
             "affectedCountries": 222
         }
     },
+    yesterdayAll: {data: {
+        "updated": 1620958314725,
+        "cases": 161824477,
+        "todayCases": 4389,
+        "deaths": 3358489,
+        "todayDeaths": 313,
+        "recovered": 140656007,
+        "todayRecovered": 2553,
+        "active": 17809981,
+        "critical": 104224,
+        "casesPerOneMillion": 20761,
+        "deathsPerOneMillion": 430.9,
+        "tests": 2301101062,
+        "testsPerOneMillion": 294088.21,
+        "population": 7824526679,
+        "oneCasePerPeople": 0,
+        "oneDeathPerPeople": 0,
+        "oneTestPerPeople": 0,
+        "undefined": 0,
+        "activePerOneMillion": 2276.17,
+        "recoveredPerOneMillion": 17976.3,
+        "criticalPerOneMillion": 13.32,
+        "affectedCountries": 222
+    }},
     canada: {
         data:
         {
@@ -58,6 +82,39 @@ module.exports = {
         "undefined": 2016,
         "activePerOneMillion": 2016.36,
         "recoveredPerOneMillion": 31670.34,
+        "criticalPerOneMillion": 34.9
+    }},
+    yesterdayCanada: {data: {
+        "updated": 1620958315131,
+        "country": "Canada",
+        "countryInfo": {
+            "_id": 124,
+            "iso2": "CA",
+            "iso3": "CAN",
+            "lat": 60,
+            "long": -95,
+            "flag": "https://disease.sh/assets/img/flags/ca.png"
+        },
+        "cases": 1312414,
+        "todayCases": 6644,
+        "deaths": 24825,
+        "todayDeaths": 59,
+        "recovered": 1212114,
+        "todayRecovered": 7786,
+        "active": 75475,
+        "critical": 1327,
+        "casesPerOneMillion": 34512,
+        "deathsPerOneMillion": 653,
+        "tests": 33130218,
+        "testsPerOneMillion": 871208,
+        "population": 38027907,
+        "continent": "North America",
+        "oneCasePerPeople": 29,
+        "oneDeathPerPeople": 1532,
+        "oneTestPerPeople": 1,
+        "undefined": 1985,
+        "activePerOneMillion": 1984.73,
+        "recoveredPerOneMillion": 31874.33,
         "criticalPerOneMillion": 34.9
     }}
 }
