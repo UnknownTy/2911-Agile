@@ -48,7 +48,7 @@ const messageHandler = msg => {
           msg.channel.send(`Prefix updated to \`${prefix}\``)
         }
         break;
-      // Shows info for vaccine
+      //Shows info for vaccine
       case (command == "info"):
         if (args.length == 0){
           cmd.argsUsage(msg, "info", prefix)
