@@ -196,7 +196,7 @@ module.exports = {
     register: msg => {
         const registerEmbed = new Discord.MessageEmbed()
             .setTitle("Province-Specific COVID Vaccine Registration and Booking Sites")
-            .setImage(url="https://i.pinimg.com/originals/df/83/70/df8370f1292163c519d35ad66746eefa.png")
+            .setThumbnail(url="https://i.pinimg.com/originals/df/83/70/df8370f1292163c519d35ad66746eefa.png")
             .setColor(0xa1fff9) 
             .setTimestamp()
             .setDescription("For information on COVID-19 vaccine eligibility and booking services, please check the site associated with your province below:")
@@ -257,6 +257,24 @@ module.exports = {
                 { name: "Outdoor Gatherings", value: "Up to 10 people"},
                 { name: "Masks", value: "Mandatory in indoor settings"})
             .addField("Link for additional information on province-wide restrictions", "https://www2.gov.bc.ca/gov/content/covid-19/info/restrictions");
+        msg.channel.send(exceptionEmbed);
+    },
+
+    faq: msg => {
+        const exceptionEmbed = new Discord.MessageEmbed()
+        .setTitle("Frequently Asked Questions")
+        .setColor(0xffd400) 
+        .setTimestamp()
+        .setThumbnail("https://img.icons8.com/bubbles/2x/question-mark.png")
+        .addFields({name:"When will I get my vaccine?", value: "Please use the !when {age} command to find out when you can get your vaccine"},
+        {name:"What are the key symptoms of COVID-19?", value:"Fever or chills, cough, loss of sense of smell or taste, and difficulty breathing"},
+        {name:"What should I do if I think I have COVID-19?", value:"Please go to your province's testing page to find out how to get tested for free, and take a COVID-19 self-assessment tool."},
+        {name:"When should I get tested for COVID-19?", value:"Please get tested if you develop COVID-19-like symptoms (listed above) or if someone close to you has tested positive for COVID-19."},
+        {name:"How is COVID-19 treated?", value:"There is no specific treatment besides common home treatments for the cold and flu. Hospitalization may be required if symptoms are more severe."},
+        {name:"Where can I find information on COVID-19 restrictions?", value:"Please use the !restriction command or check your local province's restrictions page for the latest information."},
+        {name:"Do I have to wear a mask?", value:"Masks are currently required in all indoor public spaces, in stores, and on public transportation."},
+        {name:"When would I have to quarantine?", value:"If you have travelled outside of Canada and are returning, or if you have been in close contact with someone who has tested positive for COVID-14, you must self-isolate for 14 days even if you do not have symptoms."
+        })
         msg.channel.send(exceptionEmbed);
     }
 }

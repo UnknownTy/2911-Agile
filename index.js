@@ -4,7 +4,8 @@ const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const Discord = require("discord.js");
-const cmd = require("./commands")
+const cmd = require("./commands");
+const { chmodSync } = require("fs");
 require("dotenv").config()
 const client = new Discord.Client();
 const PORT = process.env.PORT || 5050
@@ -107,6 +108,14 @@ const messageHandler = msg => {
         }
         else {
           cmd.restrictionEmbed(msg)
+        }
+        break;
+      case (command === "faq"):
+        if (args.length > 1) {
+          chmodSync.argsUsage(msg, "faq", prefix)
+        }
+        else {
+        cmd.faq(msg)
         }
       }
       

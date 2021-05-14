@@ -147,6 +147,14 @@ describe("Individual Commands", () => {
             "value": "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases"}])))
     })
 
+    it("FAQ Command", () => {
+        commands.faq(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(8);
+        expect(expect(expectedEmbed.title).toEqual("Frequently Asked Questions"))
+    })
+
     it("ArgsUsage backend", () => {
         message.content = "!when"
         commands.argsUsage(message, "when", prefix)

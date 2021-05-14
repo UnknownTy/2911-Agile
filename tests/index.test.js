@@ -141,6 +141,15 @@ describe("Message Handling", () => {
                     .lastCalledWith(message)
             })
         })
+        //!faq handling
+        describe("FAQ Handling", () => {
+            it("With no arguments", () => {
+                message.content = "!faq"
+                messageHandler(message)
+                expect(commands.faq)
+                    .lastCalledWith(message)
+            })
+        })
     })
 
     //Initial tests to see if bot should even respond

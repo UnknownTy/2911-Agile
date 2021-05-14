@@ -36,7 +36,8 @@ helpCommands: {
     "prefix": "prefix {New Prefix}",
     "restriction": "restriction ['region']",
     "info" : "info ['pfizer' OR 'moderna' OR 'astrazeneca']",
-    "register" : "register {'bc'}"
+    "register" : "register {'bc'}",
+    "faq" : "faq"
 },
 
 //A description of all commands
@@ -47,6 +48,7 @@ helpDescription: {
     "prefix": "Updates the prefix the bot uses to respond to commands. \nThe prefix must be a single character long.",
     "restriction": "Gives information on current COVID-19 restrictions in British Columbia. Add additional argument 'region' to learn about regional travel restrictions.",
     "info": "gives information on the covid vaccine",
-    "register" : "Provides province-wide links to sign up for vaccines."
+    "register" : "Provides province-wide links to sign up for vaccines.",
+    "faq" : "Provides a list of frequently asked questions."
 },
 }
