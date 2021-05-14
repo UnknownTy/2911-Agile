@@ -201,8 +201,24 @@ describe("Individual Commands", () => {
                     }
                   ])
                 )})
-            
-            })
+        it("test the reigonal restriction", () =>{
+            message.content = "!restriction region"
+            commands.regionalRestriction(message)
+            let mockCall = message.channel.send.mock.calls
+            expect(mockCall[0][0]).toBeInstanceOf(Discord.MessageEmbed)
+            expect(mockCall[0][0].fields).toEqual(
+                expect.arrayContaining([{
+                    name: 'Travel Regions',
+                    value: '1.  !reLower Mainland and Fraser Valley\n' +
+                      '2. Northern/Interior\n' +
+                      '3. Vancouver Island',
+                    inline: false
+                  },
+                  {
+                    name: "Link to BC's Travel and Regional Restrictions:",
+                    value: 'https://www2.gov.bc.ca/gov/content/covid-19/travel/current',
+                    inline: false}]))})})
+
 
         
 
