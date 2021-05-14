@@ -161,6 +161,15 @@ describe("Message Handling", () => {
                 expect(commands.faq)
                     .lastCalledWith(message)
             })
+            it("With arguments leading to ArgsUsage", () => {
+                message.content = "!faq nowpls"
+                messageHandler(message)
+                expect(commands.argsUsage).lastCalledWith(message, "faq", prefix)
+
+                message.content = "!prefix"
+                messageHandler(message)
+                expect(commands.argsUsage).lastCalledWith(message, "prefix", prefix)
+            })
         })
     })
 
