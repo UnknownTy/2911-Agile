@@ -156,8 +156,7 @@ module.exports = {
             .addField("Link to BC's Immunization Plan and Exceptions:", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases");
         msg.channel.send(exceptionEmbed);
     },
-
-    // Sends information of pfizer
+    //Sends information of pfizer
     pfizer: (msg) => {
         const pfizerEmbed = new Discord.MessageEmbed()
             .setTitle("Information on Pfizer Vaccine")

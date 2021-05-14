@@ -133,6 +133,36 @@ describe("Individual Commands", () => {
             expect(expectedEmbed.fields[i]['name']).toEqual(provinceArray[i])
         }
     })
+    describe ("!Info command", () => {
+        it("Checking to see if pfizer works", () =>{
+        message.content = "!info pfizer"
+        messageHandler(message)
+        let mockCall = message.channel.send.mock.calls
+        expect(mockCall[0][0]).toBeInstanceOf(Discord.MessageEmbed)
+        expect(mockCall[0][0].fields).toEqual(
+            expect.arrayContaining( [{"inline": false, "name": "Link to know more information on pfizer", "value": "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.html"}])
+        )})
+        it("Checking to see if moderna link works", () =>{
+            message.content = "!info moderna"
+            messageHandler(message)
+            let mockCall = message.channel.send.mock.calls
+            expect(mockCall[0][0]).toBeInstanceOf(Discord.MessageEmbed)
+            expect(mockCall[0][0].fields).toEqual(
+                expect.arrayContaining( [{'name':'Link to know more information on moderna', 'value': 'https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/moderna.html', 'inline': false}])
+            )})
+        
+        it("Checking to see if the AstraZeneca Link works", () => {
+            message.content = "!info astrazeneca"
+            messageHandler(message)
+            let mockCall = message.channel.send.mock.calls
+            expect(mockCall[0][0]).toBeInstanceOf(Discord.MessageEmbed)
+            expect(mockCall[0][0].fields).toEqual(
+                expect.arrayContaining( [{
+                    'name': 'Link to know more information on AstraZeneca',
+                    'value': 'https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html',
+                    'inline': false
+                }])
+                )})})
     it("ArgsUsage backend", () => {
         message.content = "!when"
         commands.argsUsage(message, "when", prefix)
