@@ -89,7 +89,9 @@ const messageHandler = msg => {
 let prefix = '!' // Default prefix. Adjust this to read from some settings later.
     //Routes can go here
 
-
+//WE CANNOT TEST THE FOLLOWING!
+//These events only run when the server is run, and cannot be tested offline.
+/* istanbul ignore next */
 if(require.main === module){
 //Bot responses go here
 client.on("ready", () => {

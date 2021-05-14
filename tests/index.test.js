@@ -48,28 +48,51 @@ describe("Message Handling", () => {
             })
 
         })
+        //!Restriction
+        describe("Restriction handling", () =>{
+            it("One argument (BC)", () =>{
+                message.content = "!restriction region"
+                messageHandler(message)
+                expect(commands.regionalRestriction)
+                    .lastCalledWith(message)
+            })
+            it("No arguments", () =>{
+                message.content = "!restriction"
+                messageHandler(message)
+                expect(commands.restrictionEmbed)
+                    .lastCalledWith(message)
+            })
+            it("More than one argument", () => {
+                message.content = "!restriction bc TEST"
+                messageHandler(message)
+                expect(commands.argsUsage)
+                    .lastCalledWith(message, "restriction", prefix)
+            })
+        })
         //!Prefix
         describe("Prefix Handling", () => {
             it("Check for prefix update", () => {
                 message.content = "!prefix +"
                 messageHandler(message)
                 //Test that it sets the prefix properly
-                expect(message.channel.send).lastCalledWith("Prefix updated to `+`")
+                expect(message.channel.send)
+                    .lastCalledWith("Prefix updated to `+`")
                 //Test that it can return the prefix using the new one
                 message.content = "+prefix !"
                 messageHandler(message)
                 expect(message.channel.send)
-                .lastCalledWith("Prefix updated to `!`")
+                    .lastCalledWith("Prefix updated to `!`")
             })
             it("Error handling", () => {
                 message.content = "!prefix TEST"
                 messageHandler(message)
                 expect(message.channel.send)
-                .lastCalledWith("Invalid new prefix TEST, cannot be longer than one character")
+                    .lastCalledWith("Invalid new prefix TEST, cannot be longer than one character")
     
                 message.content = "!prefix"
                 messageHandler(message)
-                expect(commands.argsUsage).lastCalledWith(message, "prefix", prefix)
+                expect(commands.argsUsage)
+                    .lastCalledWith(message, "prefix", prefix)
             })
         })
         //!Help
@@ -77,13 +100,15 @@ describe("Message Handling", () => {
             it("No Arguments", () =>{
                 message.content = "!help"
                 messageHandler(message)
-                expect(commands.help).lastCalledWith(message, prefix, []) 
+                expect(commands.help)
+                    .lastCalledWith(message, prefix, []) 
             })
             it("With Arguments", () => {
                 commands.help = jest.fn()
                 message.content = "!help TEST"
                 messageHandler(message)
-                expect(commands.help).lastCalledWith(message, prefix, ['TEST'])
+                expect(commands.help)
+                    .lastCalledWith(message, prefix, ['TEST'])
             })
         })
         //!Stat
@@ -91,12 +116,14 @@ describe("Message Handling", () => {
             it("Population stats", () => {
                 message.content = "!stat"
                 messageHandler(message)
-                expect(commands.statAll).lastCalledWith(message)
+                expect(commands.statAll)
+                    .lastCalledWith(message)
             })
             it("Country stats", () => {
                 message.content = "!stat Canada NOT_CALLED"
                 messageHandler(message)
-                expect(commands.statCountry).lastCalledWith(message, "canada")
+                expect(commands.statCountry)
+                    .lastCalledWith(message, "canada")
             })
         })
     })
