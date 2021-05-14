@@ -136,15 +136,16 @@ describe("Individual Commands", () => {
     describe ("!Info command", () => {
         it("Checking to see if pfizer works", () =>{
         message.content = "!info pfizer"
-        messageHandler(message)
+        //messageHandler(message)
+        commands.pfizer(message)
         let mockCall = message.channel.send.mock.calls
         expect(mockCall[0][0]).toBeInstanceOf(Discord.MessageEmbed)
         expect(mockCall[0][0].fields).toEqual(
-            expect.arrayContaining( [{"inline": false, "name": "Link to know more information on pfizer", "value": "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.html"}])
+            expect.arrayContaining( [{"inline": false, "name": "Link to more information on the Pfizer vaccine", "value": "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/pfizer-biontech.html"}])
         )})
         it("Checking to see if moderna link works", () =>{
             message.content = "!info moderna"
-            messageHandler(message)
+            commands.moderna(message)
             let mockCall = message.channel.send.mock.calls
             expect(mockCall[0][0]).toBeInstanceOf(Discord.MessageEmbed)
             expect(mockCall[0][0].fields).toEqual(
@@ -153,16 +154,13 @@ describe("Individual Commands", () => {
         
         it("Checking to see if the AstraZeneca Link works", () => {
             message.content = "!info astrazeneca"
-            messageHandler(message)
+            commands.astra(message)
             let mockCall = message.channel.send.mock.calls
             expect(mockCall[0][0]).toBeInstanceOf(Discord.MessageEmbed)
             expect(mockCall[0][0].fields).toEqual(
-                expect.arrayContaining( [{
-                    'name': 'Link to know more information on AstraZeneca',
-                    'value': 'https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html',
-                    'inline': false
-                }])
+                expect.arrayContaining( [{"inline": false, "name": "Link to more information on the AstraZeneca vaccine", "value": "https://www.canada.ca/en/health-canada/services/drugs-health-products/covid19-industry/drugs-vaccines-treatments/vaccines/astrazeneca.html"}])
                 )})})
+
     it("ArgsUsage backend", () => {
         message.content = "!when"
         commands.argsUsage(message, "when", prefix)
