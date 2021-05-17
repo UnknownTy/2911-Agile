@@ -1,9 +1,6 @@
-name: Node.JS Main Testing
-
 language: node_js
 node_js:
   - "stable"
-
 
 install:
   - npm ci
