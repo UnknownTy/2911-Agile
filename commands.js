@@ -5,14 +5,6 @@ const {properNames, helpCommands, helpDescription} = require("./constants")
 //This file stores all of the bot's commands.
 
 
-const defaultEmbed = (ctx)=> {
-    //Creates an easy embed that I can grab later for covid data
-    embed = new Discord.MessageEmbed()
-        .setAuthor(ctx.author.username)
-        .setTitle("Covid data")
-        .setFooter("Covid statistics provided by NovelCOVID API")
-    return embed
-}
 
 const loadResponse = ((data, ctx) => {
     let embed = defaultEmbed(ctx)
