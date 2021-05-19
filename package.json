@@ -1,34 +1,44 @@
 {
-    "dependencies": {
-        "@prisma/client": "^2.22.0",
-        "axios": "^0.21.1",
-        "discord.js": "^12.5.3",
-        "dotenv": "^8.2.0",
-        "express": "^4.17.1",
-        "express-ejs-layouts": "^2.5.0",
-        "express-session": "^1.17.1",
-        "supertest": "^6.1.3"
-    },
-    "name": "2911-agile",
-    "description": "An agile development project for BCIT.",
-    "version": "1.0.0",
-    "main": "index.js",
-    "scripts": {
-        "test": "jest",
-        "start": "index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/UnknownTy/2911-Agile.git"
-    },
-    "author": "Ty, Bradley, Judy, Michael, Ramansh, Cienna",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/UnknownTy/2911-Agile/issues"
-    },
-    "homepage": "https://github.com/UnknownTy/2911-Agile#readme",
-    "devDependencies": {
-        "jest": "^26.6.3",
-        "prisma": "^2.22.0"
-    }
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1"
+  },
+  "name": "2911-agile",
+  "description": "An agile development project for BCIT.",
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "prisma/",
+      "views/"
+    ],
+    "collectCoverageFrom": [
+      "index.js",
+      "commands.js"
+    ]
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --forceExit --detectOpenHandles",
+    "start": "node index.js",
+    "coverage": "jest --forceExit --detectOpenHandles --collectCoverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UnknownTy/2911-Agile.git"
+  },
+  "author": "Ty, Bradley, Judy, Michael, Ramansh, Cienna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UnknownTy/2911-Agile/issues"
+  },
+  "homepage": "https://github.com/UnknownTy/2911-Agile#readme",
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
+  }
 }
