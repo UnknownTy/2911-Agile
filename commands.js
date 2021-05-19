@@ -42,49 +42,6 @@ const loadResponse = ((data, ctx) => {
     return embed
 })
 
-const updateDB = async function() {
-    setInterval(async() => {
-        const countryModel = storage.reportAll()
-            .then(function(result) {
-                result.forEach(countryEach => {
-                    axios.get(`https://corona.lmao.ninja/v2/countries/${countryEach.name}`)
-                        .then(res => {
-                            for (let stat of Object.entries(res.data)) {
-                                let name = properNames[stat[0]]
-                                    //Check to see if the name is stored in our list of acceptable data
-                                if (name) {
-                                    if (name == properNames.updated) {
-                                        //Converts the unix timestamp to a proper format
-                                        let last_update = new Date(stat[1])
-                                            //Formats the timestamp to look nice
-
-                                        //Before: 2021-05-03T19:30:437Z
-                                        var numFormatted = last_update.toISOString().replace(/T/, ' ').replace(/\..+/, '')
-                                            //After: 2021-05-03 19:30:43
-                                    } else {
-                                        var numFormatted = new Intl.NumberFormat("en-CA").format(stat[1])
-                                    }
-                                }
-                            }
-                            storage.store(res.data)
-                            console.log(res.data)
-                        })
-                })
-            })
-
-    }, 3000)
-}
-
-// setInterval(function() {
-//     promise = promise.then(function() {
-//         return new Promise(function(resolve) {
-//             checkQueue(yourUrlHere, resolve);
-//         });
-//     });
-// }, 1000);
-
-
-const test = updateDB()
 
 module.exports = {
     help: (ctx, prefix, args) => {

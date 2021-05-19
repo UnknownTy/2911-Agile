@@ -4,6 +4,7 @@ const axios = require("axios")
 const prisma = new PrismaClient()
 
 
+///creates new row if country is not found. Otherwise, updates the country
 const store = async covidstats => {
     const checkExisting = await prisma.country.findUnique({
         where: { id: covidstats.countryInfo._id }
@@ -26,36 +27,37 @@ const store = async covidstats => {
     }
 }
 
-///suppose to return the queried country stats
-const reportEach = async countryname => {
+///returns list containing the matching countries object
+const reportCountry = async countryname => {
     const reportstats = prisma.country.findMany({
         where: { name: countryname }
     })
     return reportstats;
 }
 
-const reportAll = async countryname => {
-    const reportstats = prisma.country.findMany({
-        where: { name: countryname }
-    })
-    return reportstats;
+///to test report
+// const test = reportCountry()
+//     .then(function(result) {
+//         console.log(result);
+//     })
+
+const updateDB = async function() {
+    setInterval(async() => {
+        //grabs the data from db
+        reportCountry()
+            .then(async function(result) {
+                //iterates through the engire country model
+                result.forEach(countryEach => {
+                    axios.get(`https://corona.lmao.ninja/v2/countries/${countryEach.name}`)
+                        .then(res => {
+                            store(res.data)
+                                // console.log(res.data)
+                        })
+                })
+            })
+            //update interval, in miliseconds
+    }, 3000)
 }
-
-///to test the return, just runs when bot starts, also how the function is called
-const test = reportAll()
-    .then(function(result) {
-        console.log(result);
-    })
-
-//to update the DB
-//not sure where this should be called from
-// async function updateDB() {
-// const countryModel = await prisma.country.findMany()
-// for ( i = 0; i < countryModel.length; i++){
-//     axios.get(`https://corona.lmao.ninja/v2/all`)
-//         .then()
-//     }
-// }
 
 let mockData = {
     "updated": 1620965513812,
@@ -98,4 +100,4 @@ let mockData = {
 //     .finally(async() => {
 //         await prisma.$disconnect()
 //     })
-module.exports = { store, reportAll, reportEach };
+module.exports = { store, reportCountry, updateDB };
