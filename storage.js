@@ -27,7 +27,14 @@ const store = async covidstats => {
 }
 
 ///suppose to return the queried country stats
-const report = async countryname => {
+const reportEach = async countryname => {
+    const reportstats = prisma.country.findMany({
+        where: { name: countryname }
+    })
+    return reportstats;
+}
+
+const reportAll = async countryname => {
     const reportstats = prisma.country.findMany({
         where: { name: countryname }
     })
@@ -35,7 +42,7 @@ const report = async countryname => {
 }
 
 ///to test the return, just runs when bot starts, also how the function is called
-const test = report("malta")
+const test = reportAll()
     .then(function(result) {
         console.log(result);
     })
@@ -43,10 +50,10 @@ const test = report("malta")
 //to update the DB
 //not sure where this should be called from
 // async function updateDB() {
-//     const countryModel = await prisma.country.findMany()
-//     for ( i = 0; i < countryModel.length; i++){
-//         axios.get(`https://corona.lmao.ninja/v2/all`)
-//             .then()
+// const countryModel = await prisma.country.findMany()
+// for ( i = 0; i < countryModel.length; i++){
+//     axios.get(`https://corona.lmao.ninja/v2/all`)
+//         .then()
 //     }
 // }
 
@@ -91,5 +98,4 @@ let mockData = {
 //     .finally(async() => {
 //         await prisma.$disconnect()
 //     })
-
-module.exports = { store };
+module.exports = { store, reportAll, reportEach };
