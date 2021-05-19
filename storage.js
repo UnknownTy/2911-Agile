@@ -34,16 +34,21 @@ const report = async countryname => {
     return reportstats;
 }
 
-async function updateDB() {
-    const countryModel = await prisma.country.findMany()
-
-}
-
 ///to test the return, just runs when bot starts, also how the function is called
 const test = report("malta")
     .then(function(result) {
         console.log(result);
     })
+
+//to update the DB
+//not sure where this should be called from
+// async function updateDB() {
+//     const countryModel = await prisma.country.findMany()
+//     for ( i = 0; i < countryModel.length; i++){
+//         axios.get(`https://corona.lmao.ninja/v2/all`)
+//             .then()
+//     }
+// }
 
 let mockData = {
     "updated": 1620965513812,

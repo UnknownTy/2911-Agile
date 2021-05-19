@@ -8,15 +8,6 @@ generator client {
 }
 
 
-// model Stats {
-//   id                     Int      @id @default(autoincrement())
-//   country                Country?  @relation(fields: [countryID], references: [id])
-//   countryID              Int?
-//   statsJSON              Json?
-//   updatedAt              DateTime?
-
-// }
-
 model Country {
   id        Int      @id 
   name      String   @unique
