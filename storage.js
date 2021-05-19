@@ -34,11 +34,16 @@ const report = async countryname => {
     return reportstats;
 }
 
-///to test the return, just runs when bot starts
+async function updateDB() {
+    const countryModel = await prisma.country.findMany()
+
+}
+
+///to test the return, just runs when bot starts, also how the function is called
 const test = report("malta")
-.then(function(result) {
-    console.log(result);
-  })
+    .then(function(result) {
+        console.log(result);
+    })
 
 let mockData = {
     "updated": 1620965513812,
