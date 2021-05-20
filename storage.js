@@ -41,6 +41,7 @@ const reportCountry = async countryname => {
 //         console.log(result);
 //     })
 
+//updates the db for countries atm
 const updateDB = async function() {
     setInterval(async() => {
         //grabs the data from db
