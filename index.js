@@ -5,11 +5,12 @@ const ejsLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const Discord = require("discord.js");
 const cmd = require("./commands");
+const { default: axios } = require("axios");
 require("dotenv").config()
 const client = new Discord.Client();
 const PORT = process.env.PORT || 5050
 const botToken = process.env.botToken
-
+const cheerio = require("cheerio")
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
@@ -148,9 +149,26 @@ app.listen(PORT, function () {
       `Server running! Available on port ${PORT} 🚀`
     );
   });
+app.get("/test", () =>{
+  const values = []
+  axios.get("https://www2.gov.bc.ca/gov/content/covid-19/info/restrictions")
+  .then(res =>{
+    const $ = cheerio.load(res.data)
+    values.push($('h3').first()) // As .nextUntil does not include the first line.
+    const headers = $('h3')
+    .first()
+    .nextUntil('.accordion')
+    .get()
+    .map(line => {values.push($(line))}) // Adds all the lines to stored values
+    console.log('#SSSSSSSSSTART########################')
+    for(let i = 0; i < values.length; i++){
+        console.log(values[i])
+    }
+  })
+})
 
 //Logs the bot into Discord
-client.login(botToken)
+//client.login(botToken)
 } else {
     module.exports = { messageHandler }
 }
