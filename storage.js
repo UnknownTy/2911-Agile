@@ -63,6 +63,7 @@ const updateDB = async () => {
 
 const makeOrEditRegion = async (reqName, resDesc, indDesc, outDesc, maskDesc, link, ID) => {
     if(ID){
+        console.log(resDesc)
         await prisma.region.update({
             where: {id: ID},
             data:{
@@ -73,6 +74,7 @@ const makeOrEditRegion = async (reqName, resDesc, indDesc, outDesc, maskDesc, li
                 link: link
             }
         })
+        return await getRegion(ID)
     }
     else{
         await prisma.region.create({

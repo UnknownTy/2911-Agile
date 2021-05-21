@@ -13,11 +13,13 @@ router.get("/all", async (req, res) =>{
 router.get("/edit/:id", async (req, res) =>{
     getRegion(parseInt(req.params.id))
     .then(region =>{
+        console.log(region)
         res.render("editRegion", {region: region})
     })
 })
 
-router.post("edit/:id", async (req, res) =>{
+router.post("/edit/:id", async (req, res) =>{
+    console.log(req.body)
     makeOrEditRegion(
         req.body.name,
         req.body.resDesc,
