@@ -124,6 +124,14 @@ const messageHandler = msg => {
         else {
         cmd.faq(msg)
         }
+        break;
+      case (command === "phoneline"):
+        if (args.length > 0) {
+          cmd.argsUsage(msg, "phoneline", prefix)
+        }
+        else {
+          cmd.phoneline(msg)
+        }
       }
       
   }
