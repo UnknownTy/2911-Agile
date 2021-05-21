@@ -397,5 +397,3 @@ describe("Individual Commands", () => {
             .lastCalledWith("`Usage: !when {Your age OR exception}`")
     })
 })
-
-
