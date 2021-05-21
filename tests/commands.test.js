@@ -145,6 +145,7 @@ describe("Individual Commands", () => {
             expect.arrayContaining([{"inline": false, "name": "Link to know more on registering for your vaccine", 
             "value": "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register"}])))
     })
+<<<<<<< HEAD
     
     it("Register with AB Argument", () => {
         commands.registerab(message)
@@ -257,6 +258,9 @@ describe("Individual Commands", () => {
             inline: false
             }])))
     })
+=======
+
+>>>>>>> parent of 5c3b0e8 (Add files via upload)
     it("When command", () => {
         msg = "If you are healthy and not part of an exception group, you may get your 1st dose "
         commands.vaccineWhen(message, -5)
@@ -399,6 +403,7 @@ describe("Individual Commands", () => {
 })
 
 
+<<<<<<< HEAD
 =======
 const Discord = require("discord.js");
 const commands = require("../commands.js")
@@ -696,3 +701,5 @@ describe("Individual Commands", () => {
             .lastCalledWith("`Usage: !when {Your age OR exception}`")
     })
 })
+=======
+>>>>>>> parent of 5c3b0e8 (Add files via upload)
