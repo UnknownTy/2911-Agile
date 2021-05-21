@@ -82,6 +82,7 @@ const makeOrEditRegion = async (name, resDesc, indDesc, outDesc, maskDesc, link,
             id: ID
         }
     })
+    return getRegion(ID)
 }
 const getRegion = async (ID) => {
     return await prisma.region.findUnique({
