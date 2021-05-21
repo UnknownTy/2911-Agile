@@ -194,6 +194,20 @@ describe("Message Handling", () => {
                 expect(commands.argsUsage).lastCalledWith(message, "prefix", prefix)
             })
         })
+        describe("Phone Line Handling", () => {
+            it("With no arguments", () => {
+                message.content = "!phoneline"
+                messageHandler(message)
+                expect(commands.phoneline)
+                    .lastCalledWith(message)
+            })
+            it("With arguments leading to ArgsUsage", () => {
+                message.content = "!phoneline asdf"
+                messageHandler(message)
+                expect(commands.argsUsage).lastCalledWith(message, "phoneline", prefix)
+
+            })
+        })
     })
 
     //Initial tests to see if bot should even respond

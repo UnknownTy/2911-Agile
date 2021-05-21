@@ -189,6 +189,14 @@ describe("Individual Commands", () => {
         expect(expect(expectedEmbed.title).toEqual("Frequently Asked Questions"))
     })
 
+    it("phoneline Command", () => {
+        commands.phoneline(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(6);
+        expect(expect(expectedEmbed.title).toEqual("Phone Lines for COVID-related help or advice"))
+    })
+
     describe ("!Info command", () => {
         it("Checking to see if pfizer works", () =>{
         message.content = "!info pfizer"

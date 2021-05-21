@@ -289,5 +289,22 @@ module.exports = {
                 { name: "When would I have to quarantine?", value: "If you have travelled outside of Canada and are returning, or if you have been in close contact with someone who has tested positive for COVID-14, you must self-isolate for 14 days even if you do not have symptoms."
             })
         msg.channel.send(exceptionEmbed);
+    },
+
+    phoneline: msg => {
+        const phoneEmbed = new Discord.MessageEmbed()
+        .setTitle("Phone Lines for COVID-related help or advice")
+        .setColor(0x9feb94) 
+        .setTimestamp()
+        .setURL("https://bc.thrive.health/covid19app/resources/559894d8-8df3-4243-9246-bf7a46323744")
+        .setThumbnail("https://icons-for-free.com/iconfiles/png/512/phone+telephone+icon-1320087273381945535.png")
+        .addFields({name: "9-1-1: Emergency Line", value: "Call 9-1-1 immediately if you or someone around you has chest pain, difficulty breathing, severe bleeding."},
+            {name:"8-1-1: Health Information and Health Advice Line", value:"Available 24/7. Translation services available.\nCall 8-1-1 for information and advice on your health. You can be connected to a registered nurse, registered dietition, exercise professional, or pharmacist depending on your needs."},
+            {name:"1-888-268-4319: COVID-19 Questions", value: "Available from 7:30AM to 8:00PM PST. Translation services available.\nCall for non-medical information about COVID-19, including information on travel recommendations, social distancing, and government support."},
+            {name:"2-1-1: Community, Social and Government Services", value: "Available 24/7. Call for information on financial assistance or income support, legal aid, child and fmaily services, temporary financial relief, and home support."},
+            {name:"1-800-563-0808: VictimLinkBC", value: "Available 24/7. Call VictimLinkBC for immediate crisis support and information to victims of family and sexual violence."},
+            {name:"1-855-687-1868: Women's Support Services", value: "Available 24/7. Call Women's Support Services for immediate help and support to those experiencing gender-based violence and uncertainty."},
+            )
+        msg.channel.send(phoneEmbed);
     }
 }

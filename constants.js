@@ -38,7 +38,8 @@ helpCommands: {
     "restriction": "restriction ['region']",
     "info" : "info ['pfizer' OR 'moderna' OR 'astrazeneca']",
     "register" : "register {'bc'}",
-    "faq" : "faq"
+    "faq" : "faq",
+    "phoneline" : "phoneline"
 },
 
 //A description of all commands
@@ -51,6 +52,7 @@ helpDescription: {
     "restriction": "Gives information on current COVID-19 restrictions in British Columbia. Add additional argument 'region' to learn about regional travel restrictions.",
     "info": "gives information on the covid vaccine",
     "register" : "Provides province-wide links to sign up for vaccines.",
-    "faq" : "Provides a list of frequently asked questions."
+    "faq" : "Provides a list of frequently asked questions.",
+    "phoneline" : "Provides a list of phone lines to contact for emergencies and assistance"
 },
 }
