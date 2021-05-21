@@ -61,28 +61,31 @@ const updateDB = async () => {
     }, updateTime * 1000 * 60) //Updates every N minutes
 }
 
-const makeOrEditRegion = async (name, resDesc, indDesc, outDesc, maskDesc, link, ID) => {
-    await prisma.region.upsert({
-        create: {
-            name: name,
-            restauraunt: resDesc,
-            indoor: indDesc,
-            outdoor: outDesc,
-            masks: maskDesc,
-            link: link
-        },
-        update: {
-            restauraunt: resDesc,
-            indoor: indDesc,
-            outdoor: outDesc,
-            masks: maskDesc,
-            link: link
-        },
-        where: {
-            id: ID
-        }
-    })
-    return getRegion(ID)
+const makeOrEditRegion = async (reqName, resDesc, indDesc, outDesc, maskDesc, link, ID) => {
+    if(ID){
+        await prisma.region.update({
+            where: {id: ID},
+            data:{
+                restauraunt: resDesc,
+                indoor: indDesc,
+                outdoor: outDesc,
+                masks: maskDesc,
+                link: link
+            }
+        })
+    }
+    else{
+        await prisma.region.create({
+            data:{
+                name: reqName,
+                restauraunt: resDesc,
+                indoor: indDesc,
+                outdoor: outDesc,
+                masks: maskDesc,
+                link: link
+            }
+        })
+    }
 }
 const getRegion = async (ID) => {
     return await prisma.region.findUnique({

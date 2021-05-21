@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
+//Routes
+const regionRoute = require("./routes/regionRoute")
 const session = require("express-session");
 const Discord = require("discord.js");
 const cmd = require("./commands");
@@ -138,6 +140,9 @@ const messageHandler = msg => {
 
 let prefix = '!' // Default prefix. Adjust this to read from some settings later.
     //Routes can go here
+
+app.use("/region", regionRoute)
+
 
 //WE CANNOT TEST THE FOLLOWING!
 //These events only run when the server is run, and cannot be tested offline.
