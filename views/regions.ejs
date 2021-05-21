@@ -1,0 +1,6 @@
+<h1>LOADING PROPERLY</h1>
+<ul>
+<% regions.forEach(region => { %>
+    <li> <a href="edit/<%= region.id%>"><%=region.name%></a></li>
+<%});%>
+</ul>

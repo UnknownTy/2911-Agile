@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
+//Routes
+const regionRoute = require("./routes/regionRoute")
 const session = require("express-session");
 const Discord = require("discord.js");
 const cmd = require("./commands");
@@ -63,12 +65,52 @@ const messageHandler = msg => {
         break;
       //Command to obtain information on how to register for vaccines
       case (command == "register"):
-        if (args.length > 1){
+        let value = ""
+        if (args.length > 1){;
           cmd.argsUsage(msg, "register", prefix)
         }
-        else if (args[0] == "bc"){
-          cmd.registerbc(msg)
-        }
+        if (args.length > 0){
+          value = args[0].toLowerCase()
+        
+          if (value == "bc"){
+            cmd.registerbc(msg)
+          }
+          else if (value == "ab"){
+            cmd.registerab(msg)
+          }
+          else if (value == 'mb'){
+            cmd.registermb(msg)
+          }
+          else if (value == 'nb'){
+            cmd.registernb(msg)
+          }
+          else if (value == 'nfl'){
+            cmd.registerNL(msg)
+          }
+          else if (value == 'nwt'){
+            cmd.registernwt(msg)
+          }
+          else if (value == 'ns'){
+            cmd.registerns(msg)
+          }
+          else if (value == 'nt'){
+            cmd.registernt(msg)
+          }
+          else if (value == 'ont'){
+            cmd.registeront(msg)
+          }
+          else if (value == 'pei'){
+            cmd.registerpei(msg)
+          }
+          else if (value == 'qc'){
+            cmd.registerQC(msg)
+          }
+          else if (value == 'sk'){
+            cmd.registerSK(msg)
+          }
+          else if (value == 'yt'){
+            cmd.registerYT(msg)
+          }}
         else {
           cmd.register(msg)
         }
@@ -124,12 +166,23 @@ const messageHandler = msg => {
         else {
         cmd.faq(msg)
         }
+        break;
+      case (command === "phoneline"):
+        if (args.length > 0) {
+          cmd.argsUsage(msg, "phoneline", prefix)
+        }
+        else {
+          cmd.phoneline(msg)
+        }
       }
       
   }
 
 let prefix = '!' // Default prefix. Adjust this to read from some settings later.
     //Routes can go here
+
+app.use("/region", regionRoute)
+
 
 //WE CANNOT TEST THE FOLLOWING!
 //These events only run when the server is run, and cannot be tested offline.

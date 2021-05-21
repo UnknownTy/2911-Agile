@@ -1,0 +1,27 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model Country {
+  id        Int      @id 
+  name      String   @unique
+  updatedAt DateTime @default(now())
+  createdAt DateTime  
+  stats     Json?
+}
+
+model Region {
+  id          Int     @id @default(autoincrement())
+  name        String
+  restauraunt String?
+  indoor      String?
+  outdoor     String?
+  masks       String?
+  link        String? 
+}
