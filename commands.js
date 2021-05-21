@@ -238,6 +238,141 @@ module.exports = {
         msg.channel.send(registerBCEmbed);
     },
 
+    registerab: (msg) => {
+        const registerABEmbed = new Discord.MessageEmbed()
+            .setTitle("Alberta Vaccine Registration")
+            .setURL("https://www.alberta.ca/covid19-vaccine.aspx")
+            .setImage(url='https://www.electronicrecyclingassociation.ca/wp-content/uploads/2020/11/Alberta-Health-Services-Logo.jpg')
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Alberta. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www.alberta.ca/covid19-vaccine.aspx");
+        msg.channel.send(registerABEmbed);
+    },
+    registermb: (msg) => {
+        const registerMBEmbed = new Discord.MessageEmbed()
+            .setTitle("Manitoba Vaccine Registration")
+            .setURL("https://protectmb.ca/making-your-appointment-is-easy/")
+            .setImage(url='https://www.gov.mb.ca/health/images/mb-logo.png')
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Manitoba. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", 'https://protectmb.ca/making-your-appointment-is-easy/');
+        msg.channel.send(registerMBEmbed);
+    },
+    registernb: (msg) => {
+        const registerMBEmbed = new Discord.MessageEmbed()
+            .setTitle("New Brunswik Vaccine Registration")
+            .setURL("https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/nb-vaccine/Get-Vaccinated/vaccine-pharmacy.html")
+            .setImage(url='https://upload.wikimedia.org/wikipedia/en/thumb/2/24/New_Brunswick_Canada_Logo.svg/1200px-New_Brunswick_Canada_Logo.svg.png')
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in New Brunswick. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", 'https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/nb-vaccine/Get-Vaccinated/vaccine-pharmacy.html');
+        msg.channel.send(registerMBEmbed);
+    },
+    registerNL: (msg) => {
+        const registerNWTEmbed = new Discord.MessageEmbed()
+            .setTitle("NewfoundLand  Vaccine Registration")
+            .setURL("https://www.gov.nl.ca/covid-19/vaccine/gettheshot/")
+            .setImage(url="https://www.insurdinary.ca/wp-content/uploads/2019/10/newfoundland-labrador-logo.png")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in NewFoundLand. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www.gov.nl.ca/covid-19/vaccine/gettheshot/");
+        msg.channel.send(registerNWTEmbed);
+    },
+    registernwt: (msg) => {
+        const registerNWLEmbed = new Discord.MessageEmbed()
+            .setTitle("NorthWest Territories  Vaccine Registration")
+            .setURL("https://www.nthssa.ca/en/services/coronavirus-disease-covid-19-updates/covid-vaccine/")
+            .setImage(url="https://www.nthssa.ca/sites/nthssa/themes/nthssa_theme/en-logo-NTHSSA.jpg")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in NorthWest Territories. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www.nthssa.ca/en/services/coronavirus-disease-covid-19-updates/covid-vaccine");
+        msg.channel.send(registerNWLEmbed);
+    },
+    registerns: (msg) => {
+        const registerNSEmbed = new Discord.MessageEmbed()
+            .setTitle("Nova Scotia  Vaccine Registration")
+            .setURL("https://novascotia.ca/coronavirus/book-your-vaccination-appointment/")
+            .setImage(url="https://i.cbc.ca/1.5941197.1615229418!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/nova-scotia-health-logo.JPG")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Nova Scotia. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://novascotia.ca/coronavirus/book-your-vaccination-appointment/");
+        msg.channel.send(registerNSEmbed);
+    },
+    registernt: (msg) => {
+        const registerNtEmbed = new Discord.MessageEmbed()
+            .setTitle("Nunavut  Vaccine Registration")
+            .setURL("https://www.gov.nu.ca/health/information/covid-19-vaccination")
+            .setImage(url="https://pbs.twimg.com/profile_images/1782827261/Twitter_logo.jpg")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Nunavut. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www.gov.nu.ca/health/information/covid-19-vaccination");
+        msg.channel.send(registerNtEmbed);
+    },
+    registeront: (msg) => {
+        const registerONTEmbed = new Discord.MessageEmbed()
+            .setTitle("Ontario Vaccine Registration")
+            .setURL("https://covid19.ontariohealth.ca/")
+            .setImage(url="https://www.baywardbulletin.ca/wp-content/uploads/2020/07/Ontario-Health-710x355.png")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Ontario. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://covid19.ontariohealth.ca/");
+        msg.channel.send(registerONTEmbed);
+    },
+    registerpei: (msg) => {
+        const registerPEIEmbed = new Discord.MessageEmbed()
+            .setTitle("Prince Edward Island Vaccine Registration")
+            .setURL("https://www.princeedwardisland.ca/en/information/health-and-wellness/getting-covid-19-vaccine")
+            .setImage(url="https://kidsportcanada.ca/wp-content/uploads/sites/110/PEI-healthandwellness.png")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Prince Edward Island. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www.princeedwardisland.ca/en/information/health-and-wellness/getting-covid-19-vaccine");
+        msg.channel.send(registerPEIEmbed);
+    },
+    registerQC: (msg) => {
+        const registerQCEmbed = new Discord.MessageEmbed()
+            .setTitle("Quebec Vaccine Registration")
+            .setURL("https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/progress-of-the-covid-19-vaccination")
+            .setImage(url="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Flag_of_Quebec.svg/1200px-Flag_of_Quebec.svg.png")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Quebec. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/progress-of-the-covid-19-vaccination");
+        msg.channel.send(registerQCEmbed);
+    },
+    
+    registerSK: (msg) => {
+        const registerSKEmbed = new Discord.MessageEmbed()
+            .setTitle("Saskatchewan Vaccine Registration")
+            .setURL("https://www.saskatchewan.ca/covid19-vaccine-booking.")
+            .setImage(url="https://media.socastsrm.com/wordpress/wp-content/blogs.dir/343/files/2018/05/health-authority.png")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Saskatchewan. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://www.saskatchewan.ca/covid19-vaccine-booking.");
+        msg.channel.send(registerSKEmbed);
+    },
+
+    registerYT: (msg) => {
+        const registerYTEmbed = new Discord.MessageEmbed()
+            .setTitle("Yukon Vaccine Registration")
+            .setURL("https://yukon.ca/en/appointments")
+            .setImage(url="https://phabc.org/wp-content/uploads/2018/01/Government-of-Yukon.png")
+            .setColor(0xa1fff9) 
+            .setTimestamp()
+            .setDescription("Information on how to register for a COVID 19 Vaccine in Saskatchewan. If you are above 18 you may be eligible for early vaccination if you are in a high-transmission neighbourhood")
+            .addField("Link to know more on registering for your vaccine", "https://yukon.ca/en/appointments");
+        msg.channel.send(registerYTEmbed);
+    },
+
     regionalRestriction: (msg) => {
         const exceptionEmbed = new Discord.MessageEmbed()
             .setTitle("Regional Restrictions")

@@ -145,7 +145,118 @@ describe("Individual Commands", () => {
             expect.arrayContaining([{"inline": false, "name": "Link to know more on registering for your vaccine", 
             "value": "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/register"}])))
     })
+    
+    it("Register with AB Argument", () => {
+        commands.registerab(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name: 'Link to know more on registering for your vaccine',
+            value: 'https://www.alberta.ca/covid19-vaccine.aspx',
+            inline: false
+          }])))})
 
+    it("Register with MB Argument", () => {
+        commands.registermb(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name: "Link to know more on registering for your vaccine", 
+            value:'https://protectmb.ca/making-your-appointment-is-easy/',
+            inline: false
+            }])))
+    })
+    it("Register with NB Argument", () => {
+        commands.registernb(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name: "Link to know more on registering for your vaccine", 
+            value: 'https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/nb-vaccine/Get-Vaccinated/vaccine-pharmacy.html',
+            inline: false
+            }])))
+    })
+    it("Register with NL Argument", () => {
+        commands.registerNL(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name:"Link to know more on registering for your vaccine", 
+            value:"https://www.gov.nl.ca/covid-19/vaccine/gettheshot/",
+            inline: false
+            }])))
+    })
+    it("Register with NWT Argument", () => {
+        commands.registernwt(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name:"Link to know more on registering for your vaccine", 
+            value:"https://www.nthssa.ca/en/services/coronavirus-disease-covid-19-updates/covid-vaccine",
+            inline: false
+            }])))
+    })
+    it("Register with NS Argument", () => {
+        commands.registerns(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name:"Link to know more on registering for your vaccine", 
+            value:"https://novascotia.ca/coronavirus/book-your-vaccination-appointment/",
+            inline: false
+            }])))
+    })
+    it("Register with NT Argument", () => {
+        commands.registernt(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name:"Link to know more on registering for your vaccine", 
+            value:"https://www.gov.nu.ca/health/information/covid-19-vaccination",
+            inline: false
+            }])))
+    })
+    it("Register with ONT Argument", () => {
+        commands.registeront(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name:"Link to know more on registering for your vaccine", 
+            value:"https://covid19.ontariohealth.ca/",
+            inline: false
+            }])))
+    })
+    
+    it("Register with PEI Argument", () => {
+        commands.registerpei(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name:"Link to know more on registering for your vaccine", 
+            value:"https://www.princeedwardisland.ca/en/information/health-and-wellness/getting-covid-19-vaccine",
+            inline: false
+            }])))
+    })
+    it("Register with QC Argument", () => {
+        commands.registerQC(message)
+        let expectedEmbed = message.channel.send.mock.calls[0][0]
+        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
+        expect(expectedEmbed.fields.length).toEqual(1);
+        expect(expect(expectedEmbed.fields).toEqual(
+            expect.arrayContaining([{ name:"Link to know more on registering for your vaccine", 
+            value:"https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/progress-of-the-covid-19-vaccination",
+            inline: false
+            }])))
+    })
     it("When command", () => {
         msg = "If you are healthy and not part of an exception group, you may get your 1st dose "
         commands.vaccineWhen(message, -5)
@@ -187,14 +298,6 @@ describe("Individual Commands", () => {
         expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
         expect(expectedEmbed.fields.length).toEqual(8);
         expect(expect(expectedEmbed.title).toEqual("Frequently Asked Questions"))
-    })
-
-    it("phoneline Command", () => {
-        commands.phoneline(message)
-        let expectedEmbed = message.channel.send.mock.calls[0][0]
-        expect(expectedEmbed).toBeInstanceOf(Discord.MessageEmbed)
-        expect(expectedEmbed.fields.length).toEqual(6);
-        expect(expect(expectedEmbed.title).toEqual("Phone Lines for COVID-related help or advice"))
     })
 
     describe ("!Info command", () => {
@@ -294,5 +397,3 @@ describe("Individual Commands", () => {
             .lastCalledWith("`Usage: !when {Your age OR exception}`")
     })
 })
-
-

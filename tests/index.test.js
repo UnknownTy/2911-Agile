@@ -175,6 +175,79 @@ describe("Message Handling", () => {
                 expect(commands.registerbc)
                     .lastCalledWith(message)
             })
+            it("With AB as argument", () => {
+                message.content = "!register ab"
+                messageHandler(message)
+                expect(commands.registerab)
+                    .lastCalledWith(message)
+            })
+            it("With mb as argument", () => {
+                message.content = "!register mb"
+                messageHandler(message)
+                expect(commands.registermb)
+                    .lastCalledWith(message)
+            })
+            it("With nb as argument", () => {
+                message.content = "!register NB"
+                messageHandler(message)
+                expect(commands.registernb)
+                    .lastCalledWith(message)
+            })
+            it("With nl as argument", () => {
+                message.content = "!register NfL"
+                messageHandler(message)
+                expect(commands.registerNL)
+                    .lastCalledWith(message)
+            })
+            it("With nwl as argument", () => {
+                message.content = "!register Nwt"
+                messageHandler(message)
+                expect(commands.registernwt)
+                    .lastCalledWith(message)
+            })
+            it("With ns as argument", () => {
+                message.content = "!register ns"
+                messageHandler(message)
+                expect(commands.registerns)
+                    .lastCalledWith(message)
+            })
+            it("With nt as argument", () => {
+                message.content = "!register nt"
+                messageHandler(message)
+                expect(commands.registernt)
+                    .lastCalledWith(message)
+            })
+            it("With ont as argument", () => {
+                message.content = "!register ont"
+                messageHandler(message)
+                expect(commands.registeront)
+                    .lastCalledWith(message)
+            })
+            it("With PEI as argument", () => {
+                message.content = "!register PEI"
+                messageHandler(message)
+                expect(commands.registerpei)
+                    .lastCalledWith(message)
+            })
+            it("With QC as argument", () => {
+                message.content = "!register QC"
+                messageHandler(message)
+                expect(commands.registerQC)
+                    .lastCalledWith(message)
+            })
+            it("With SK as argument", () => {
+                message.content = "!register SK"
+                messageHandler(message)
+                expect(commands.registerSK)
+                    .lastCalledWith(message)
+            })
+            it("With YT as argument", () => {
+                message.content = "!register YT"
+                messageHandler(message)
+                expect(commands.registerYT)
+                    .lastCalledWith(message)
+            })
+
         })
         //!faq handling
         describe("FAQ Handling", () => {
@@ -192,20 +265,6 @@ describe("Message Handling", () => {
                 message.content = "!prefix"
                 messageHandler(message)
                 expect(commands.argsUsage).lastCalledWith(message, "prefix", prefix)
-            })
-        })
-        describe("Phone Line Handling", () => {
-            it("With no arguments", () => {
-                message.content = "!phoneline"
-                messageHandler(message)
-                expect(commands.phoneline)
-                    .lastCalledWith(message)
-            })
-            it("With arguments leading to ArgsUsage", () => {
-                message.content = "!phoneline asdf"
-                messageHandler(message)
-                expect(commands.argsUsage).lastCalledWith(message, "phoneline", prefix)
-
             })
         })
     })
