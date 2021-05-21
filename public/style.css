@@ -82,6 +82,20 @@ li {
   list-style: none;
   padding: 0.5em;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  text-align: left;
+  width: 400px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+input {
+  height: 32px;
+  flex: 0 0 200px;
+  margin-left: 10px;
+}
 footer{
   grid-area: footer;
   display: flex;
