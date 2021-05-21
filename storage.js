@@ -2,6 +2,7 @@ const { PrismaClient } = require('@prisma/client')
 const axios = require("axios")
 
 const prisma = new PrismaClient()
+const updateTime = 15 // Update data stored in minutes
 
 
 ///creates new row if country is not found. Otherwise, updates the country
@@ -42,7 +43,7 @@ const reportCountry = async countryname => {
 //     })
 
 //updates the db for countries atm
-const updateDB = async function() {
+const updateDB = async () => {
     setInterval(async() => {
         //grabs the data from db
         reportCountry()
@@ -57,7 +58,45 @@ const updateDB = async function() {
                 })
             })
             //update interval, in miliseconds
-    }, 3000)
+    }, updateTime * 1000 * 60) //Updates every N minutes
+}
+
+const makeOrEditRegion = async (name, resDesc, indDesc, outDesc, maskDesc, link, ID) => {
+    await prisma.region.upsert({
+        create: {
+            name: name,
+            restauraunt: resDesc,
+            indoor: indDesc,
+            outdoor: outDesc,
+            masks: maskDesc,
+            link: link
+        },
+        update: {
+            restauraunt: resDesc,
+            indoor: indDesc,
+            outdoor: outDesc,
+            masks: maskDesc,
+            link: link
+        },
+        where: {
+            id: ID
+        }
+    })
+}
+const getRegion = async (ID) => {
+    return await prisma.region.findUnique({
+        where: {
+            id: ID
+        }
+    })
+}
+const getAllRegions = async () => {
+    return await prisma.region.findMany({
+        select: {
+            id: true,
+            name: true
+        }
+    })
 }
 
 // let mockData = {
@@ -101,4 +140,4 @@ const updateDB = async function() {
 //     .finally(async() => {
 //         await prisma.$disconnect()
 //     })
-module.exports = { store, reportCountry, updateDB };
+module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion };
