@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Restrictions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" integrity="sha512-QKC1UZ/ZHNgFzVKSAhV5v5j73eeL9EEN289eKAEFaAjgAiobVAnVv/AGuPbXsKl1dNoel3kNr6PYnSiTzVVBCw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="title-container">
+                    <img class="icon" src="discord-icon.png" alt="Discord Icon">
+                    <h1>Covid Data Bot Interface</h1>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="restrictions.html">Restrictions</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="content">
+            <!-- <div class="restrict-button-cont"> 
+                <button type="button">Add Restriction</button>
+                <button type="button">Edit Restriction</button>
+            </div> -->
+            <form>
+                <label for="description">Description:</label><br>
+                <textarea class="description" name="description"></textarea><br> 
+                <label for="restaurant">Restaurant Dining:</label><br>
+                <textarea class="restaurant" name="restaurant"></textarea><br> 
+                <label for="indoor-gathering">Indoor Gathering:</label><br>
+                <textarea class="indoor-gathering" name="indoor-gathering"></textarea><br> 
+                <label for="outdoor-gathering">Outdoor Gathering:</label><br>
+                <textarea class="outdoor-gathering" name="outdoor-gathering"></textarea><br> 
+                <label for="masks">Masks:</label><br>
+                <textarea class="masks" name="masks"></textarea><br> 
+                <label for="restriction-link">Link for additional information on restrictions:</label><br>
+                <textarea class="restriction-link" name="restriction-link"></textarea><br> 
+                <button class="submit-button">Submit</button>
+            </form>
+        </div>
+        <footer>
+            <span>
+                Created by ACIT2911 Group 9
+            </span>
+        </footer>
+    </div>
+</body>
+
+</html>
