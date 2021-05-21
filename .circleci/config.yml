@@ -15,7 +15,7 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          name: Prisma generate
+          name: Install Prisma
           command: npx prisma generate
       - run:
           name: Run tests
