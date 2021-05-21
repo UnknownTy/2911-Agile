@@ -2,6 +2,7 @@ const { PrismaClient } = require('@prisma/client')
 const axios = require("axios")
 
 const prisma = new PrismaClient()
+const updateTime = 15 // Update data stored in minutes
 
 
 ///creates new row if country is not found. Otherwise, updates the country
@@ -42,7 +43,7 @@ const reportCountry = async countryname => {
 //     })
 
 //updates the db for countries atm
-const updateDB = async function() {
+const updateDB = async () => {
     setInterval(async() => {
         //grabs the data from db
         reportCountry()
@@ -57,7 +58,51 @@ const updateDB = async function() {
                 })
             })
             //update interval, in miliseconds
-    }, 3000)
+    }, updateTime * 1000 * 60) //Updates every N minutes
+}
+
+const makeOrEditRegion = async (reqName, resDesc, indDesc, outDesc, maskDesc, link, ID) => {
+    if(ID){
+        console.log(resDesc)
+        await prisma.region.update({
+            where: {id: ID},
+            data:{
+                restauraunt: resDesc,
+                indoor: indDesc,
+                outdoor: outDesc,
+                masks: maskDesc,
+                link: link
+            }
+        })
+        return await getRegion(ID)
+    }
+    else{
+        await prisma.region.create({
+            data:{
+                name: reqName,
+                restauraunt: resDesc,
+                indoor: indDesc,
+                outdoor: outDesc,
+                masks: maskDesc,
+                link: link
+            }
+        })
+    }
+}
+const getRegion = async (ID) => {
+    return await prisma.region.findUnique({
+        where: {
+            id: ID
+        }
+    })
+}
+const getAllRegions = async () => {
+    return await prisma.region.findMany({
+        select: {
+            id: true,
+            name: true
+        }
+    })
 }
 
 // let mockData = {
@@ -101,4 +146,4 @@ const updateDB = async function() {
 //     .finally(async() => {
 //         await prisma.$disconnect()
 //     })
-module.exports = { store, reportCountry, updateDB };
+module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion };

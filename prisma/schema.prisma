@@ -15,3 +15,13 @@ model Country {
   createdAt DateTime  
   stats     Json?
 }
+
+model Region {
+  id          Int     @id @default(autoincrement())
+  name        String
+  restauraunt String?
+  indoor      String?
+  outdoor     String?
+  masks       String?
+  link        String? 
+}

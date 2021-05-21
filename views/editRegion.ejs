@@ -1,0 +1,39 @@
+<h1> ALSO LOADING PROPERLY</h1>
+<% if (typeof updated !== 'undefined') { %>
+    <h3>Values for <%=region.name%> has been updated!</h3>
+<% } %>
+<form action=<%= "/region/edit/" + region.id %> method="POST">
+    <input value="<%= region.id%>" id="ID" type="hidden">
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" readonly value="<%=region.name%>" id="name" name="name">
+    </div>
+
+    <div class="form-group">
+        <label for="resDesc">Restaurant Dining</label>
+        <input type="text" value="<%=region.restauraunt%>" id="resDesc" name="resDesc">
+    </div>
+
+    <div class="form-group">
+        <label for="indDesc">Indoor Gatherings</label>
+        <input type="text" value="<%=region.indoor%>" id="indDesc" name="indDesc">
+    </div> 
+
+    <div class="form-group">
+        <label for="outDesc">Outdoor Gatherings</label>
+        <input type="text" value="<%=region.outdoor%>" id="outDesc" name="outDesc">
+    </div>
+
+    <div class="form-group">
+        <label for="maskDesc">Masks</label>
+        <input type="text" value="<%=region.masks%>" id="maskDesc" name="maskDesc">
+    </div>
+
+    <div class="form-group">
+        <label for="Link">Masks</label>
+        <input readonly type="url" value="<%=region.link%>" id="link" name="link">
+    </div> 
+
+    <button type="submit">Submit!</button>
+</form>
