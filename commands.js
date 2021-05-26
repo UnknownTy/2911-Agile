@@ -67,8 +67,8 @@ const loadResponse = ((data, ctx) => {
 
 
 module.exports = {
-    graph: (ctx, args) =>{
-        axios.get(`https://corona.lmao.ninja/v2/historical/all?lastdays=${args[0]}`)
+    graph: (ctx, daysBack) =>{
+        axios.get(`https://corona.lmao.ninja/v2/historical/all?lastdays=${daysBack}`)
         .then(res => {
             let data = res.data
             //Converts the day to a date format to make processing faster later.
@@ -111,7 +111,7 @@ module.exports = {
                     //Give the graph a title.
                     title: {
                         display: true,
-                        text:`Global Active Cases (Going back ${args[0]} days)`,
+                        text:`Global Active Cases (Going back ${daysBack} days)`,
                         fontSize: 18
                     },
                 },

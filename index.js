@@ -176,7 +176,14 @@ const messageHandler = msg => {
         }
         break;
       case (command == "graph"):
-        cmd.graph(msg, args)
+        if(args.length == 0 | args[0] <= 1){
+          cmd.argsUsage(msg, "graph", prefix)
+        } else if(args.length > 1){
+          cmd.graphCountry(msg, args)
+        } else {
+          cmd.graph(msg, args[0])
+        }
+        break;
       }
       
   }
