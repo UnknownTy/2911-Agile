@@ -3,6 +3,7 @@ const axios = require("axios")
 const storage = require("./storage.js")
 const { properNames, helpCommands, helpDescription } = require("./constants")
 const { ChartJSNodeCanvas } = require("chartjs-node-canvas")
+const graph = require("./graph")
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 //Node canvas created once to avoid memory leaks.
@@ -14,20 +15,7 @@ const nodeCanvas = new ChartJSNodeCanvas({
         ChartJS.defaults.global.defaultFontSize = 16
     }
 })
-//This plugin creates the canvas background used for the graph.
-const plugin = {
-    id: 'custom_canvas_background_color',
-    beforeDraw: (chart) => {
-      const ctx = chart.canvas.getContext('2d');
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-over';
-      //Change the fill style below to change the background colour.
-      //By default, it is set to Discord's chat background.
-      ctx.fillStyle = "#36393E";
-      ctx.fillRect(0, 0, chart.width, chart.height);
-      ctx.restore();
-    }
-  };
+
 
 //This file stores all of the bot's commands.
 
@@ -67,62 +55,27 @@ const loadResponse = ((data, ctx) => {
 
 
 module.exports = {
-    graph: (ctx, daysBack) =>{
-        axios.get(`https://corona.lmao.ninja/v2/historical/all?lastdays=${daysBack}`)
-        .then(res => {
-            let data = res.data
-            //Converts the day to a date format to make processing faster later.
-            let days = Object.keys(data.cases).map(val => new Date(val))
-            let cases = Object.values(data.cases)
-            data = { 
-                labels: days,
-                datasets: [{
-                    data: cases,
-                    label: "Currently active cases",
-                    borderColor: "#000000",
-                    fill: false
-                }],
-            }
-            let config = {
-                type: 'line',
-                data: data,
-                options: {
-                    scales: {
-                        xAxes: [{
-                            type: "time",
-                            time: {unit: "day"},
-                            scaleLabel: {
-                                display: true,
-                                labelString: "Time in Days"
-                            }
-                        }],
-                        yAxes: [{
-                            ticks: {
-                            // Sets the values to be in Millions (Better legibility)
-                            callback: function(value, index, values) {
-                                return (value / 1000000) + 'M';
-                            }
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: "Cases per million"
-                        }}]
-                    },
-                    //Give the graph a title.
-                    title: {
-                        display: true,
-                        text:`Global Active Cases (Going back ${daysBack} days)`,
-                        fontSize: 18
-                    },
-                },
-                plugins: plugin
-            }
-            return config 
-        })
-        //This renders the graph and converts it to an image to be streamed
-        .then(conf => nodeCanvas.renderToStream(conf))
-        //This streams the image to Discord and uploads it for viewing
-        .then(img =>{ctx.channel.send(new Discord.MessageAttachment(img))})
+    graph: async (ctx, args) =>{
+        console.log(args.length)
+        if(args.length == 2){
+            var res = await axios.get(`https://corona.lmao.ninja/v2/historical/${args[1]}?lastdays=${args[0]}`)
+            .catch(err => {
+                ctx.channel.send(err.response.data.message)})
+        } else if(args.length == 3) {
+            var res = await axios.get(`https://corona.lmao.ninja/v2/historical/${args[1]}/${args[2]}?lastdays=${args[0]}`)
+            .catch(err => {
+                ctx.channel.send(err.response.data.message)})
+        } else {
+            var res = await axios.get(`https://corona.lmao.ninja/v2/historical/all?lastdays=${args[0]}`)
+            .catch(err => {
+                ctx.channel.send(err.response.data.message)})
+        }
+        if(res){
+            let conf = graph.all(res)
+            //This renders the graph and converts it to an image to be streamed
+            //This streams the image to Discord and uploads it for viewing
+            ctx.channel.send(new Discord.MessageAttachment(nodeCanvas.renderToStream(conf)))
+        }
     },
 
 

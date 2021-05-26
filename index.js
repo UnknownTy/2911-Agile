@@ -178,10 +178,8 @@ const messageHandler = msg => {
       case (command == "graph"):
         if(args.length == 0 | args[0] <= 1){
           cmd.argsUsage(msg, "graph", prefix)
-        } else if(args.length > 1){
-          cmd.graphCountry(msg, args)
         } else {
-          cmd.graph(msg, args[0])
+          cmd.graph(msg, args)
         }
         break;
       }
