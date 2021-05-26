@@ -174,6 +174,9 @@ const messageHandler = msg => {
         else {
           cmd.phoneline(msg)
         }
+        break;
+      case (command == "graph"):
+        cmd.graph(msg, args)
       }
       
   }
