@@ -1,7 +1,7 @@
 *{
   margin: 0;
   padding: 0;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Roboto', sans-serif;  
   font-size: 24px;
 }
 
@@ -9,7 +9,6 @@ body {
   background-color: #2E6F95;
   color: #FFFFFF;
 }
-
 
 a {
   color: inherit;
@@ -52,7 +51,7 @@ nav {
   width: 100vw;
   display: flex;
   align-items: flex-end;
-  border-bottom: 1px;
+
 }
 
 .title-container {
@@ -75,8 +74,6 @@ nav {
   padding-bottom: 10px;
   padding-right: 1em;
 }
-
-
 
 li {
   list-style: none;
@@ -112,6 +109,7 @@ footer span{
 textarea {
   margin-top: 5px;
   margin-bottom: 5px;
+  padding: 5px;
   width: 700px;
   font-size: 24px;
 }
