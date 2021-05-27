@@ -7,7 +7,8 @@
 
 body {
   background-color: #2E6F95;
-  color: #FFFFFF;
+  color: #2E6F95;
+
 }
 
 
@@ -20,6 +21,7 @@ header {
   grid-area: header;
   display:flex;
   width: 100vw;
+  color:white
 }
 .container {
   margin-left:0;
@@ -79,7 +81,7 @@ nav {
   padding: 15 15 0 15;
 }
 li {
-  list-style: none;
+  font-size:15px;
   padding: 0.5em;
 }
 form {
@@ -106,6 +108,13 @@ footer span{
     font-size: 0.8em;
 }
 
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding: 50px
+}
 textarea {
   margin-bottom: 5px;
   width: 700px;
@@ -115,7 +124,22 @@ textarea {
 .content {
   margin-top: 1rem;
   margin-left: 1rem;
+  display:grid;
+  grid-column-gap: 50px;
+  grid-template-columns: auto auto auto auto auto auto;
+  padding:25px
 }
+.right{
+  padding : 10px
+}
+
+.item {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  background-color: white;
+  padding:10px
+}
+
 
 .submit-button {
   margin-top: 10px;
