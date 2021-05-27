@@ -21,6 +21,7 @@ header {
   display:flex;
   width: 100vw;
 }
+
 .container {
   margin-left:0;
   display: grid;
@@ -51,6 +52,7 @@ nav {
   width: 100vw;
   display: flex;
   align-items: flex-end;
+  border-bottom: 1px;
 }
 
 .title-container {
@@ -74,14 +76,13 @@ nav {
   padding-right: 1em;
 }
 
-.nav-list li {
-  list-style: none;
-  padding: 15 15 0 15;
-}
+
+
 li {
   list-style: none;
   padding: 0.5em;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -91,11 +92,13 @@ form {
   line-height: 26px;
   margin-bottom: 10px;
 }
+
 input {
   height: 32px;
   flex: 0 0 200px;
   margin-left: 10px;
 }
+
 footer{
   grid-area: footer;
   display: flex;
@@ -107,9 +110,10 @@ footer span{
 }
 
 textarea {
+  margin-top: 5px;
   margin-bottom: 5px;
   width: 700px;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .content {
@@ -117,12 +121,31 @@ textarea {
   margin-left: 1rem;
 }
 
-.submit-button {
+button {
   margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px;
   background: #FFFFFF;
   outline: inherit;
   color: #2E6F95;
   border: none;
   border-radius: 10px;
+}
+
+
+li:hover {
+  cursor: pointer;
+  color: #2E6F95;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color:#fffdf0;
+}
+
+h1 {
+  margin-left: 10px;
+  margin-top: 10px;
 }
