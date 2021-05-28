@@ -18,6 +18,10 @@ router.get("/edit/:id", async (req, res) =>{
     })
 })
 
+router.get("/add", async (req, res) =>{
+    res.render("addRegion")
+})
+
 router.post("/edit/:id", async (req, res) =>{
     console.log(req.body)
     makeOrEditRegion(
@@ -47,6 +51,25 @@ router.post("/new", async (req, res) =>{
         )
     .then(region =>{
         res.redirect("all")
+    })
+    .catch(err => {
+        res.status(500)
+    })
+})
+
+router.post("/add", async (req, res) =>{
+    console.log(req.body)
+    makeOrEditRegion(
+        req.body.name,
+        req.body.resDesc,
+        req.body.indDesc, 
+        req.body.outDesc, 
+        req.body.maskDesc, 
+        req.body.link,
+        null
+        )
+    .then(region =>{
+        res.redirect("editRegion", {region: region, updated: true})
     })
     .catch(err => {
         res.status(500)

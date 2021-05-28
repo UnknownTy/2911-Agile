@@ -130,7 +130,6 @@ button {
   border-radius: 10px;
 }
 
-
 li:hover {
   cursor: pointer;
   color: #2E6F95;
@@ -143,7 +142,12 @@ button:hover {
   background-color:#fffdf0;
 }
 
-h1 {
+.reg-restrictions-h1 {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.restrict-button-cont {
   margin-left: 10px;
   margin-top: 10px;
 }

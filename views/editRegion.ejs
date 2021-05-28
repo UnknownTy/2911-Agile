@@ -3,10 +3,6 @@
     <% if (typeof updated !== 'undefined') { %>
         <h3>Values for <%=region.name%> has been updated!</h3>
     <% } %>
-    <div class="restrict-button-cont"> 
-        <button type="button" class="add-restriction">Add Restriction</button>
-        <button type="button" class="edit-restriction">Edit Restriction</button>
-    </div>
     <form action=<%= "/region/edit/" + region.id %> method="POST">
         <input value="<%= region.id%>" id="ID" type="hidden">
 
