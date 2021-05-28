@@ -39,7 +39,9 @@
   },
   "homepage": "https://github.com/UnknownTy/2911-Agile#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.23",
     "jest": "^26.6.3",
+    "jest-mock-extended": "^1.0.15",
     "prisma": "^2.23.0",
     "supertest": "^6.1.3"
   },

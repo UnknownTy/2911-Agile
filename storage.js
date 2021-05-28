@@ -36,10 +36,10 @@ const reportCountry = async countryname => {
 }
 
 ///to test report
-// const test = reportCountry()
-//     .then(function(result) {
-//         console.log(result);
-//     })
+const test = reportCountry()
+    .then(function(result) {
+        console.log(result);
+    })
 
 //updates the db for countries atm
 const updateDB = async function() {

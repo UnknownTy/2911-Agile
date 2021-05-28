@@ -116,5 +116,34 @@ module.exports = {
         "activePerOneMillion": 1984.73,
         "recoveredPerOneMillion": 31874.33,
         "criticalPerOneMillion": 34.9
-    }}
+    }},
+    formatedCanada: {data: {
+        'id': 124,
+        'name': 'Canada',
+        'stats': {
+          'cases': 1340325,
+          'tests': 33668274,
+          'active': 63017,
+          'deaths': 25045,
+          'country': 'Canada',
+          'updated': 1621451834457,
+          'critical': 1344,
+          'continent': 'North America',
+          'recovered': 1252263,
+          'undefined': 1657,
+          'population': 38032423,
+          'todayCases': 2184,
+          'todayDeaths': 27,
+          'todayRecovered': 3881,
+          'oneCasePerPeople': 28,
+          'oneTestPerPeople': 1,
+          'oneDeathPerPeople': 1519,
+          'casesPerOneMillion': 35242,
+          'testsPerOneMillion': 885252,
+          'activePerOneMillion': 1656.93,
+          'deathsPerOneMillion': 659,
+          'criticalPerOneMillion': 35.34,
+          'recoveredPerOneMillion': 32926.2
+        }
+      }}
 }
