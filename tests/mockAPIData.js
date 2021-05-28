@@ -116,5 +116,46 @@ module.exports = {
         "activePerOneMillion": 1984.73,
         "recoveredPerOneMillion": 31874.33,
         "criticalPerOneMillion": 34.9
-    }}
+    }},
+    dbCanada: {country:{
+        'id': 124,
+        'name': 'Canada',
+        'updatedAt': '2021-05-28T07:07:57.805Z',
+        'createdAt': '2021-05-28T07:07:57.805Z',
+        'stats': {
+            'cases': 1371073,
+            'tests': 34449561,
+            'active': 42104,
+            'deaths': 25411,
+            'country': 'Canada',
+            'updated': 1622185363672,
+            'continent': 'North America',
+            'recovered': 1303558,
+            'undefined': 1107,
+            'population': 38040551,
+            'todayCases': 0,
+            'countryInfo': 'Object',
+            'todayDeaths': 0,
+            'todayRecovered': 0,
+            'oneCasePerPeople': 28,
+            'oneTestPerPeople': 1,
+            'oneDeathPerPeople': 1497,
+            'casesPerOneMillion': 36042,
+            'testsPerOneMillion': 905601,
+            'activePerOneMillion': 1106.82,
+            'deathsPerOneMillion': 668,
+            'criticalPerOneMillion': 32.49,
+            'recoveredPerOneMillion': 34267.59
+        },
+        'countryInfo': {
+            '_id': 124,
+            'lat': 60,
+            'flag': 'https://disease.sh/assets/img/flags/ca.png',
+            'iso2': 'CA',
+            'iso3': 'CAN',
+            'long': -95
+            }
+        }
+    
+    }
 }

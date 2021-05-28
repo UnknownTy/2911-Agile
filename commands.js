@@ -134,19 +134,75 @@ module.exports = {
     },
 
     statCountry: (ctx, country, yesterday = false) => {
-        axios.get(`https://corona.lmao.ninja/v2/countries/${country}?yesterday=${yesterday}`)
-            .then(res => {
-                let statInfo = loadResponse(res.data, ctx)
-                    //Set the thumbnail to be the country's flag
-                statInfo.setThumbnail(res.data.countryInfo.flag)
-                if (yesterday) { statInfo.setTitle(`Yesterday's ${res.data.country} Statistics`) }
-                storage.store(res.data)
+        storage.reportCountry(country).then(res => {
+
+            if (res || yesterday != false) {
+
+                console.log("API called")
+                axios.get(`https://corona.lmao.ninja/v2/countries/${country}?yesterday=${yesterday}`)
+                .then(res => {
+                    let statInfo = loadResponse(res.data, ctx)
+                        //Set the thumbnail to be the country's flag
+                    statInfo.setThumbnail(res.data.countryInfo.flag)
+                    if (yesterday) { statInfo.setTitle(`Yesterday's ${res.data.country} Statistics`) }
+                    storage.store(res.data)
+                    ctx.channel.send(embed = statInfo)
+                })
+                .catch(err => {
+                    ctx.channel.send("Country not found or doesn't have any cases")
+                })
+
+            }else{
+
+                console.log("db called")
+                let statInfo = loadResponse(res.stats, ctx)
+                statInfo.setThumbnail(res.countryInfo.flag)
+                // if (yesterday) { statInfo.setTitle(`Yesterday's ${res.name} Statistics`) }
                 ctx.channel.send(embed = statInfo)
-            })
-            .catch(err => {
-                ctx.channel.send("Country not found or doesn't have any cases")
-            })
+            
+            }
+            
+        })
     },
+
+
+
+
+
+
+
+
+
+
+
+
+    //     if ((storage.reportCountry(country) != undefined) && yesterday == false) {
+
+    //             storage.reportCountry(country).then(res => {
+    //             let statInfo = loadResponse(res.stats, ctx)
+    //             statInfo.setThumbnail(res.countryInfo.flag)
+                
+    //             // if (yesterday) { statInfo.setTitle(`Yesterday's ${res.name} Statistics`) }
+    //             ctx.channel.send(embed = statInfo)
+    //         })
+
+    //         }else{
+    //             console.log("NWORD")
+    //             axios.get(`https://corona.lmao.ninja/v2/countries/${country}?yesterday=${yesterday}`)
+    //             .then(res => {
+    //                 let statInfo = loadResponse(res.data, ctx)
+    //                     //Set the thumbnail to be the country's flag
+    //                 statInfo.setThumbnail(res.data.countryInfo.flag)
+    //                 if (yesterday) { statInfo.setTitle(`Yesterday's ${res.data.country} Statistics`) }
+    //                 storage.store(res.data)
+    //                 ctx.channel.send(embed = statInfo)
+    //             })
+    //             .catch(err => {
+    //                 ctx.channel.send("Country not found or doesn't have any cases")
+    //             })
+            
+    //     }
+    // },
 
     vaccineWhen: (msg, age) => {
         message = "If you are healthy and not part of an exception group, you may get your 1st dose " //default message prefix for when command

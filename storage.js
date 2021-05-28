@@ -5,6 +5,7 @@ const prisma = new PrismaClient()
 const updateTime = 15 // Update data stored in minutes
 
 
+
 ///creates new row if country is not found. Otherwise, updates the country
 const store = async covidstats => {
     const checkExisting = await prisma.country.findUnique({
@@ -14,7 +15,10 @@ const store = async covidstats => {
     if (checkExisting) {
         await prisma.country.update({
             where: { id: covidstats.countryInfo._id },
-            data: { stats: covidstats }
+            data: { 
+                stats: covidstats,
+            }
+            
         })
     } else {
         await prisma.country.create({
@@ -22,6 +26,7 @@ const store = async covidstats => {
                 id: covidstats.countryInfo._id,
                 name: covidstats.country,
                 stats: covidstats,
+                countryInfo: covidstats.countryInfo
 
             }
         })
@@ -30,10 +35,12 @@ const store = async covidstats => {
 
 ///returns list containing the matching countries object
 const reportCountry = async countryname => {
-    const reportstats = prisma.country.findMany({
+    const reportstats = await prisma.country.findMany({
         where: { name: countryname }
     })
-    return reportstats;
+    //duplicate countries shouldnt exist unless manually created
+        return reportstats
+
 }
 
 ///to test report
@@ -115,4 +122,8 @@ const deleteRegion = async (ID) => {
     })
 }
 
+<<<<<<< Updated upstream
 module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion, deleteRegion};
+=======
+module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion };
+>>>>>>> Stashed changes
