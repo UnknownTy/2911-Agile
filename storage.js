@@ -4,63 +4,61 @@ const axios = require("axios")
 const prisma = new PrismaClient()
 const updateTime = 15 // Update data stored in minutes
 
-
 ///creates new row if country is not found. Otherwise, updates the country
-const store = async covidstats => {
-    const checkExisting = await prisma.country.findUnique({
-        where: { id: covidstats.countryInfo._id }
-    })
-
-    if (checkExisting) {
-        await prisma.country.update({
-            where: { id: covidstats.countryInfo._id },
-            data: { stats: covidstats }
-        })
-    } else {
-        await prisma.country.create({
-            data: {
-                id: covidstats.countryInfo._id,
-                name: covidstats.country,
-                stats: covidstats,
-
-            }
-        })
-    }
-}
-
-///returns list containing the matching countries object
-const reportCountry = async countryname => {
-    const reportstats = prisma.country.findMany({
-        where: { name: countryname }
-    })
-    return reportstats;
-}
-
-///to test report
-// const test = reportCountry()
-//     .then(function(result) {
-//         console.log(result);
+// const store = async covidstats => {
+//     const checkExisting = await prisma.country.findUnique({
+//         where: { id: covidstats.countryInfo._id }
 //     })
 
-//updates the db for countries atm
-const updateDB = async () => {
-    setInterval(async() => {
-        //grabs the data from db
-        reportCountry()
-            .then(async function(result) {
-                //iterates through the engire country model
-                result.forEach(countryEach => {
-                    axios.get(`https://corona.lmao.ninja/v2/countries/${countryEach.name}`)
-                        .then(res => {
-                            store(res.data)
-                                // console.log(res.data)
-                        })
-                })
-            })
-            //update interval, in miliseconds
-    }, updateTime * 1000 * 60) //Updates every N minutes
-}
+//     if (checkExisting) {
+//         await prisma.country.update({
+//             where: { id: covidstats.countryInfo._id },
+//             data: { 
+//                 stats: covidstats,
+//             }
+            
+//         })
+//     } else {
+//         await prisma.country.create({
+//             data: {
+//                 id: covidstats.countryInfo._id,
+//                 name: covidstats.country,
+//                 stats: covidstats,
+//                 countryInfo: covidstats.countryInfo
 
+//             }
+//         })
+//     }
+// }
+
+// ///returns list containing the matching countries object
+// const reportCountry = async countryname => {
+//     const reportstats = await prisma.country.findFirst({
+//         where: { name: countryname }
+//     })
+//     //duplicate countries shouldnt exist unless manually created
+//         return reportstats
+
+// }
+
+// //updates the db for countries atm
+// const updateDB = async function() {
+//     setInterval(async() => {
+//         //grabs the data from db
+//         reportCountry()
+//             .then(async function(result) {
+//                 //iterates through the engire country model
+//                 result.forEach(countryEach => {
+//                     axios.get(`https://corona.lmao.ninja/v2/countries/${countryEach.name}`)
+//                         .then(res => {
+//                             store(res.data)
+//                                 // console.log(res.data)
+//                         })
+//                 })
+//             })
+//             //update interval, in miliseconds
+//     }, updateTime * 1000 * 60)
+// }
 const makeOrEditRegion = async (reqName, resDesc, indDesc, outDesc, maskDesc, link, ID) => {
     if(ID){
         console.log(resDesc)
@@ -114,5 +112,5 @@ const deleteRegion = async (ID) => {
         }
     })
 }
-
-module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion, deleteRegion};
+// store, reportCountry, updateDB, 
+module.exports = {getAllRegions, getRegion, makeOrEditRegion, deleteRegion};
