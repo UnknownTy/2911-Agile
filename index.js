@@ -194,7 +194,7 @@ client.on("ready", () => {
 })
 
 client.on("message", messageHandler)
-
+app.get("/howto", (req,res) =>res.render("howto"))
 //Hosts the express server
 app.listen(PORT, function () {
     console.log(

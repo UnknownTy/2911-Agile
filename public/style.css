@@ -1,6 +1,5 @@
 *{
   margin: 0;
-  padding: 0;
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 24px;
 }
@@ -81,7 +80,7 @@ nav {
   padding: 15 15 0 15;
 }
 li {
-  font-size:15px;
+  font-size:20px;
   padding: 0.5em;
 }
 form {
@@ -152,4 +151,8 @@ textarea {
   color: #2E6F95;
   border: none;
   border-radius: 10px;
+}
+.howto{
+  font-size: 20px;
+
 }
