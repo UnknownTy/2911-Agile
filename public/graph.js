@@ -1,18 +1,4 @@
 //This plugin creates the canvas background used for the graph.
-const axios = require("axios")
-const plugin = {
-    id: 'custom_canvas_background_color',
-    beforeDraw: (chart) => {
-      const ctx = chart.canvas.getContext('2d');
-      ctx.save();
-      ctx.globalCompositeOperation = 'destination-over';
-      //Change the fill style below to change the background colour.
-      //By default, it is set to Discord's chat background.
-      ctx.fillStyle = "#36393E";
-      ctx.fillRect(0, 0, chart.width, chart.height);
-      ctx.restore();
-    }
-  };
 
 let baseConfig = {
     type: 'line',
@@ -33,7 +19,6 @@ let baseConfig = {
             }}]
         },
     },
-    plugins: plugin
 }
 
 const all = res =>{
@@ -51,6 +36,7 @@ const all = res =>{
     //Converts the day to a date format to make processing faster later.
     let days = Object.keys(data.cases).map(val => new Date(val))
     let cases = Object.values(data.cases)
+    let deaths = Object.values(data.deaths)
     let config = baseConfig
     config.data = { 
         labels: days,
@@ -74,4 +60,17 @@ const all = res =>{
     return config 
 }
 
-module.exports = {all}
+console.log("LOADED")
+axios.get(`https://corona.lmao.ninja/v2/historical/all?lastdays=30`)
+.then(res => {
+    return all(res)
+})
+.then(config =>{
+    console.log(config)
+    var myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+        );
+})
+
+
