@@ -35,6 +35,9 @@ const messageHandler = msg => {
     if (!msg.content.startsWith(prefix) || msg.author.bot) return false;
     //Remove all excess spaces and splice out the args
     const args = msg.content.slice(prefix.length).trim().split(/ +/);
+    for (const arg of args) {
+      
+    }
     //Grab the command out of the list of arguments
     const command = args.shift().toLowerCase();
     switch(true){

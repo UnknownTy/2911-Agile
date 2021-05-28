@@ -38,7 +38,7 @@ let baseConfig = {
 const all = res =>{
     if(res.data.timeline){
         var data = res.data.timeline
-        if(res.data.province){
+        if(!(res.data.province instanceof Array)){
             var location = res.data.province
         } else {
             var location = res.data.country
