@@ -12,3 +12,4 @@ https://discord.com/oauth2/authorize?client_id=837409839772336158&permissions=53
 
 # Trello Board Link
 https://trello.com/b/iMSg9BzJ/agile-scrum-board-discord-data-bot
+
