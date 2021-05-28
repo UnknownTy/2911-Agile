@@ -127,17 +127,20 @@ textarea {
   display:grid;
   grid-column-gap: 50px;
   grid-template-columns: auto auto auto auto auto auto;
-  padding:25px
+  padding:25px;
 }
 .right{
-  padding : 10px
+
+  grid-column-start: 4;
+  grid-column-end: 5;
 }
 
 .item {
   grid-column-start: 2;
-  grid-column-end: 6;
+  grid-column-end: 4;
   background-color: white;
-  padding:10px
+  padding:10px;
+  border-radius: 10px
 }
 
 
