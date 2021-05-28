@@ -10,5 +10,5 @@ https://discord.com/oauth2/authorize?client_id=837409839772336158&permissions=53
 5. Have all of the checkboxes marked, and click "Authorize"
 6. If you go to chat you should be able to see the Bot on the right
 
-#Trello Board Link
+# Trello Board Link
 https://trello.com/b/iMSg9BzJ/agile-scrum-board-discord-data-bot
