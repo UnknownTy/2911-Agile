@@ -338,12 +338,12 @@ describe("Individual Commands", () => {
                 expect.arrayContaining( [
                     {
                       name: 'Stronger Province-Wide Restrictions',
-                      value: 'Extra restrictions are currently in effect in order to reduce the spread of COVID-19. Notably, indoor dining and indoor religious gatherings are currently not permitted.',
+                      value: 'Restrictions are currently in effect in order to reduce the spread of COVID-19. Notably, large gatherings are currently not permitted.',
                       inline: false
                     },
                     {
                       name: 'Restaurant Dining',
-                      value: 'Outdoor/Patio only',
+                      value: 'Indoor up to groups of 6',
                       inline: false
                     },
                     {
