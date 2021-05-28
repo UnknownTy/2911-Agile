@@ -41,14 +41,6 @@ const reportCountry = async countryname => {
 
 }
 
-<<<<<<< Updated upstream
-///to test report
-const test = reportCountry()
-    .then(function(result) {
-        console.log(result);
-    })
-=======
->>>>>>> Stashed changes
 
 //updates the db for countries atm
 const updateDB = async function() {
@@ -102,17 +94,6 @@ let mockData = {
     "recoveredPerOneMillion": 31874.33,
     "criticalPerOneMillion": 34.9
 }
-<<<<<<< Updated upstream
-
-// store(mockData)
-//     .catch(e => {
-//         throw e
-//     })
-//     .finally(async() => {
-//         await prisma.$disconnect()
-//     })
-module.exports = { store, reportCountry, updateDB };
-=======
 const getAllRegions = async () => {
     return await prisma.region.findMany({
         select: {
@@ -122,5 +103,4 @@ const getAllRegions = async () => {
     })
 }
 
-module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion };
->>>>>>> Stashed changes
+module.exports = { store, reportCountry, updateDB, getAllRegions};
