@@ -4,11 +4,7 @@ const constants = require("../constants")
 //Mock API get request
 const mockData = require("./mockAPIData")
 const axios = require("axios");
-const storage = require("../storage")
-
 jest.mock('axios')
-storage.reportCountry = jest.fn()
-storage.reportCountry.mockReturnValue(new Promise(resolve => {resolve({stats:mockData.canada.data})}))
 
 let message = ({
     channel: {
@@ -20,7 +16,6 @@ let message = ({
         username: "TEST"
     }
 })
-
 let prefix = '!'
 beforeEach(() => {
     jest.clearAllMocks();
