@@ -87,6 +87,9 @@ const makeOrEditRegion = async (reqName, resDesc, indDesc, outDesc, maskDesc, li
                 link: link
             }
         })
+        return prisma.region.findFirst({
+            where: {name: reqName, link: link, outdoor: outDesc}
+        })
     }
 }
 const getRegion = async (ID) => {
