@@ -68,7 +68,6 @@ const messageHandler = msg => {
         msg.channel.send("Unmatched quote! I don't know what starts where!")
         return false
       }
-      console.log("Out: "+connected)
       args.push(connected)
     }
     
