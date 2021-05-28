@@ -56,7 +56,6 @@ const loadResponse = ((data, ctx) => {
 
 module.exports = {
     graph: async (ctx, args) =>{
-        console.log(args.length)
         if(args.length == 2){
             var res = await axios.get(`https://corona.lmao.ninja/v2/historical/${args[1]}?lastdays=${args[0]}`)
             .catch(err => {

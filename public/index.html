@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
+    
+
 </head>
     <div class="container">
         <header>
@@ -30,7 +36,7 @@
                 
                 <div class = "item">
                   <h2>Welcome to our COVID Data Bot!</h2>
-                  <img class = "image" src = "images/Capture.JPG" >
+                  <canvas id="myChart"></canvas>
                   <h3> What is a Discord Bot? </h3>
                     <li>A discord bot is a robot that is programmed to answer to different commands. The bot is based on discord messenging platform. </li>
                   <h3> Why Trust our Covid Data Bot</h3>
@@ -64,5 +70,9 @@
             </span>
         </footer>
     </div>
+    <script src="./graph.js"></script>
+    <script>
+
+    </script>
 </body>
 </html>
