@@ -12,6 +12,7 @@ model Country {
   id        Int      @id 
   name      String   @unique
   updatedAt DateTime @default(now())
-  createdAt DateTime  
+  createdAt DateTime?  
   stats     Json?
+  countryInfo      Json?
 }

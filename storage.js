@@ -13,7 +13,10 @@ const store = async covidstats => {
     if (checkExisting) {
         await prisma.country.update({
             where: { id: covidstats.countryInfo._id },
-            data: { stats: covidstats }
+            data: { 
+                stats: covidstats,
+            }
+            
         })
     } else {
         await prisma.country.create({
@@ -21,6 +24,7 @@ const store = async covidstats => {
                 id: covidstats.countryInfo._id,
                 name: covidstats.country,
                 stats: covidstats,
+                countryInfo: covidstats.countryInfo
 
             }
         })
@@ -29,17 +33,22 @@ const store = async covidstats => {
 
 ///returns list containing the matching countries object
 const reportCountry = async countryname => {
-    const reportstats = prisma.country.findMany({
+    const reportstats = await prisma.country.findFirst({
         where: { name: countryname }
     })
-    return reportstats;
+    //duplicate countries shouldnt exist unless manually created
+        return reportstats
+
 }
 
+<<<<<<< Updated upstream
 ///to test report
 const test = reportCountry()
     .then(function(result) {
         console.log(result);
     })
+=======
+>>>>>>> Stashed changes
 
 //updates the db for countries atm
 const updateDB = async function() {
@@ -93,6 +102,7 @@ let mockData = {
     "recoveredPerOneMillion": 31874.33,
     "criticalPerOneMillion": 34.9
 }
+<<<<<<< Updated upstream
 
 // store(mockData)
 //     .catch(e => {
@@ -102,3 +112,15 @@ let mockData = {
 //         await prisma.$disconnect()
 //     })
 module.exports = { store, reportCountry, updateDB };
+=======
+const getAllRegions = async () => {
+    return await prisma.region.findMany({
+        select: {
+            id: true,
+            name: true
+        }
+    })
+}
+
+module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion };
+>>>>>>> Stashed changes
