@@ -7,6 +7,7 @@ const regionRoute = require("./routes/regionRoute")
 const session = require("express-session");
 const Discord = require("discord.js");
 const cmd = require("./commands");
+const { connect } = require("./routes/regionRoute");
 require("dotenv").config()
 const client = new Discord.Client();
 const PORT = process.env.PORT || 5050
@@ -34,9 +35,42 @@ const messageHandler = msg => {
     //Check if the message starts with the prefix, or is sent by the bot
     if (!msg.content.startsWith(prefix) || msg.author.bot) return false;
     //Remove all excess spaces and splice out the args
-    const args = msg.content.slice(prefix.length).trim().split(/ +/);
+    const unParsed = msg.content.slice(prefix.length).trim().split(/ +/);
     //Grab the command out of the list of arguments
-    const command = args.shift().toLowerCase();
+    const command = unParsed.shift().toLowerCase();
+
+    let args = []
+    let openQuote = false
+    for (let i = 0; i < unParsed.length; i++) {
+      if(unParsed[i].startsWith("\'") | unParsed[i].startsWith("\"")){
+        openQuote = true
+        let matchQuote = unParsed[i][0]
+        var connected = unParsed[i].slice(1)
+        if(connected.endsWith(matchQuote)){
+          connected = connected.slice(0, -1)
+          openQuote = false
+        } else {
+          for(let v = i+1; v < unParsed.length; v++){
+            if(unParsed[v].endsWith(matchQuote)){
+              connected += ' '+ unParsed[v].slice(0, -1)
+              i++
+              openQuote = false
+              continue;
+            }else {
+              connected += ' '+ unParsed[v]
+            }
+          }
+        }
+      } else {
+        var connected = unParsed[i]
+      }
+      if(openQuote){
+        msg.channel.send("Unmatched quote! I don't know what starts where!")
+        return false
+      }
+      args.push(connected)
+    }
+    
     switch(true){
       //Used to change the prefix
       case (command === "prefix"):
@@ -174,6 +208,14 @@ const messageHandler = msg => {
         else {
           cmd.phoneline(msg)
         }
+        break;
+      case (command == "graph"):
+        if(args.length == 0 | args[0] <= 1){
+          cmd.argsUsage(msg, "graph", prefix)
+        } else {
+          cmd.graph(msg, args)
+        }
+        break;
       }
       
   }
@@ -194,7 +236,7 @@ client.on("ready", () => {
 })
 
 client.on("message", messageHandler)
-
+app.get("/howto", (req,res) =>res.render("howto"))
 //Hosts the express server
 app.listen(PORT, function () {
     console.log(

@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {getAllRegions, getRegion, makeOrEditRegion} = require("../storage")
+const {getAllRegions, getRegion, makeOrEditRegion, deleteRegion} = require("../storage")
 
 router.get("/all", async (req, res) =>{
     getAllRegions()
@@ -18,24 +18,35 @@ router.get("/edit/:id", async (req, res) =>{
     })
 })
 
-router.post("/edit/:id", async (req, res) =>{
-    console.log(req.body)
-    makeOrEditRegion(
-        req.body.name,
-        req.body.resDesc,
-        req.body.indDesc, 
-        req.body.outDesc, 
-        req.body.maskDesc, 
-        req.body.link, 
-        parseInt(req.params.id)
-        )
-    .then(region =>{
-        res.render("editRegion", {region: region, updated: true})
-    })
+router.get("/add", async (req, res) =>{
+    res.render("addRegion")
 })
 
-router.post("/new", async (req, res) =>{
-    console.log(req.body)
+router.post("/edit/:id", async (req, res) =>{
+    if (req.body._method === "put"){
+        console.log(req.body)
+        makeOrEditRegion(
+            req.body.name,
+            req.body.resDesc,
+            req.body.indDesc, 
+            req.body.outDesc, 
+            req.body.maskDesc, 
+            req.body.link, 
+            parseInt(req.params.id)
+            )
+        .then(region =>{
+            res.render("editRegion", {region: region, updated: true})
+        })
+    }
+    else {
+        deleteRegion(parseInt(req.params.id))
+        .then(()=>{
+            res.redirect("../all")
+        })
+    }
+})
+
+router.post("/add", async (req, res) =>{
     makeOrEditRegion(
         req.body.name,
         req.body.resDesc,
@@ -46,7 +57,7 @@ router.post("/new", async (req, res) =>{
         null
         )
     .then(region =>{
-        res.redirect("all")
+        res.redirect("./edit/" + region.id)
     })
     .catch(err => {
         res.status(500)

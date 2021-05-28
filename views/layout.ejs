@@ -9,10 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="/style.css" rel="stylesheet" type="text/css">
-</head>
-  <body>
-    <%- include('./partials/navbar.ejs') %> 
-    <%- body %>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+    <%- include('./partials/navbar.ejs') %>    
+    <%- body %>
+  </div>
   </body>
 </html>

@@ -2,9 +2,20 @@ const Discord = require("discord.js");
 const axios = require("axios")
 const storage = require("./storage.js")
 const { properNames, helpCommands, helpDescription } = require("./constants")
-
+const { ChartJSNodeCanvas } = require("chartjs-node-canvas")
+const graph = require("./graph")
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
+//Node canvas created once to avoid memory leaks.
+const nodeCanvas = new ChartJSNodeCanvas({
+    width: 800,
+    height: 500,
+    chartCallback: (ChartJS) =>{
+        ChartJS.defaults.global.defaultFontColor = '#FFFFFF'
+        ChartJS.defaults.global.defaultFontSize = 16
+    }
+})
+
 
 //This file stores all of the bot's commands.
 
@@ -44,6 +55,29 @@ const loadResponse = ((data, ctx) => {
 
 
 module.exports = {
+    graph: async (ctx, args) =>{
+        if(args.length == 2){
+            var res = await axios.get(`https://corona.lmao.ninja/v2/historical/${args[1]}?lastdays=${args[0]}`)
+            .catch(err => {
+                ctx.channel.send(err.response.data.message)})
+        } else if(args.length == 3) {
+            var res = await axios.get(`https://corona.lmao.ninja/v2/historical/${args[1]}/${args[2]}?lastdays=${args[0]}`)
+            .catch(err => {
+                ctx.channel.send(err.response.data.message)})
+        } else {
+            var res = await axios.get(`https://corona.lmao.ninja/v2/historical/all?lastdays=${args[0]}`)
+            .catch(err => {
+                ctx.channel.send(err.response.data.message)})
+        }
+        if(res){
+            let conf = graph.all(res)
+            //This renders the graph and converts it to an image to be streamed
+            //This streams the image to Discord and uploads it for viewing
+            ctx.channel.send(new Discord.MessageAttachment(nodeCanvas.renderToStream(conf)))
+        }
+    },
+
+
     help: (ctx, prefix, args) => {
         //If there are no arguments
         var res = new Discord.MessageEmbed
@@ -398,8 +432,8 @@ module.exports = {
             .setColor(0xfa6e6e)
             .setTimestamp()
             .addFields(
-                { name: "Stronger Province-Wide Restrictions", value: "Extra restrictions are currently in effect in order to reduce the spread of COVID-19. Notably, indoor dining and indoor religious gatherings are currently not permitted."},
-                { name: "Restaurant Dining", value: "Outdoor/Patio only" }, 
+                { name: "Stronger Province-Wide Restrictions", value: "Restrictions are currently in effect in order to reduce the spread of COVID-19. Notably, large gatherings are currently not permitted."},
+                { name: "Restaurant Dining", value: "Indoor up to groups of 6" }, 
                 { name: "Indoor gatherings", value: "Core bubble or household only" }, 
                 { name: "Outdoor Gatherings", value: "Up to 10 people" }, 
                 { name: "Masks", value: "Mandatory in indoor settings" })

@@ -87,6 +87,9 @@ const makeOrEditRegion = async (reqName, resDesc, indDesc, outDesc, maskDesc, li
                 link: link
             }
         })
+        return prisma.region.findFirst({
+            where: {name: reqName, link: link, outdoor: outDesc}
+        })
     }
 }
 const getRegion = async (ID) => {
@@ -104,46 +107,12 @@ const getAllRegions = async () => {
         }
     })
 }
+const deleteRegion = async (ID) => {
+    return await prisma.region.delete({
+        where: {
+            id: ID
+        }
+    })
+}
 
-// let mockData = {
-//     "updated": 1620965513812,
-//     "country": "Canada",
-//     "countryInfo": {
-//         "_id": 124,
-//         "iso2": "CA",
-//         "iso3": "CAN",
-//         "lat": 60,
-//         "long": -95,
-//         "flag": "https://disease.sh/assets/img/flags/ca.png"
-//     },
-//     "cases": 1312414,
-//     "todayCases": 6644,
-//     "deaths": 24825,
-//     "todayDeaths": 59,
-//     "recovered": 1212114,
-//     "todayRecovered": 7786,
-//     "active": 75475,
-//     "critical": 1327,
-//     "casesPerOneMillion": 34512,
-//     "deathsPerOneMillion": 653,
-//     "tests": 33130218,
-//     "testsPerOneMillion": 871208,
-//     "population": 38027907,
-//     "continent": "North America",
-//     "oneCasePerPeople": 29,
-//     "oneDeathPerPeople": 1532,
-//     "oneTestPerPeople": 1,
-//     "undefined": 1985,
-//     "activePerOneMillion": 1984.73,
-//     "recoveredPerOneMillion": 31874.33,
-//     "criticalPerOneMillion": 34.9
-// }
-
-// store(mockData)
-//     .catch(e => {
-//         throw e
-//     })
-//     .finally(async() => {
-//         await prisma.$disconnect()
-//     })
-module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion };
+module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion, deleteRegion};
