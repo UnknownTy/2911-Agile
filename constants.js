@@ -37,9 +37,10 @@ helpCommands: {
     "prefix": "prefix {New Prefix}",
     "restriction": "restriction ['region']",
     "info" : "info ['pfizer' OR 'moderna' OR 'astrazeneca']",
-    "register" : "register {'bc'}",
+    "register" : "register ['bc']",
     "faq" : "faq",
-    "phoneline" : "phoneline"
+    "phoneline" : "phoneline",
+    "graph": "graph {Number of days > 1} [Country] [Province]"
 },
 
 //A description of all commands
@@ -53,6 +54,7 @@ helpDescription: {
     "info": "gives information on the covid vaccine",
     "register" : "Provides province-wide links to sign up for vaccines.",
     "faq" : "Provides a list of frequently asked questions.",
-    "phoneline" : "Provides a list of phone lines to contact for emergencies and assistance"
+    "phoneline" : "Provides a list of phone lines to contact for emergencies and assistance",
+    "graph": "Provides historical data on a global scale, or a given country.\nYou can also specify the province following the country to get more detailed data."
 },
 }
