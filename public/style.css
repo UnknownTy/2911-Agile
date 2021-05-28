@@ -1,15 +1,15 @@
 *{
   margin: 0;
-  font-family: 'Noto Sans JP', sans-serif;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;  
   font-size: 24px;
 }
 
 body {
   background-color: #2E6F95;
-  color: #2E6F95;
+  color: #ffffff;
 
 }
-
 
 a {
   color: inherit;
@@ -22,6 +22,7 @@ header {
   width: 100vw;
   color:white
 }
+
 .container {
   margin-left:0;
   display: grid;
@@ -69,20 +70,18 @@ nav {
 
 .nav-list {
   display: flex;    
+  list-style: none;
   align-self: flex-end;
   margin-left: auto;
   padding-bottom: 10px;
   padding-right: 1em;
 }
 
-.nav-list li {
-  list-style: none;
-  padding: 15 15 0 15;
-}
 li {
   font-size:20px;
   padding: 0.5em;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -92,11 +91,13 @@ form {
   line-height: 26px;
   margin-bottom: 10px;
 }
+
 input {
   height: 32px;
   flex: 0 0 200px;
   margin-left: 10px;
 }
+
 footer{
   grid-area: footer;
   display: flex;
@@ -115,21 +116,26 @@ footer span{
   padding: 50px
 }
 textarea {
+  margin-top: 5px;
   margin-bottom: 5px;
+  padding: 5px;
   width: 700px;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .content {
   margin-top: 1rem;
   margin-left: 1rem;
+  color: #2E6F95;
   display:grid;
   grid-column-gap: 50px;
-  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-columns: auto ;
   padding:25px;
 }
+h1, form {
+  color: #FFFFFF;
+}
 .right{
-
   grid-column-start: 4;
   grid-column-end: 5;
 }
@@ -143,8 +149,10 @@ textarea {
 }
 
 
-.submit-button {
+
+button {
   margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px;
   background: #FFFFFF;
   outline: inherit;
@@ -154,5 +162,27 @@ textarea {
 }
 .howto{
   font-size: 20px;
+  margin: 1em;
+}
 
+.nav-list li:hover,.region-list li:hover {
+  cursor: pointer;
+  color: #2E6F95;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color:#fffdf0;
+}
+
+.reg-restrictions-h1 {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.restrict-button-cont {
+  margin-left: 10px;
+  margin-top: 10px;
 }

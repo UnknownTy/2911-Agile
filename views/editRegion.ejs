@@ -1,39 +1,54 @@
-<h1><%=region.name%>'s Retrictions</h1>
-<% if (typeof updated !== 'undefined') { %>
-    <h3>Values for <%=region.name%> has been updated!</h3>
-<% } %>
-<form action=<%= "/region/edit/" + region.id %> method="POST">
-    <input value="<%= region.id%>" id="ID" type="hidden">
+<div class="content">
+    <h1><%=region.name%>'s Retrictions</h1>
+    <% if (typeof updated !== 'undefined') { %>
+        <h3>Values for <%=region.name%> has been updated!</h3>
+    <% } %>
+    <form action=<%= "/region/edit/" + region.id %> method="POST">
+        <input value="<%= region.id%>" id="ID" type="hidden">
+        <input value="put" id="_method" type="hidden">
 
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" readonly value="<%=region.name%>" id="name" name="name">
-    </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <!-- <input type="text" readonly value="<%=region.name%>" id="name" name="name"> -->
+            <textarea readonly id="name" name="name"><%=region.name%></textarea>
+        </div>
 
-    <div class="form-group">
-        <label for="resDesc">Restaurant Dining</label>
-        <input type="text" value="<%=region.restauraunt%>" id="resDesc" name="resDesc">
-    </div>
+        <div class="form-group">
+            <label for="resDesc">Restaurant Dining</label>
+            <!-- <input type="text" value="<%=region.restauraunt%>" id="resDesc" name="resDesc"> -->
+            <textarea id="resDesc" name="resDesc"><%=region.restauraunt%></textarea>
+        </div>
 
-    <div class="form-group">
-        <label for="indDesc">Indoor Gatherings</label>
-        <input type="text" value="<%=region.indoor%>" id="indDesc" name="indDesc">
-    </div> 
+        <div class="form-group">
+            <label for="indDesc">Indoor Gatherings</label>
+            <!-- <input type="text" value="<%=region.indoor%>" id="indDesc" name="indDesc"> -->
+            <textarea id="indDesc" name="indDesc"><%=region.indoor%></textarea>
+        </div> 
 
-    <div class="form-group">
-        <label for="outDesc">Outdoor Gatherings</label>
-        <input type="text" value="<%=region.outdoor%>" id="outDesc" name="outDesc">
-    </div>
+        <div class="form-group">
+            <label for="outDesc">Outdoor Gatherings</label>
+            <!-- <input type="text" value="<%=region.outdoor%>" id="outDesc" name="outDesc"> -->
+            <textarea id="outDesc" name="outDesc"><%=region.outdoor%></textarea>
+        </div>
 
-    <div class="form-group">
-        <label for="maskDesc">Masks</label>
-        <input type="text" value="<%=region.masks%>" id="maskDesc" name="maskDesc">
-    </div>
+        <div class="form-group">
+            <label for="maskDesc">Masks</label>
+            <!-- <input type="text" value="<%=region.masks%>" id="maskDesc" name="maskDesc"> -->
+            <textarea id="maskDesc" name="maskDesc"><%=region.masks%></textarea>
+        </div>
 
-    <div class="form-group">
-        <label for="Link">Link</label>
-        <input readonly type="url" value="<%=region.link%>" id="link" name="link">
-    </div> 
+        <div class="form-group">
+            <label for="Link">Link</label>
+            <!-- <input readonly type="url" value="<%=region.link%>" id="link" name="link"> -->
+            <textarea id="link" name="link"><%=region.link%></textarea>
+        </div> 
+        <button type="submit" class="submit-button">Submit!</button>
+    </form>
 
-    <button type="submit">Submit!</button>
-</form>
+    <form action=<%= "/region/edit/" + region.id %> method="POST">
+        <input value="<%= region.id%>" id="ID" type="hidden">
+        <input value="delete" id="_method" type="hidden">
+        <button type="delete" class="delete-button">Delete</button>
+    </form>
+
+</div>
