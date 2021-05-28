@@ -37,7 +37,13 @@ const reportCountry = async countryname => {
         where: { name: countryname }
     })
     //duplicate countries shouldnt exist unless manually created
-        return reportstats
+    if (reportstats){
+        reportstats.stats.countryInfo = reportstats.countryInfo
+        return {data: reportstats}
+    }else{
+        return false
+    }
+    
 
 }
 
