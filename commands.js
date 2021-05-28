@@ -433,8 +433,8 @@ module.exports = {
             .setColor(0xfa6e6e)
             .setTimestamp()
             .addFields(
-                { name: "Stronger Province-Wide Restrictions", value: "Extra restrictions are currently in effect in order to reduce the spread of COVID-19. Notably, indoor dining and indoor religious gatherings are currently not permitted."},
-                { name: "Restaurant Dining", value: "Outdoor/Patio only" }, 
+                { name: "Stronger Province-Wide Restrictions", value: "Restrictions are currently in effect in order to reduce the spread of COVID-19. Notably, large gatherings are currently not permitted."},
+                { name: "Restaurant Dining", value: "Indoor up to groups of 6" }, 
                 { name: "Indoor gatherings", value: "Core bubble or household only" }, 
                 { name: "Outdoor Gatherings", value: "Up to 10 people" }, 
                 { name: "Masks", value: "Mandatory in indoor settings" })
