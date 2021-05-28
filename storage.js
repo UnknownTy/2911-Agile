@@ -107,6 +107,13 @@ const getAllRegions = async () => {
         }
     })
 }
+const deleteRegion = async (ID) => {
+    return await prisma.region.delete({
+        where: {
+            id: ID
+        }
+    })
+}
 
 // let mockData = {
 //     "updated": 1620965513812,
@@ -149,4 +156,4 @@ const getAllRegions = async () => {
 //     .finally(async() => {
 //         await prisma.$disconnect()
 //     })
-module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion };
+module.exports = { store, reportCountry, updateDB, getAllRegions, getRegion, makeOrEditRegion, deleteRegion};
