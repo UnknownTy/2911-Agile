@@ -38,7 +38,6 @@ const messageHandler = msg => {
     const unParsed = msg.content.slice(prefix.length).trim().split(/ +/);
     //Grab the command out of the list of arguments
     const command = unParsed.shift().toLowerCase();
-    console.log(unParsed)
 
     let args = []
     let openQuote = false
