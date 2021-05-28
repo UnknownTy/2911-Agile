@@ -7,7 +7,8 @@
 
 body {
   background-color: #2E6F95;
-  color: #FFFFFF;
+  color: #ffffff;
+
 }
 
 a {
@@ -19,6 +20,7 @@ header {
   grid-area: header;
   display:flex;
   width: 100vw;
+  color:white
 }
 
 .container {
@@ -51,7 +53,6 @@ nav {
   width: 100vw;
   display: flex;
   align-items: flex-end;
-
 }
 
 .title-container {
@@ -69,6 +70,7 @@ nav {
 
 .nav-list {
   display: flex;    
+  list-style: none;
   align-self: flex-end;
   margin-left: auto;
   padding-bottom: 10px;
@@ -76,7 +78,7 @@ nav {
 }
 
 li {
-  list-style: none;
+  font-size:20px;
   padding: 0.5em;
 }
 
@@ -106,6 +108,13 @@ footer span{
     font-size: 0.8em;
 }
 
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding: 50px
+}
 textarea {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -117,7 +126,29 @@ textarea {
 .content {
   margin-top: 1rem;
   margin-left: 1rem;
+  color: #2E6F95;
+  display:grid;
+  grid-column-gap: 50px;
+  grid-template-columns: auto ;
+  padding:25px;
 }
+h1, form {
+  color: #FFFFFF;
+}
+.right{
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+
+.item {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  background-color: white;
+  padding:10px;
+  border-radius: 10px;
+}
+
+
 
 button {
   margin-top: 10px;
@@ -129,8 +160,12 @@ button {
   border: none;
   border-radius: 10px;
 }
+.howto{
+  font-size: 20px;
+  margin: 1em;
+}
 
-li:hover {
+.nav-list li:hover,.region-list li:hover {
   cursor: pointer;
   color: #2E6F95;
   background-color: #FFFFFF;
