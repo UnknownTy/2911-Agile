@@ -3,8 +3,13 @@ const commands = require("../commands.js")
 const constants = require("../constants")
 //Mock API get request
 const mockData = require("./mockAPIData")
-const axios = require("axios");
+const axios = require("axios")
+const storage = require("../storage.js")
+
 jest.mock('axios')
+
+storage.reportCountry = jest.fn()
+storage.reportCountry.mockReturnValue(new Promise(resolve => {resolve(false)}))
 
 let message = ({
     channel: {

@@ -101,16 +101,14 @@ module.exports = {
     statCountry: (ctx, country, yesterday = false) => {
         storage.reportCountry(country).then(res => {
 
-            if (res && yesterday == false) {
+            if (res && (yesterday == false)) {
 
-                console.log(res)
                 let statInfo = loadResponse(res.data.stats, ctx)
                 statInfo.setThumbnail(res.data.countryInfo.flag)
                 ctx.channel.send(embed = statInfo)
 
             }else{
 
-                console.log("API called")
                 axios.get(`https://corona.lmao.ninja/v2/countries/${country}?yesterday=${yesterday}`)
                 .then(res => {
                     let statInfo = loadResponse(res.data, ctx)

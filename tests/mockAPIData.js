@@ -145,5 +145,51 @@ module.exports = {
           'criticalPerOneMillion': 35.34,
           'recoveredPerOneMillion': 32926.2
         }
-      }}
+      }},
+    dbcanada: {data: {
+        'id': 192,
+        'name': 'Cuba',
+        'updatedAt': '2021-05-28T23:32:57.326Z',
+        'createdAt': 'null',
+        'stats': {
+            'cases': 138899,
+            'tests': 4260156,
+            'active': 6505,
+            'deaths': 933,
+            'country': 'Cuba',
+            'critical': 132,
+            'continent': 'North America',
+            'recovered': 131461,
+            'undefined': 575,
+            'population': 11320366,
+            'todayCases': 1169,
+            'countryInfo': {
+                '_id': 192,
+                'lat': 21.5,
+                'flag': 'https://disease.sh/assets/img/flags/cu.png',
+                'iso2': 'CU',
+                'iso3': 'CUB',
+                'long': -80
+            },
+            'todayDeaths': 12,
+            'todayRecovered': 1263,
+            'oneCasePerPeople': 82,
+            'oneTestPerPeople': 3,
+            'oneDeathPerPeople': 12133,
+            'casesPerOneMillion': 12270,
+            'testsPerOneMillion': 376327,
+            'activePerOneMillion': 574.63,
+            'deathsPerOneMillion': 82,
+            'criticalPerOneMillion': 11.66,
+            'recoveredPerOneMillion': 11612.79
+        },
+        'countryInfo': {
+            '_id': 192,
+            'lat': 21.5,
+            'flag': 'https://disease.sh/assets/img/flags/cu.png',
+            'iso2': 'CU',
+            'iso3': 'CUB',
+            'long': -80
+        }
+    }}
 }
