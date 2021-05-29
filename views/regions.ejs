@@ -4,8 +4,8 @@
     </div>
     <!-- h1 moved down for CSS layout display formatting -->
     <h1 class="reg-restrictions-h1">Regional Restrictions</h1> 
-<% regions.forEach(region => { %>
-    <a href="edit/<%= region.id%>">
-    <li> <%=region.name%></li></a>
-<%});%>
+    <% regions.forEach(region => { %>
+        <a href="edit/<%= region.id%>">
+        <li> <%=region.name%></li></a>
+    <%});%>
 </ul>
