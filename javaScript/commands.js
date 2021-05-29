@@ -139,7 +139,6 @@ module.exports = {
                     //Set the thumbnail to be the country's flag
                 statInfo.setThumbnail(res.data.countryInfo.flag)
                 if (yesterday) { statInfo.setTitle(`Yesterday's ${res.data.country} Statistics`) }
-                storage.store(res.data)
                 ctx.channel.send(embed = statInfo)
             })
             .catch(err => {
