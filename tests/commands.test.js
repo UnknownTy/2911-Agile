@@ -16,10 +16,13 @@ let message = ({
         username: "TEST"
     }
 })
+
 let prefix = '!'
+
 beforeEach(() => {
     jest.clearAllMocks();
 })
+
 afterAll(() => {})
 
 describe("Individual Commands", () => {
@@ -48,7 +51,6 @@ describe("Individual Commands", () => {
                 ])
             )
         })
-
     })
     
     describe("!Stat command", () =>{
@@ -120,6 +122,7 @@ describe("Individual Commands", () => {
             )
         })
     })
+
     it("Register without Argument", () => {
         commands.register(message)
         let expectedEmbed = message.channel.send.mock.calls[0][0]
@@ -134,7 +137,6 @@ describe("Individual Commands", () => {
             expect(expectedEmbed.fields[i]['name']).toEqual(provinceArray[i])
         }
     })
-
 
     it("Register with BC Argument", () => {
         commands.registerbc(message)
@@ -168,6 +170,7 @@ describe("Individual Commands", () => {
             inline: false
             }])))
     })
+
     it("Register with NB Argument", () => {
         commands.registernb(message)
         let expectedEmbed = message.channel.send.mock.calls[0][0]
@@ -179,6 +182,7 @@ describe("Individual Commands", () => {
             inline: false
             }])))
     })
+
     it("Register with NL Argument", () => {
         commands.registerNL(message)
         let expectedEmbed = message.channel.send.mock.calls[0][0]
@@ -190,6 +194,7 @@ describe("Individual Commands", () => {
             inline: false
             }])))
     })
+
     it("Register with NWT Argument", () => {
         commands.registernwt(message)
         let expectedEmbed = message.channel.send.mock.calls[0][0]
@@ -201,6 +206,7 @@ describe("Individual Commands", () => {
             inline: false
             }])))
     })
+
     it("Register with NS Argument", () => {
         commands.registerns(message)
         let expectedEmbed = message.channel.send.mock.calls[0][0]
@@ -212,6 +218,7 @@ describe("Individual Commands", () => {
             inline: false
             }])))
     })
+
     it("Register with NT Argument", () => {
         commands.registernt(message)
         let expectedEmbed = message.channel.send.mock.calls[0][0]
@@ -246,6 +253,7 @@ describe("Individual Commands", () => {
             inline: false
             }])))
     })
+
     it("Register with QC Argument", () => {
         commands.registerQC(message)
         let expectedEmbed = message.channel.send.mock.calls[0][0]
@@ -257,6 +265,7 @@ describe("Individual Commands", () => {
             inline: false
             }])))
     })
+
     it("When command", () => {
         msg = "If you are healthy and not part of an exception group, you may get your 1st dose "
         commands.vaccineWhen(message, -5)

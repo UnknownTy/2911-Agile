@@ -1,8 +1,10 @@
 <div class="content">
     <h1><%=region.name%>'s Retrictions</h1>
+
     <% if (typeof updated !== 'undefined') { %>
         <h3>Values for <%=region.name%> has been updated!</h3>
     <% } %>
+
     <form action=<%= "/region/edit/" + region.id %> method="POST">
         <input value="<%= region.id%>" id="ID" type="hidden">
         <input value="put" id="_method" type="hidden">
@@ -50,5 +52,4 @@
         <input value="delete" id="_method" type="hidden">
         <button type="delete" class="delete-button">Delete</button>
     </form>
-
 </div>

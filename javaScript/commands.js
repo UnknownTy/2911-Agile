@@ -16,10 +16,7 @@ const nodeCanvas = new ChartJSNodeCanvas({
     }
 })
 
-
 //This file stores all of the bot's commands.
-
-
 const defaultEmbed = (ctx) => {
     //Creates an easy embed that I can grab later for covid data
     embed = new Discord.MessageEmbed()
@@ -53,7 +50,6 @@ const loadResponse = ((data, ctx) => {
     return embed
 })
 
-
 module.exports = {
     graph: async (ctx, args) =>{
         if(args.length == 2){
@@ -76,7 +72,6 @@ module.exports = {
             ctx.channel.send(new Discord.MessageAttachment(nodeCanvas.renderToStream(conf)))
         }
     },
-
 
     help: (ctx, prefix, args) => {
         //If there are no arguments
@@ -196,6 +191,7 @@ module.exports = {
             .addField("Link to BC's Immunization Plan and Exceptions:", "https://www2.gov.bc.ca/gov/content/covid-19/vaccine/plan#phases");
         msg.channel.send(exceptionEmbed);
     },
+    
     //Sends information of pfizer
     pfizer: (msg) => {
         const pfizerEmbed = new Discord.MessageEmbed()
