@@ -101,7 +101,7 @@ module.exports = {
     statCountry: (ctx, country, yesterday = false) => {
         storage.reportCountry(country).then(res => {
 
-            if (res && (yesterday == false)) {
+            if ((res != false) && (yesterday == false)) {
 
                 let statInfo = loadResponse(res.data.stats, ctx)
                 statInfo.setThumbnail(res.data.countryInfo.flag)

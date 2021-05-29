@@ -21,6 +21,7 @@ let message = ({
         username: "TEST"
     }
 })
+
 let prefix = '!'
 beforeEach(() => {
     jest.clearAllMocks();
