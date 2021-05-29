@@ -132,9 +132,11 @@ textarea {
   grid-template-columns: auto ;
   padding:25px;
 }
+
 h1, form {
   color: #FFFFFF;
 }
+
 .right{
   grid-column-start: 4;
   grid-column-end: 5;
@@ -147,8 +149,6 @@ h1, form {
   padding:10px;
   border-radius: 10px;
 }
-
-
 
 button {
   margin-top: 10px;
