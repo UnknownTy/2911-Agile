@@ -6,7 +6,7 @@ const ejsLayouts = require("express-ejs-layouts");
 const regionRoute = require("./routes/regionRoute")
 const session = require("express-session");
 const Discord = require("discord.js");
-const cmd = require("./commands");
+const cmd = require("./javaScript/commands");
 const { connect } = require("./routes/regionRoute");
 require("dotenv").config()
 const client = new Discord.Client();

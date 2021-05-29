@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {getAllRegions, getRegion, makeOrEditRegion, deleteRegion} = require("../storage")
+const {getAllRegions, getRegion, makeOrEditRegion, deleteRegion} = require("../javaScript/storage")
 
 router.get("/all", async (req, res) =>{
     getAllRegions()
