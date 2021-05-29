@@ -2,7 +2,7 @@
   "dependencies": {
     "@prisma/client": "^2.23.0",
     "axios": "^0.21.1",
-    "chartjs": "^0.3.24",
+    "chart.js": "^2.9.4",
     "chartjs-node-canvas": "^3.2.0",
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
