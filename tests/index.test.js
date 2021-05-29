@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const commands = require("../commands.js")
+const commands = require("../javaScript/commands.js")
 const { messageHandler } = require("../index.js")
 
 //This file is JUST to test how we handle messages, not the backend or the responses.
