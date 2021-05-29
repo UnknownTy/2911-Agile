@@ -283,6 +283,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", "https://www.alberta.ca/covid19-vaccine.aspx");
         msg.channel.send(registerABEmbed);
     },
+
     registermb: (msg) => {
         const registerMBEmbed = new Discord.MessageEmbed()
             .setTitle("Manitoba Vaccine Registration")
@@ -294,6 +295,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", 'https://protectmb.ca/making-your-appointment-is-easy/');
         msg.channel.send(registerMBEmbed);
     },
+
     registernb: (msg) => {
         const registerMBEmbed = new Discord.MessageEmbed()
             .setTitle("New Brunswik Vaccine Registration")
@@ -305,6 +307,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", 'https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/nb-vaccine/Get-Vaccinated/vaccine-pharmacy.html');
         msg.channel.send(registerMBEmbed);
     },
+
     registerNL: (msg) => {
         const registerNWTEmbed = new Discord.MessageEmbed()
             .setTitle("NewfoundLand  Vaccine Registration")
@@ -316,6 +319,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", "https://www.gov.nl.ca/covid-19/vaccine/gettheshot/");
         msg.channel.send(registerNWTEmbed);
     },
+
     registernwt: (msg) => {
         const registerNWLEmbed = new Discord.MessageEmbed()
             .setTitle("NorthWest Territories  Vaccine Registration")
@@ -327,6 +331,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", "https://www.nthssa.ca/en/services/coronavirus-disease-covid-19-updates/covid-vaccine");
         msg.channel.send(registerNWLEmbed);
     },
+
     registerns: (msg) => {
         const registerNSEmbed = new Discord.MessageEmbed()
             .setTitle("Nova Scotia  Vaccine Registration")
@@ -338,6 +343,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", "https://novascotia.ca/coronavirus/book-your-vaccination-appointment/");
         msg.channel.send(registerNSEmbed);
     },
+    
     registernt: (msg) => {
         const registerNtEmbed = new Discord.MessageEmbed()
             .setTitle("Nunavut  Vaccine Registration")
@@ -349,6 +355,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", "https://www.gov.nu.ca/health/information/covid-19-vaccination");
         msg.channel.send(registerNtEmbed);
     },
+
     registeront: (msg) => {
         const registerONTEmbed = new Discord.MessageEmbed()
             .setTitle("Ontario Vaccine Registration")
@@ -360,6 +367,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", "https://covid19.ontariohealth.ca/");
         msg.channel.send(registerONTEmbed);
     },
+    
     registerpei: (msg) => {
         const registerPEIEmbed = new Discord.MessageEmbed()
             .setTitle("Prince Edward Island Vaccine Registration")
@@ -371,6 +379,7 @@ module.exports = {
             .addField("Link to know more on registering for your vaccine", "https://www.princeedwardisland.ca/en/information/health-and-wellness/getting-covid-19-vaccine");
         msg.channel.send(registerPEIEmbed);
     },
+
     registerQC: (msg) => {
         const registerQCEmbed = new Discord.MessageEmbed()
             .setTitle("Quebec Vaccine Registration")

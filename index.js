@@ -217,7 +217,6 @@ const messageHandler = msg => {
         }
         break;
       }
-      
   }
 
 let prefix = '!' // Default prefix. Adjust this to read from some settings later.

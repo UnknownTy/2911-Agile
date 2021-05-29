@@ -22,7 +22,6 @@ const store = async covidstats => {
                 id: covidstats.countryInfo._id,
                 name: covidstats.country,
                 stats: covidstats,
-
             }
         })
     }
@@ -92,6 +91,7 @@ const makeOrEditRegion = async (reqName, resDesc, indDesc, outDesc, maskDesc, li
         })
     }
 }
+
 const getRegion = async (ID) => {
     return await prisma.region.findUnique({
         where: {
@@ -99,6 +99,7 @@ const getRegion = async (ID) => {
         }
     })
 }
+
 const getAllRegions = async () => {
     return await prisma.region.findMany({
         select: {
@@ -107,6 +108,7 @@ const getAllRegions = async () => {
         }
     })
 }
+
 const deleteRegion = async (ID) => {
     return await prisma.region.delete({
         where: {

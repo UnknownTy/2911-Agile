@@ -1,5 +1,5 @@
 # Covid Data
-An agile development project for ACIT2911 at BCIT.
+An agile development project created by Group 9 (Ty, Bradley, Michael, and Judy) for ACIT2911 at BCIT.
 
 # How to Install the Bot
 1. Login to discord if you have not done so yet
